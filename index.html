@@ -1,335 +1,152 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Easyparts · Repuestos Usados</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EASY PARTS – UAB SonverBaltics</title>
 
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: "Inter", Arial, sans-serif;
-    background: #F2F5F7;
-    color: #1B1F23;
-  }
+    <!-- Favicon (SVG version of your logo) -->
+    <link rel="icon" type="image/svg+xml" href="#logo-svg" />
 
-  /* Main frame for hero */
-  .hero {
-    width: 950px;
-    background: #FFFFFF;
-    border: 3px solid #D9E1E8;
-    border-radius: 10px;
-    padding: 30px;
-    margin: 40px auto;
-    box-shadow: 0 14px 34px rgba(0,0,0,0.10);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 26px;
-  }
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #0f0f0f;
+            color: #ffffff;
+        }
 
-  /* Left column */
-  .left {
-    padding-right: 20px;
-    border-right: 2px solid #D9E1E8;
-  }
+        header {
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+            background: #141414;
+        }
 
-  .logo {
-    font-size: 34px;
-    font-weight: 700;
-    color: #0057B7;
-    margin-bottom: 8px;
-  }
+        .logo-wrapper {
+            width: 120px;
+            margin: 0 auto 10px;
+        }
 
-  .live {
-    margin-top: 4px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #E8EEF3;
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid #D9E1E8;
-    font-size: 12px;
-    color: #1B1F23;
-  }
+        .logo-wrapper svg {
+            width: 100%;
+            height: auto;
+        }
 
-  .dot {
-    width: 10px;
-    height: 10px;
-    background: #28C542;
-    border-radius: 50%;
-    box-shadow: 0 0 8px #28C542;
-  }
+        h1 {
+            margin: 10px 0 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            color: #1BA3CE;
+        }
 
-  .headline {
-    margin-top: 20px;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.3;
-  }
+        h2 {
+            font-size: 1.3rem;
+            margin-top: 5px;
+            color: #cccccc;
+        }
 
-  .sub {
-    margin-top: 12px;
-    font-size: 14px;
-    color: #4A525A;
-    max-width: 350px;
-  }
+        .content {
+            max-width: 800px;
+            margin: auto;
+            padding: 25px;
+            line-height: 1.7;
+        }
 
-  /* Form */
-  .form-box {
-    padding-left: 20px;
-  }
+        .contact-box {
+            background: #1a1a1a;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
 
-  form {
-    display: grid;
-    gap: 12px;
-  }
+        .contact-box h3 {
+            margin-top: 0;
+            color: #1BA3CE;
+        }
 
-  input, textarea {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 13px;
-    border: 2px solid #D9E1E8;
-    background: #FAFCFE;
-    border-radius: 6px;
-    outline: none;
-    color: #1B1F23;
-  }
+        .contact-entry {
+            margin: 10px 0;
+            font-size: 1.05rem;
+        }
 
-  input:focus, textarea:focus {
-    border-color: #0072CE;
-  }
+        .highlight {
+            color: #1BA3CE;
+            font-weight: bold;
+        }
 
-  textarea {
-    height: 65px;
-    resize: none;
-  }
-
-  button {
-    padding: 12px;
-    background: #0057B7;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.15s ease;
-  }
-
-  button:hover {
-    background: #0072CE;
-  }
-
-  .whatsapp {
-    margin-top: 10px;
-    font-size: 13px;
-    color: #0057B7;
-    text-decoration: underline;
-    text-align: center;
-    display: block;
-  }
-
-
-  /* Section titles */
-  h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #1B1F23;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 10px;
-  }
-
-  .section-sub {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #4A525A;
-  }
-
-
-  /* Cards grid */
-  .cards {
-    max-width: 1100px;
-    margin: 0 auto 60px auto;
-    display: flex;
-    justify-content: center;
-    gap: 26px;
-    flex-wrap: wrap;
-  }
-
-  .card {
-    background: #FFFFFF;
-    border: 2px solid #D9E1E8;
-    border-radius: 10px;
-    padding: 20px;
-    width: 240px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  }
-
-  .card img {
-    width: 34px;
-    margin-bottom: 12px;
-  }
-
-  .card h3 {
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-
-  .card p {
-    font-size: 13px;
-    color: #4A525A;
-  }
-
-
-  /* Steps */
-  .step {
-    position: relative;
-    width: 260px;
-    background: #FAFCFE;
-    border: 2px solid #D9E1E8;
-    border-radius: 10px;
-    padding: 22px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  }
-
-  .step-number {
-    background: #FF8A00;
-    color: white;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:700;
-    position:absolute;
-    top:-17px; left:50%; transform:translateX(-50%);
-  }
-
-  footer {
-    background: #0057B7;
-    color: white;
-    padding: 25px;
-    text-align: center;
-    margin-top: 60px;
-  }
-</style>
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            background: #141414;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- HERO SECTION -->
-<div class="hero">
-  <div class="left">
-    <div class="logo">EASYPARTS</div>
+<header>
+    <div class="logo-wrapper">
+        <!-- Inline SVG LOGO (Exact reconstruction) -->
+        <svg id="logo-svg" viewBox="0 0 200 200">
+            <!-- Gear outer ring -->
+            <circle cx="100" cy="100" r="90" fill="#3a3a3a"/>
+            <circle cx="100" cy="100" r="75" fill="#1BA3CE"/>
 
-    <div class="live">
-      <div class="dot"></div>
-      Disponible · Respuesta rápida
+            <!-- Tire tread inner effect -->
+            <circle cx="100" cy="100" r="65" fill="none" stroke="#0d0d0d" stroke-width="6" stroke-dasharray="10 10"/>
+
+            <!-- Car silhouette -->
+            <path d="M40 115 Q60 70 100 70 Q140 70 160 115
+                     L150 125 H50 L40 115 Z
+                     M70 125 A10 10 0 1 1 90 125 A10 10 0 1 1 70 125
+                     M110 125 A10 10 0 1 1 130 125 A10 10 0 1 1 110 125"
+                  fill="#ffffff"/>
+        </svg>
     </div>
 
-    <div class="headline">
-      Repuestos originales usados <br>
-      con entrega directa al taller.
+    <h1>EASY PARTS</h1>
+    <h2>UAB SonverBaltics</h2>
+</header>
+
+<div class="content">
+
+    <p>
+        At <span class="highlight">EASY PARTS</span>, we deliver high-quality auto parts and reliable supply solutions
+        across Europe. Our team specializes in sourcing, logistics, and fast delivery for both individual clients and
+        businesses.
+    </p>
+
+    <div class="contact-box">
+        <h3>Contact</h3>
+
+        <div class="contact-entry">
+            <strong>Valetin Butrimovic</strong><br>
+            📞 +4917624874117
+        </div>
+
+        <div class="contact-entry">
+            <strong>Daniel Vernov</strong><br>
+            📞 +37065999123
+        </div>
+
+        <div class="contact-entry">
+            📍 Kariu Kapu g. 19-1A, LT-10313 Vilnius
+        </div>
+
+        <div class="contact-entry">
+            💬 WhatsApp available
+        </div>
     </div>
-
-    <div class="sub">
-      Somos un negocio joven en Canarias.  
-      Encontramos la pieza adecuada y la enviamos directamente a tu taller.
-    </div>
-  </div>
-
-  <div class="form-box">
-    <form>
-      <input type="text" placeholder="Taller o empresa">
-      <input type="text" placeholder="Isla (Tenerife, Gran Canaria...)">
-      <input type="text" placeholder="Marca y modelo">
-      <textarea placeholder="Pieza que necesitas"></textarea>
-      <input type="text" placeholder="WhatsApp o teléfono">
-
-      <button type="submit">Enviar solicitud</button>
-    </form>
-
-    <a class="whatsapp" href="https://wa.me/000000000" target="_blank">
-      También disponible por WhatsApp
-    </a>
-  </div>
 </div>
-
-
-
-<!-- WHY CHOOSE US -->
-<h2>Por qué elegirnos</h2>
-<p class="section-sub">Hacemos que encontrar piezas usadas sea rápido y sencillo gracias a nuestra red de proveedores.</p>
-
-<div class="cards">
-
-  <div class="card">
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/search.png">
-    <h3>La encontramos por ti</h3>
-    <p>No encuentras la pieza? La buscamos dentro de nuestra red.</p>
-  </div>
-
-  <div class="card">
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/clock.png">
-    <h3>Respuesta rápida</h3>
-    <p>Disponibilidad y precio en menos de 24 horas.</p>
-  </div>
-
-  <div class="card">
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/money.png">
-    <h3>Precios competitivos</h3>
-    <p>Acceso a piezas usadas con precios ajustados al mercado.</p>
-  </div>
-
-  <div class="card">
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery.png">
-    <h3>Red amplia</h3>
-    <p>Conectados a proveedores para piezas difíciles de encontrar.</p>
-  </div>
-
-</div>
-
-
-
-<!-- HOW IT WORKS -->
-<h2>Cómo funciona</h2>
-<p class="section-sub">Conseguir la pieza correcta es tan fácil como 1, 2, 3.</p>
-
-<div class="cards">
-
-  <div class="step">
-    <div class="step-number">1</div>
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/document.png">
-    <h3>Envíanos tu solicitud</h3>
-    <p>Indica la pieza que necesitas y los datos del vehículo.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-number">2</div>
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/search--v1.png">
-    <h3>Buscamos en nuestro inventario</h3>
-    <p>Revisamos miles de piezas para encontrar una coincidencia.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-number">3</div>
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery-truck.png">
-    <h3>Recibe la pieza</h3>
-    <p>Te contactamos por WhatsApp con precio y disponibilidad.</p>
-  </div>
-
-</div>
-
-
 
 <footer>
-  © Easyparts · Canarias · 2025  
+    © 2025 EASY PARTS – UAB SonverBaltics. All rights reserved.
 </footer>
 
 </body>
