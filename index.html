@@ -1,87 +1,153 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Easyparts · Piezas Usadas</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
   body {
     margin: 0;
     padding: 0;
-    font-family: "Futura PT", "Montserrat", sans-serif;
-    background: #f7e7c1;
-    color: #4a3f2a;
+    font-family: "Futura", "Montserrat", sans-serif;
+    background: #f5e9d3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #4b3e2e;
+  }
+
+  .card {
+    background: #fff7e8;
+    border: 6px solid #d4c1a4;
+    border-radius: 14px;
+    padding: 28px 32px;
+    width: 440px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
     text-align: center;
   }
 
-  .frame {
-    padding: 50px 20px;
-    max-width: 650px;
-    margin: 0 auto;
-    border: 8px solid #d8c49a;
-    background: #fff8e6;
-    margin-top: 40px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+  .logo {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
   }
 
-  h1 {
-    font-size: 42px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #4a341f;
-    letter-spacing: 1px;
+  .tagline {
+    font-size: 14px;
+    color: #6d5d49;
+    margin-bottom: 16px;
+  }
+
+  .live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #6d5d49;
+    background: #efe2c9;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid #cebda1;
+    margin-bottom: 18px;
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+    background: #3ac45c;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #3ac45c;
   }
 
   h2 {
-    font-size: 20px;
-    font-weight: 400;
-    margin-top: 0;
-    color: #6a5b47;
+    font-size: 18px;
+    margin-bottom: 14px;
+    color: #3d3122;
   }
 
-  .btn {
-    display: inline-block;
-    margin-top: 25px;
+  form {
+    display: grid;
+    gap: 12px;
+    text-align: left;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 8px 10px;
+    background: #fffdf7;
+    border: 2px solid #d7c6ad;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #4b3e2e;
+    outline: none;
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: #3ac45c;
+  }
+
+  textarea {
+    resize: none;
+    height: 60px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
     background: #d0945b;
-    padding: 12px 28px;
-    color: white;
-    border-radius: 4px;
-    font-size: 16px;
-    text-decoration: none;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
     box-shadow: 0 4px 0 #b17845;
+    margin-top: 8px;
     transition: 0.15s ease;
   }
 
-  .btn:hover {
-    background: #e8a770;
+  button:hover {
+    background: #e6a875;
     box-shadow: 0 4px 0 #c48653;
   }
 
-  footer {
-    margin-top: 25px;
-    font-size: 12px;
-    opacity: 0.7;
+  .whatsapp {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #4b3e2e;
+    text-decoration: underline;
   }
 </style>
 </head>
 
 <body>
 
-<div class="frame">
-  <h1>Easyparts</h1>
-  <h2>Piezas Usadas · Entrega al Taller</h2>
+<div class="card">
 
-  <p>
-    Somos un negocio joven en Canarias.<br>
-    Encontramos la pieza y la llevamos directo a tu taller.
-  </p>
+  <div class="logo">EASYPARTS</div>
+  <div class="tagline">Repuestos usados · Entrega directa al taller</div>
 
-  <a class="btn" href="https://wa.me/000000000">Pedir por WhatsApp</a>
+  <div class="live">
+    <div class="dot"></div>
+    Negocio joven · Respuesta rápida
+  </div>
 
-  <footer>
-    © Easyparts · 2025
-  </footer>
+  <h2>Solicita una pieza</h2>
+
+  <form>
+    <input type="text" placeholder="Taller / empresa" />
+    <input type="text" placeholder="Isla (Tenerife, GC...)" />
+    <input type="text" placeholder="Marca y modelo" />
+    <textarea placeholder="Pieza que necesitas"></textarea>
+    <input type="text" placeholder="WhatsApp o teléfono" />
+    <button type="submit">Enviar solicitud</button>
+  </form>
+
+  <a class="whatsapp" href="https://wa.me/000000000" target="_blank">Pedir por WhatsApp</a>
+
 </div>
 
 </body>
