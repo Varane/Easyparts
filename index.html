@@ -1,12 +1,885 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<title>Easyparts – Repuestos usados</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <title>Easyparts – Repuestos usados con entrega al taller</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Easyparts encuentra repuestos originales usados y los entrega directamente en tu taller en Canarias."
+  />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #020617;
+      --card: #020617;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --accent-soft-strong: rgba(34, 197, 94, 0.22);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 22px 55px rgba(0, 0, 0, 0.65);
+      --shadow-chip: 0 10px 26px rgba(0, 0, 0, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background:
+        radial-gradient(circle at top left, #0b1120 0, #020617 45%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    /* Header */
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #4ade80, #16a34a 48%, #065f46);
+      box-shadow: var(--shadow-chip);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ecfdf5;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 15px;
+    }
+
+    .logo-text span:last-child {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    nav a {
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+    }
+
+    nav a:hover {
+      color: #e5e7eb;
+      border-bottom-color: rgba(148, 163, 184, 0.4);
+    }
+
+    .badge-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(15, 23, 42, 0.82);
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .dot-live {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.85);
+    }
+
+    @media (max-width: 840px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Layout main sections */
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 840px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Hero */
+
+    .hero {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 22px 22px 20px;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), transparent 52%),
+        radial-gradient(circle at bottom right, #020617 0, #020617 60%);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(55, 65, 81, 0.75);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .hero-tag span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(26px, 3.1vw, 34px);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 460px;
+      margin-bottom: 18px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #052e16;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 16px 38px rgba(22, 163, 74, 0.7);
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        filter 0.12s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(22, 163, 74, 0.78);
+      filter: brightness(1.04);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 12px 28px rgba(22, 163, 74, 0.6);
+      filter: brightness(0.98);
+    }
+
+    .btn-ghost {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(209, 213, 219, 0.8);
+      color: #e5e7eb;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .pill strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-note {
+      font-size: 11px;
+      color: var(--muted);
+      max-width: 260px;
+    }
+
+    .hero-note b {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        order: -1;
+      }
+    }
+
+    /* Form card / sidebar */
+
+    .card-form {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top right, rgba(15, 23, 42, 0.9), #020617 58%);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 20px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 12px;
+    }
+
+    @media (max-width: 640px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .field label {
+      color: #d1d5db;
+    }
+
+    .field small {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .field-full {
+      grid-column: 1 / -1;
+    }
+
+    input,
+    select,
+    textarea {
+      padding: 8px 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease;
+      width: 100%;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #6b7280;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.85);
+      background: #020617;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+      max-height: 150px;
+    }
+
+    .form-footer {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .legal {
+      font-size: 11px;
+      color: var(--muted);
+      max-width: 260px;
+    }
+
+    .legal b {
+      color: #e5e7eb;
+    }
+
+    /* Sections below */
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 380px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 840px) {
+      .steps {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .step-card {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 11px 12px 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .step-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .step-number {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: var(--accent-soft-strong);
+      color: #bbf7d0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .step-title {
+      font-size: 13px;
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 840px) {
+      .benefits-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .benefit-card {
+      border-radius: var(--radius-md);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 11px 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .benefit-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+    }
+
+    .badge-small {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* For whom */
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 840px) {
+      .audience-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .aud-card {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 11px 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .aud-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 11px;
+      color: #6b7280;
+      text-align: center;
+      padding-top: 10px;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    footer a {
+      color: var(--accent);
+    }
+  </style>
 </head>
 <body>
-<h1>Easyparts</h1>
-<p>Repuestos originales usados con entrega directa al taller.</p>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="logo-wrap">
+        <div class="logo-mark">E</div>
+        <div class="logo-text">
+          <span>Easyparts</span>
+          <span>Repuestos usados · Canarias</span>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#para-quien">Para quién</a>
+        <a href="#solicitud">Pedir pieza</a>
+        <span class="badge-header">
+          <span class="dot-live"></span>
+          Negocio joven · respuesta rápida
+        </span>
+      </nav>
+    </header>
+
+    <!-- HERO + FORM -->
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-tag">
+          <span>Para talleres</span>
+          <span>Canarias</span>
+        </div>
+
+        <h1>
+          Encontramos tus <span>repuestos usados</span><br />
+          y los llevamos directo al taller.
+        </h1>
+
+        <p class="hero-subtitle">
+          Motores, cajas, electrónica, suspensión y más. Tú haces la reparación;
+          nosotros localizamos piezas originales usadas y las entregamos directamente
+          en tu taller en Canarias.
+        </p>
+
+        <div class="hero-ctas">
+          <a
+            class="btn-primary"
+            href="#solicitud"
+          >
+            Pedir una pieza
+          </a>
+          <a
+            class="btn-ghost"
+            href="https://wa.me/0000000000"
+            target="_blank"
+          >
+            Pedir por WhatsApp
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="pill">
+            <strong>Solo para talleres</strong>
+            · mecánicos, concesionarios, flotas
+          </div>
+          <div class="hero-note">
+            <b>Negocio joven:</b> abrimos nuevo servicio de repuestos usados para
+            talleres en las Islas Canarias.
+          </div>
+        </div>
+      </section>
+
+      <section class="card-form" id="solicitud">
+        <div class="card-title">Pide una pieza ahora</div>
+        <div class="card-subtitle">
+          Déjanos los datos del coche y la pieza. Te contactaremos con opciones
+          para tu taller.
+        </div>
+
+        <!-- Aquí puedes conectar tu backend, n8n, Make, etc. -->
+        <form action="#" method="post">
+          <div class="field">
+            <label for="workshop">Nombre del taller</label>
+            <input
+              id="workshop"
+              name="workshop"
+              type="text"
+              placeholder="Taller, empresa o autónomo"
+            />
+          </div>
+
+          <div class="field">
+            <label for="isla">Isla</label>
+            <select id="isla" name="isla">
+              <option value="">Selecciona una isla</option>
+              <option>Tenerife</option>
+              <option>Gran Canaria</option>
+              <option>Lanzarote</option>
+              <option>Fuerteventura</option>
+              <option>La Palma</option>
+              <option>La Gomera</option>
+              <option>El Hierro</option>
+              <option>Otra</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="marca">Marca</label>
+            <input
+              id="marca"
+              name="marca"
+              type="text"
+              placeholder="Ej. Volkswagen, BMW, Renault..."
+            />
+          </div>
+
+          <div class="field">
+            <label for="modelo">Modelo</label>
+            <input
+              id="modelo"
+              name="modelo"
+              type="text"
+              placeholder="Ej. Golf 7, Clio IV..."
+            />
+          </div>
+
+          <div class="field">
+            <label for="year">Año</label>
+            <input
+              id="year"
+              name="year"
+              type="text"
+              placeholder="Ej. 2016"
+            />
+          </div>
+
+          <div class="field">
+            <label for="vin">VIN (opcional)</label>
+            <input
+              id="vin"
+              name="vin"
+              type="text"
+              placeholder="Número de bastidor, si lo tienes"
+            />
+          </div>
+
+          <div class="field field-full">
+            <label for="pieza">¿Qué pieza necesitas?</label>
+            <textarea
+              id="pieza"
+              name="pieza"
+              placeholder="Ej. motor completo, caja automática, faro delantero izquierdo, alternador, centralita, etc."
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label for="contacto">Contacto preferido</label>
+            <select id="contacto" name="contacto">
+              <option value="">Selecciona</option>
+              <option>WhatsApp</option>
+              <option>Teléfono</option>
+              <option>Email</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="contacto-detalle">Número / email</label>
+            <input
+              id="contacto-detalle"
+              name="contacto-detalle"
+              type="text"
+              placeholder="Tu WhatsApp, teléfono o email"
+            />
+          </div>
+
+          <div class="field field-full">
+            <label for="notas">Notas adicionales (opcional)</label>
+            <textarea
+              id="notas"
+              name="notas"
+              placeholder="Cualquier detalle extra sobre el coche o la pieza."
+            ></textarea>
+          </div>
+
+          <div class="form-footer">
+            <button type="submit" class="btn-primary">
+              Enviar solicitud
+            </button>
+            <div class="legal">
+              Al enviar este formulario aceptas que te contactemos para ofrecer
+              opciones de repuestos para tu taller. <b>No compartimos tus datos</b>
+              con terceros ajenos al servicio.
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="section" id="como-funciona">
+      <div class="section-header">
+        <div class="section-title">Cómo funciona Easyparts</div>
+        <div class="section-subtitle">
+          Diseñado para talleres que no quieren perder tiempo llamando a diez
+          desguaces diferentes. Un solo contacto, varias fuentes de piezas usadas.
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-head">
+            <div class="step-number">1</div>
+            <div class="step-title">Nos envías los datos</div>
+          </div>
+          Envías marca, modelo, año y, si puedes, el VIN. También puedes mandar
+          foto de la pieza por WhatsApp.
+        </div>
+
+        <div class="step-card">
+          <div class="step-head">
+            <div class="step-number">2</div>
+            <div class="step-title">Buscamos la pieza</div>
+          </div>
+          Localizamos repuestos originales usados que encajen con tu vehículo y
+          seleccionamos opciones interesantes para tu taller.
+        </div>
+
+        <div class="step-card">
+          <div class="step-head">
+            <div class="step-number">3</div>
+            <div class="step-title">Entrega directa al taller</div>
+          </div>
+          Organizamos la entrega directamente en tu taller en Canarias. Tú te
+          concentras en la reparación, nosotros en la pieza.
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title">Por qué piezas usadas originales</div>
+        <div class="section-subtitle">
+          No todos los clientes pueden o quieren pagar nuevo. Con repuestos
+          originales usados, puedes ofrecer más opciones sin bajar tu mano de obra.
+        </div>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-title">Más opciones para tus clientes</div>
+          Muchos clientes buscan una solución más económica. Con piezas usadas
+          puedes decir “sí” cuando otros talleres dicen “no”.
+          <div class="badge-small">Ideal para coches con muchos años</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-title">Mantienes tu margen</div>
+          Ofreces un precio final más bajo sin tener que bajar tu mano de obra.
+          La pieza se ajusta al bolsillo del cliente, tu trabajo se mantiene.
+          <div class="badge-small">Reparaciones que antes no valían la pena</div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-title">Menos tiempo buscando</div>
+          En vez de llamar a varios proveedores, hablas con uno. Easyparts se
+          encarga de la búsqueda y entrega de la pieza usada.
+          <div class="badge-small">Una sola agenda de contactos</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARA QUIÉN ES -->
+    <section class="section" id="para-quien">
+      <div class="section-header">
+        <div class="section-title">¿Para quién es Easyparts?</div>
+        <div class="section-subtitle">
+          Pensado para profesionales de la automoción en Canarias que quieren
+          delegar la búsqueda de repuestos usados sin perder control del trabajo.
+        </div>
+      </div>
+
+      <div class="audience-grid">
+        <div class="aud-card">
+          <div class="aud-title">Talleres mecánicos</div>
+          Para mecánicos que quieren centrarse en el elevador y no en buscar
+          piezas todo el día.
+        </div>
+        <div class="aud-card">
+          <div class="aud-title">Concesionarios y compraventas</div>
+          Ideal para coches en stock donde una pieza nueva no compensa, pero
+          usada sí.
+        </div>
+        <div class="aud-card">
+          <div class="aud-title">Gestores de flotas</div>
+          Empresas con varios vehículos que necesitan mantenerlos en marcha con
+          costes bajo control.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Easyparts · Repuestos originales usados para talleres en Canarias ·
+      Sitio estático en GitHub Pages
+    </footer>
+  </div>
 </body>
 </html>
