@@ -89,4 +89,248 @@
   input, textarea {
     width: 100%;
     padding: 10px 12px;
-    font-siz
+    font-size: 13px;
+    border: 2px solid #D9E1E8;
+    background: #FAFCFE;
+    border-radius: 6px;
+    outline: none;
+    color: #1B1F23;
+  }
+
+  input:focus, textarea:focus {
+    border-color: #0072CE;
+  }
+
+  textarea {
+    height: 65px;
+    resize: none;
+  }
+
+  button {
+    padding: 12px;
+    background: #0057B7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.15s ease;
+  }
+
+  button:hover {
+    background: #0072CE;
+  }
+
+  .whatsapp {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #0057B7;
+    text-decoration: underline;
+    text-align: center;
+    display: block;
+  }
+
+
+  /* Section titles */
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1B1F23;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+
+  .section-sub {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #4A525A;
+  }
+
+
+  /* Cards grid */
+  .cards {
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
+    display: flex;
+    justify-content: center;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    background: #FFFFFF;
+    border: 2px solid #D9E1E8;
+    border-radius: 10px;
+    padding: 20px;
+    width: 240px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .card img {
+    width: 34px;
+    margin-bottom: 12px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 13px;
+    color: #4A525A;
+  }
+
+
+  /* Steps */
+  .step {
+    position: relative;
+    width: 260px;
+    background: #FAFCFE;
+    border: 2px solid #D9E1E8;
+    border-radius: 10px;
+    padding: 22px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .step-number {
+    background: #FF8A00;
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    position:absolute;
+    top:-17px; left:50%; transform:translateX(-50%);
+  }
+
+  footer {
+    background: #0057B7;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    margin-top: 60px;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- HERO SECTION -->
+<div class="hero">
+  <div class="left">
+    <div class="logo">EASYPARTS</div>
+
+    <div class="live">
+      <div class="dot"></div>
+      Disponible · Respuesta rápida
+    </div>
+
+    <div class="headline">
+      Repuestos originales usados <br>
+      con entrega directa al taller.
+    </div>
+
+    <div class="sub">
+      Somos un negocio joven en Canarias.  
+      Encontramos la pieza adecuada y la enviamos directamente a tu taller.
+    </div>
+  </div>
+
+  <div class="form-box">
+    <form>
+      <input type="text" placeholder="Taller o empresa">
+      <input type="text" placeholder="Isla (Tenerife, Gran Canaria...)">
+      <input type="text" placeholder="Marca y modelo">
+      <textarea placeholder="Pieza que necesitas"></textarea>
+      <input type="text" placeholder="WhatsApp o teléfono">
+
+      <button type="submit">Enviar solicitud</button>
+    </form>
+
+    <a class="whatsapp" href="https://wa.me/000000000" target="_blank">
+      También disponible por WhatsApp
+    </a>
+  </div>
+</div>
+
+
+
+<!-- WHY CHOOSE US -->
+<h2>Por qué elegirnos</h2>
+<p class="section-sub">Hacemos que encontrar piezas usadas sea rápido y sencillo gracias a nuestra red de proveedores.</p>
+
+<div class="cards">
+
+  <div class="card">
+    <img src="https://img.icons8.com/ios-filled/50/0057B7/search.png">
+    <h3>La encontramos por ti</h3>
+    <p>No encuentras la pieza? La buscamos dentro de nuestra red.</p>
+  </div>
+
+  <div class="card">
+    <img src="https://img.icons8.com/ios-filled/50/0057B7/clock.png">
+    <h3>Respuesta rápida</h3>
+    <p>Disponibilidad y precio en menos de 24 horas.</p>
+  </div>
+
+  <div class="card">
+    <img src="https://img.icons8.com/ios-filled/50/0057B7/money.png">
+    <h3>Precios competitivos</h3>
+    <p>Acceso a piezas usadas con precios ajustados al mercado.</p>
+  </div>
+
+  <div class="card">
+    <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery.png">
+    <h3>Red amplia</h3>
+    <p>Conectados a proveedores para piezas difíciles de encontrar.</p>
+  </div>
+
+</div>
+
+
+
+<!-- HOW IT WORKS -->
+<h2>Cómo funciona</h2>
+<p class="section-sub">Conseguir la pieza correcta es tan fácil como 1, 2, 3.</p>
+
+<div class="cards">
+
+  <div class="step">
+    <div class="step-number">1</div>
+    <img src="https://img.icons8.com/ios-filled/50/0057B7/document.png">
+    <h3>Envíanos tu solicitud</h3>
+    <p>Indica la pieza que necesitas y los datos del vehículo.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-number">2</div>
+    <img src="https://img.icons8.com/ios-filled/50/0057B7/search--v1.png">
+    <h3>Buscamos en nuestro inventario</h3>
+    <p>Revisamos miles de piezas para encontrar una coincidencia.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-number">3</div>
+    <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery-truck.png">
+    <h3>Recibe la pieza</h3>
+    <p>Te contactamos por WhatsApp con precio y disponibilidad.</p>
+  </div>
+
+</div>
+
+
+
+<footer>
+  © Easyparts · Canarias · 2025  
+</footer>
+
+</body>
+</html>
