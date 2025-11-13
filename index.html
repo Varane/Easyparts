@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EASY PARTS – UAB SonverBaltics</title>
 
-    <!-- Favicon (SVG version of your logo) -->
     <link rel="icon" type="image/svg+xml" href="#logo-svg" />
 
     <style>
@@ -20,8 +19,8 @@
         header {
             padding: 25px;
             text-align: center;
-            border-bottom: 1px solid #222;
             background: #141414;
+            border-bottom: 1px solid #222;
         }
 
         .logo-wrapper {
@@ -77,77 +76,31 @@
             font-weight: bold;
         }
 
-        footer {
-            margin-top: 40px;
-            padding: 15px;
-            background: #141414;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #777;
+        /* FORM STYLES */
+        form {
+            margin-top: 30px;
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
         }
-    </style>
-</head>
 
-<body>
+        form h3 {
+            margin-top: 0;
+            color: #1BA3CE;
+        }
 
-<header>
-    <div class="logo-wrapper">
-        <!-- Inline SVG LOGO (Exact reconstruction) -->
-        <svg id="logo-svg" viewBox="0 0 200 200">
-            <!-- Gear outer ring -->
-            <circle cx="100" cy="100" r="90" fill="#3a3a3a"/>
-            <circle cx="100" cy="100" r="75" fill="#1BA3CE"/>
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background: #111;
+            color: #fff;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
 
-            <!-- Tire tread inner effect -->
-            <circle cx="100" cy="100" r="65" fill="none" stroke="#0d0d0d" stroke-width="6" stroke-dasharray="10 10"/>
-
-            <!-- Car silhouette -->
-            <path d="M40 115 Q60 70 100 70 Q140 70 160 115
-                     L150 125 H50 L40 115 Z
-                     M70 125 A10 10 0 1 1 90 125 A10 10 0 1 1 70 125
-                     M110 125 A10 10 0 1 1 130 125 A10 10 0 1 1 110 125"
-                  fill="#ffffff"/>
-        </svg>
-    </div>
-
-    <h1>EASY PARTS</h1>
-    <h2>UAB SonverBaltics</h2>
-</header>
-
-<div class="content">
-
-    <p>
-        At <span class="highlight">EASY PARTS</span>, we deliver high-quality auto parts and reliable supply solutions
-        across Europe. Our team specializes in sourcing, logistics, and fast delivery for both individual clients and
-        businesses.
-    </p>
-
-    <div class="contact-box">
-        <h3>Contact</h3>
-
-        <div class="contact-entry">
-            <strong>Valetin Butrimovic</strong><br>
-            📞 +4917624874117
-        </div>
-
-        <div class="contact-entry">
-            <strong>Daniel Vernov</strong><br>
-            📞 +37065999123
-        </div>
-
-        <div class="contact-entry">
-            📍 Kariu Kapu g. 19-1A, LT-10313 Vilnius
-        </div>
-
-        <div class="contact-entry">
-            💬 WhatsApp available
-        </div>
-    </div>
-</div>
-
-<footer>
-    © 2025 EASY PARTS – UAB SonverBaltics. All rights reserved.
-</footer>
-
-</body>
-</html>
+        textarea {
+            height: 130px;
