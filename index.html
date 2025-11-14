@@ -10,168 +10,200 @@
 <link rel="manifest" href="manifest.json">
 
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: "Inter", Arial, sans-serif;
-    background: #F2F5F7;
-    color: #1B1F23;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: #F2F5F7;
+  color: #1B1F23;
+}
 
-  /* Fade-in animation */
-  .fade {
-    opacity: 0;
-    animation: fadein 0.9s ease forwards;
-  }
-  @keyframes fadein {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+/* Animation */
+.fade { opacity: 0; animation: fadein 0.9s ease forwards; }
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
-  .lang-switch {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    display: flex;
-    gap: 8px;
-    z-index: 10;
-  }
+/* Language switch */
+.lang-switch {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.lang-switch button {
+  border: 1px solid #D9E1E8;
+  background: white;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.lang-switch button:hover {
+  background: #0057B7;
+  color: white;
+}
 
-  .lang-switch button {
-    border: 1px solid #D9E1E8;
-    background: white;
-    border-radius: 6px;
-    padding: 6px 10px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: 0.2s;
-  }
+/* HERO */
+.hero {
+  max-width: 950px;
+  background: #FFFFFF;
+  border: 3px solid #D9E1E8;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 60px auto 40px auto;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.10);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
 
-  .lang-switch button:hover {
-    background: #0057B7;
-    color: white;
-  }
+/* Left */
+.left { padding-right: 20px; border-right: 2px solid #D9E1E8; }
+.logo {
+  font-size: 34px;
+  font-weight: 700;
+  color: #0057B7;
+}
+.live {
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #E8EEF3;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid #D9E1E8;
+  font-size: 12px;
+}
+.dot {
+  width: 10px; height: 10px;
+  background: #28C542;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #28C542;
+}
+.headline {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 700;
+}
+.sub {
+  margin-top: 12px;
+  font-size: 14px;
+  max-width: 350px;
+  color: #4A525A;
+}
 
+/* Form */
+.form-box { padding-left: 20px; }
+form { display: grid; gap: 12px; }
+
+input, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  border: 2px solid #D9E1E8;
+  background: #FAFCFE;
+  border-radius: 6px;
+  outline: none;
+}
+textarea { height: 65px; resize: none; }
+button {
+  padding: 12px;
+  background: #0057B7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { background: #0072CE; }
+
+/* Cards */
+section { margin: 60px auto; max-width: 1100px; }
+h2 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.section-sub {
+  text-align: center;
+  color: #4A525A;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: flex;
+  gap: 26px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card {
+  background: #FFFFFF;
+  border: 2px solid #D9E1E8;
+  border-radius: 10px;
+  padding: 20px;
+  width: 240px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.card img {
+  width: 34px; margin-bottom: 12px;
+}
+.card h3 {
+  font-size: 16px; margin-bottom: 8px;
+}
+.card p {
+  font-size: 13px; color: #4A525A;
+}
+
+/* Steps */
+.step {
+  position: relative;
+  width: 260px;
+  background: #FAFCFE;
+  border: 2px solid #D9E1E8;
+  border-radius: 10px;
+  padding: 22px;
+  text-align: center;
+}
+.step-number {
+  background: #FF8A00;
+  color: white;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700;
+  position:absolute; top:-17px; left:50%; transform:translateX(-50%);
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
   .hero {
-    width: 950px;
-    background: #FFFFFF;
-    border: 3px solid #D9E1E8;
-    border-radius: 10px;
-    padding: 30px;
-    margin: 60px auto 40px auto;
-    box-shadow: 0 14px 34px rgba(0,0,0,0.10);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 26px;
+    grid-template-columns: 1fr;
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px;
   }
-
   .left {
-    padding-right: 20px;
-    border-right: 2px solid #D9E1E8;
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 2px solid #D9E1E8;
+    padding-bottom: 20px;
   }
+  .form-box { padding-left: 0; margin-top: 15px; }
+}
 
-  .logo {
-    font-size: 34px;
-    font-weight: 700;
-    color: #0057B7;
-    margin-bottom: 8px;
-  }
-
-  .live {
-    margin-top: 4px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #E8EEF3;
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid #D9E1E8;
-    font-size: 12px;
-  }
-
-  .dot {
-    width: 10px;
-    height: 10px;
-    background: #28C542;
-    border-radius: 50%;
-    box-shadow: 0 0 8px #28C542;
-  }
-
-  .headline {
-    margin-top: 20px;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.3;
-  }
-
-  .sub {
-    margin-top: 12px;
-    font-size: 14px;
-    color: #4A525A;
-    max-width: 350px;
-  }
-
-  .form-box {
-    padding-left: 20px;
-  }
-
-  form {
-    display: grid;
-    gap: 12px;
-  }
-
-  input, textarea {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 13px;
-    border: 2px solid #D9E1E8;
-    background: #FAFCFE;
-    border-radius: 6px;
-    outline: none;
-    color: #1B1F23;
-    transition: 0.2s;
-  }
-
-  input:focus, textarea:focus {
-    border-color: #0072CE;
-    box-shadow: 0 0 6px rgba(0,114,206,0.25);
-  }
-
-  textarea {
-    height: 65px;
-    resize: none;
-  }
-
-  button {
-    padding: 12px;
-    background: #0057B7;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.15s ease;
-  }
-
-  button:hover {
-    background: #0072CE;
-    transform: translateY(-1px);
-  }
-
-  footer {
-    background: #0057B7;
-    color: white;
-    padding: 25px;
-    text-align: center;
-    margin-top: 60px;
-  }
 </style>
 
 </head>
 <body>
 
-<!-- LANGUAGE SWITCH -->
+<!-- LANG SWITCH -->
 <div class="lang-switch fade">
   <button onclick="setLang('es')">ES</button>
   <button onclick="setLang('en')">EN</button>
@@ -209,26 +241,31 @@
 
   <div class="form-box">
     <form>
+      <!-- Taller -->
       <input data-lang="es" placeholder="Taller o empresa">
       <input data-lang="en" style="display:none;" placeholder="Workshop or company">
       <input data-lang="de" style="display:none;" placeholder="Werkstatt oder Firma">
       <input data-lang="lt" style="display:none;" placeholder="Servisas arba įmonė">
 
+      <!-- Island -->
       <input data-lang="es" placeholder="Isla (Tenerife...)">
       <input data-lang="en" style="display:none;" placeholder="Island (Tenerife...)">
       <input data-lang="de" style="display:none;" placeholder="Insel (Teneriffa...)">
       <input data-lang="lt" style="display:none;" placeholder="Sala (Tenerifė...)">
 
+      <!-- Model -->
       <input data-lang="es" placeholder="Marca y modelo">
       <input data-lang="en" style="display:none;" placeholder="Make and model">
       <input data-lang="de" style="display:none;" placeholder="Marke und Modell">
       <input data-lang="lt" style="display:none;" placeholder="Markė ir modelis">
 
+      <!-- Part -->
       <textarea data-lang="es" placeholder="Pieza que necesitas"></textarea>
       <textarea data-lang="en" style="display:none;" placeholder="Part you need"></textarea>
       <textarea data-lang="de" style="display:none;" placeholder="Benötigtes Teil"></textarea>
       <textarea data-lang="lt" style="display:none;" placeholder="Reikalinga dalis"></textarea>
 
+      <!-- Contact -->
       <input data-lang="es" placeholder="WhatsApp o teléfono">
       <input data-lang="en" style="display:none;" placeholder="WhatsApp or phone">
       <input data-lang="de" style="display:none;" placeholder="WhatsApp oder Telefon">
@@ -243,6 +280,67 @@
     </form>
   </div>
 </div>
+
+<!-- WHY -->
+<section class="fade">
+  <h2>Por qué elegirnos</h2>
+  <p class="section-sub">Hacemos que encontrar piezas usadas sea rápido y sencillo gracias a nuestra red.</p>
+
+  <div class="cards">
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/0057B7/search.png">
+      <h3>La encontramos por ti</h3>
+      <p>No encuentras la pieza? La buscamos dentro de nuestra red.</p> 
+    </div>
+
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/0057B7/clock.png">
+      <h3>Respuesta rápida</h3>
+      <p>Disponibilidad y precio en menos de 24 horas.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/0057B7/money.png">
+      <h3>Precios competitivos</h3>
+      <p>Acceso a piezas usadas con precios ajustados al mercado.</p>
+    </div>
+
+    <div class="card">
+      <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery.png">
+      <h3>Red amplia</h3>
+      <p>Conectados a proveedores para piezas difíciles de encontrar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="fade">
+  <h2>Cómo funciona</h2>
+  <p class="section-sub">Conseguir la pieza correcta es tan fácil como 1, 2, 3.</p>
+
+  <div class="cards">
+    <div class="step">
+      <div class="step-number">1</div>
+      <img src="https://img.icons8.com/ios-filled/50/0057B7/document.png">
+      <h3>Envíanos tu solicitud</h3>
+      <p>Indica la pieza que necesitas y los datos del vehículo.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <img src="https://img.icons8.com/ios-filled/50/0057B7/search--v1.png">
+      <h3>Buscamos en nuestro inventario</h3>
+      <p>Revisamos miles de piezas para encontrar una coincidencia.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery-truck.png">
+      <h3>Recibe la pieza</h3>
+      <p>Te contactamos por WhatsApp con precio y disponibilidad.</p>
+    </div>
+  </div>
+</section>
 
 <script>
 function setLang(lang) {
