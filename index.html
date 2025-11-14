@@ -5,238 +5,209 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Sonver · Repuestos Usados</title>
 
-<!-- Favicon -->
-<link rel="icon" href="data:image/svg+xml;base64,
-PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjcyIiBoZWlnaHQ9IjcyIiByeD0iMTQiIGZpbGw9IiMwMDU3QjciLz4KPHBhdGggZD0iTTIwIDM2SDUyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4="/>
-
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", Arial, sans-serif;
-  background: #F2F5F7;
-  color: #1B1F23;
-  overflow-x: hidden;
-}
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", Arial, sans-serif;
+    background: #F2F5F7;
+    color: #1B1F23;
+    overflow-x: hidden;
+  }
 
-/* Fade animation */
-.fade { opacity: 0; animation: fadein 0.7s ease forwards; }
-@keyframes fadein { from {opacity:0; transform:translateY(8px);} to {opacity:1; transform:translateY(0);} }
+  .fade {
+    opacity: 0;
+    animation: fadein 0.6s ease forwards;
+  }
+  @keyframes fadein {
+    from { opacity:0; transform: translateY(8px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
 
-/* Languages */
-.lang-switch {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  display: flex;
-  gap: 6px;
-  z-index: 20;
-}
-.lang-switch button {
-  border: 1px solid #C9D3DD;
-  background: #FFFFFF;
-  border-radius: 6px;
-  padding: 6px 8px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 600;
-  color: #1B1F23;
-  transition: 0.2s;
-}
-.lang-switch button.active {
-  background: #0057B7;
-  color: white;
-  border-color: #0057B7;
-}
+  /* LANG SWITCH */
+  .lang-switch {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    gap: 4px;
+    z-index: 20;
+  }
+  .lang-switch button {
+    border: 1px solid #C9D3DD;
+    background: white;
+    padding: 5px 7px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .lang-switch button.active {
+    background: #0057B7;
+    color: white;
+    border-color: #0057B7;
+  }
 
-/* Hero */
-.hero {
-  width: 950px;
-  max-width: 96%;
-  background: #FFFFFF;
-  border: 3px solid #D9E1E8;
-  border-radius: 12px;
-  padding: 30px;
-  margin: 80px auto 40px auto;
-  box-shadow: 0 14px 34px rgba(0,0,0,0.10);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 26px;
-}
-
-.left {
-  padding-right: 20px;
-  border-right: 2px solid #D9E1E8;
-}
-
-.logo {
-  font-size: 32px;
-  font-weight: 700;
-  color: #0057B7;
-}
-
-.live {
-  margin-top: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #E8EEF3;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  border: 1px solid #D9E1E8;
-}
-.dot {
-  width: 10px;
-  height: 10px;
-  background: #28C542;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #28C542;
-}
-
-.headline {
-  margin-top: 20px;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.3;
-}
-.sub {
-  margin-top: 12px;
-  font-size: 14px;
-  color: #4A525A;
-  max-width: 350px;
-}
-
-/* Form */
-.form-box {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-form {
-  width: 100%;
-  max-width: 420px;
-  display: grid;
-  gap: 12px;
-}
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  border: 2px solid #D9E1E8;
-  background: #FAFCFE;
-  border-radius: 6px;
-  outline: none;
-  transition: 0.2s;
-}
-input:focus, textarea:focus {
-  border-color: #0072CE;
-  box-shadow: 0 0 6px rgba(0,114,206,0.25);
-}
-textarea { height: 70px; resize: none; }
-
-button {
-  padding: 12px;
-  background: #0057B7;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.15s;
-}
-button:hover { background: #0072CE; transform: translateY(-1px); }
-
-/* Cards */
-.section-title {
-  text-align: center;
-  margin-top: 60px;
-  font-size: 26px;
-  font-weight: 700;
-}
-.section-sub {
-  text-align: center;
-  color: #4A525A;
-  margin-bottom: 35px;
-}
-
-.cards {
-  max-width: 1100px;
-  margin: 0 auto 50px auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-.card, .step {
-  background: #FFFFFF;
-  border: 2px solid #D9E1E8;
-  border-radius: 12px;
-  padding: 22px;
-  width: 240px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  animation: fadein 0.6s ease forwards;
-}
-.card img, .step img { width: 36px; margin-bottom: 12px; }
-
-.step { position: relative; }
-.step-number {
-  background: #FF8A00;
-  color: white;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  font-weight: 700;
-  display:flex; align-items:center; justify-content:center;
-  position:absolute; top:-17px; left:50%; transform:translateX(-50%);
-}
-
-/* Footer */
-footer {
-  background: #0057B7;
-  color: white;
-  padding: 25px;
-  text-align: center;
-  margin-top: 60px;
-}
-
-/* Mobile */
-@media(max-width:900px){
+  /* HERO */
   .hero {
-    display: flex;
-    flex-direction: column;
-    padding: 22px;
-    width: 94%;
+    width: 950px;
+    max-width: 100%;
+    background: white;
+    border: 2px solid #D9E1E8;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 80px auto 30px auto;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
   }
-  .left {
-    border-right: none;
-    padding: 0;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .headline, .sub {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .form-box {
-    width: 100%;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  form {
-    max-width: 420px;
-    width: 100%;
-  }
-}
-</style>
-</head>
 
+  /* MOBILE — FORCE COLUMN */
+  @media(max-width:900px){
+    .hero {
+      display: block;
+      width: 92%;
+      margin-top: 70px;
+      padding: 20px;
+    }
+    .left { border-right: none; padding: 0; text-align: center; }
+    .headline, .sub { margin-left: auto; margin-right: auto; }
+  }
+
+  .logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: #0057B7;
+  }
+
+  .live {
+    margin-top: 6px;
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+    background: #E8EEF3;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #D9E1E8;
+    font-size: 12px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    background: #28C542;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #28C542;
+  }
+
+  .headline {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .sub {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #4A525A;
+    max-width: 320px;
+  }
+
+  /* FORM */
+  form {
+    width: 100%;
+    display: grid;
+    gap: 12px;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    background: #FAFCFE;
+    border: 2px solid #D9E1E8;
+    border-radius: 6px;
+  }
+
+  button {
+    padding: 12px;
+    background: #0057B7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  /* SECTIONS */
+  .section-title {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .section-sub {
+    text-align: center;
+    color: #4A525A;
+    margin-bottom: 35px;
+    padding: 0 12px;
+  }
+
+  .cards {
+    max-width: 1100px;
+    margin: 0 auto 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 0 10px;
+  }
+
+  .card, .step {
+    width: 260px;
+    max-width: 90%;
+    text-align: center;
+    background: white;
+    border: 2px solid #D9E1E8;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+  }
+
+  .card img, .step img {
+    width: 36px;
+    margin-bottom: 12px;
+  }
+
+  .step { position: relative; }
+  .step-number {
+    position: absolute;
+    top: -16px; left: 50%;
+    transform: translateX(-50%);
+    width: 32px; height: 32px;
+    background: #FF8A00;
+    color: white;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  footer {
+    background: #0057B7;
+    color: white;
+    padding: 25px;
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
+
+</head>
 <body>
 
-<!-- LANG SWITCH -->
 <div class="lang-switch fade">
   <button onclick="setLang('es')" id="b-es">ES</button>
   <button onclick="setLang('en')" id="b-en">EN</button>
@@ -248,7 +219,6 @@ footer {
   <button onclick="setLang('ru')" id="b-ru">RU</button>
 </div>
 
-<!-- HERO -->
 <div class="hero fade">
   <div class="left">
     <div class="logo">SONVER</div>
@@ -258,306 +228,158 @@ footer {
       <span data-es>Disponible · Respuesta rápida</span>
       <span data-en style="display:none;">Available · Fast response</span>
       <span data-de style="display:none;">Verfügbar · Schnelle Antwort</span>
-      <span data-lt style="display:none;">Pasiekiami · Greitas atsakymas</span>
-      <span data-fr style="display:none;">Disponible · Réponse rapide</span>
-      <span data-it style="display:none;">Disponibile · Risposta rapida</span>
-      <span data-pt style="display:none;">Disponível · Resposta rápida</span>
-      <span data-ru style="display:none;">Доступно · Быстрый ответ</span>
     </div>
 
     <div class="headline">
       <span data-es>Piezas que llegan. Problemas que se van.</span>
-      <span data-en style="display:none;">Parts arrive. Problems disappear.</span>
       <span data-de style="display:none;">Teile kommen. Probleme gehen.</span>
-      <span data-lt style="display:none;">Dalys atvyksta. Problemų nelieka.</span>
-      <span data-fr style="display:none;">Les pièces arrivent. Les problèmes partent.</span>
-      <span data-it style="display:none;">I pezzi arrivano. I problemi spariscono.</span>
-      <span data-pt style="display:none;">As peças chegam. Os problemas somem.</span>
-      <span data-ru style="display:none;">Запчасти приходят. Проблемы уходят.</span>
+      <span data-en style="display:none;">Parts arrive. Problems disappear.</span>
     </div>
 
     <div class="sub">
-      <span data-es>Repuestos originales usados con entrega directa al taller.</span>
-      <span data-en style="display:none;">Original used parts delivered directly to the workshop.</span>
-      <span data-de style="display:none;">Original gebrauchte Teile direkt an die Werkstatt geliefert.</span>
-      <span data-lt style="display:none;">Naudotos originalios dalys pristatomos tiesiai į servisą.</span>
-      <span data-fr style="display:none;">Pièces d'origine d'occasion livrées directement à l'atelier.</span>
-      <span data-it style="display:none;">Ricambi originali usati consegnati direttamente in officina.</span>
-      <span data-pt style="display:none;">Peças originais usadas entregues diretamente à oficina.</span>
-      <span data-ru style="display:none;">Б/у оригинальные детали с доставкой прямо в сервис.</span>
+      <span data-es>Repuestos usados originales con entrega directa al taller.</span>
+      <span data-en style="display:none;">Original used parts delivered directly to your workshop.</span>
+      <span data-de style="display:none;">Gebrauchte Originalteile direkt an die Werkstatt geliefert.</span>
     </div>
   </div>
 
-  <div class="form-box">
-    <form onsubmit="sendWA(event)">
-      <input data-es placeholder="Taller o empresa">
-      <input data-en style="display:none;" placeholder="Workshop or company">
-      <input data-de style="display:none;" placeholder="Werkstatt oder Firma">
-      <input data-lt style="display:none;" placeholder="Servisas arba įmonė">
-      <input data-fr style="display:none;" placeholder="Atelier ou entreprise">
-      <input data-it style="display:none;" placeholder="Officina o azienda">
-      <input data-pt style="display:none;" placeholder="Oficina ou empresa">
-      <input data-ru style="display:none;" placeholder="Сервис или компания">
+  <form onsubmit="sendWA(event)">
+    <input data-es placeholder="Taller o empresa">
+    <input data-de style="display:none;" placeholder="Werkstatt oder Firma">
+    <input data-en style="display:none;" placeholder="Workshop or company">
 
-      <input data-es placeholder="Isla (Tenerife...)">
-      <input data-en style="display:none;" placeholder="Island (Tenerife...)">
-      <input data-de style="display:none;" placeholder="Insel (Teneriffa...)">
-      <input data-lt style="display:none;" placeholder="Sala (Tenerifė...)">
-      <input data-fr style="display:none;" placeholder="Île (Tenerife...)">
-      <input data-it style="display:none;" placeholder="Isola (Tenerife...)">
-      <input data-pt style="display:none;" placeholder="Ilha (Tenerife...)">
-      <input data-ru style="display:none;" placeholder="Остров (Тенерифе...)">
+    <input data-es placeholder="Isla (Tenerife...)">
+    <input data-de style="display:none;" placeholder="Insel (Teneriffa...)">
+    <input data-en style="display:none;" placeholder="Island (Tenerife...)">
 
-      <input data-es placeholder="Marca y modelo">
-      <input data-en style="display:none;" placeholder="Make and model">
-      <input data-de style="display:none;" placeholder="Marke und Modell">
-      <input data-lt style="display:none;" placeholder="Markė ir modelis">
-      <input data-fr style="display:none;" placeholder="Marque et modèle">
-      <input data-it style="display:none;" placeholder="Marca e modello">
-      <input data-pt style="display:none;" placeholder="Marca e modelo">
-      <input data-ru style="display:none;" placeholder="Марка и модель">
+    <input data-es placeholder="Marca y modelo">
+    <input data-de style="display:none;" placeholder="Marke und Modell">
+    <input data-en style="display:none;" placeholder="Make and model">
 
-      <textarea data-es placeholder="Pieza que necesitas"></textarea>
-      <textarea data-en style="display:none;" placeholder="Part you need"></textarea>
-      <textarea data-de style="display:none;" placeholder="Benötigtes Teil"></textarea>
-      <textarea data-lt style="display:none;" placeholder="Reikalinga dalis"></textarea>
-      <textarea data-fr style="display:none;" placeholder="Pièce nécessaire"></textarea>
-      <textarea data-it style="display:none;" placeholder="Pezzo necessario"></textarea>
-      <textarea data-pt style="display:none;" placeholder="Peça necessária"></textarea>
-      <textarea data-ru style="display:none;" placeholder="Какая деталь нужна"></textarea>
+    <textarea data-es placeholder="Pieza que necesitas"></textarea>
+    <textarea data-de style="display:none;" placeholder="Benötigtes Teil"></textarea>
+    <textarea data-en style="display:none;" placeholder="Part you need"></textarea>
 
-      <input data-es placeholder="WhatsApp o teléfono">
-      <input data-en style="display:none;" placeholder="WhatsApp or phone">
-      <input data-de style="display:none;" placeholder="WhatsApp oder Telefon">
-      <input data-lt style="display:none;" placeholder="WhatsApp arba telefonas">
-      <input data-fr style="display:none;" placeholder="WhatsApp ou téléphone">
-      <input data-it style="display:none;" placeholder="WhatsApp o telefono">
-      <input data-pt style="display:none;" placeholder="WhatsApp ou telefone">
-      <input data-ru style="display:none;" placeholder="WhatsApp или телефон">
+    <input data-es placeholder="WhatsApp o teléfono">
+    <input data-de style="display:none;" placeholder="WhatsApp oder Telefon">
+    <input data-en style="display:none;" placeholder="WhatsApp or phone">
 
-      <button type="submit">
-        <span data-es>Enviar solicitud</span>
-        <span data-en style="display:none;">Send request</span>
-        <span data-de style="display:none;">Anfrage senden</span>
-        <span data-lt style="display:none;">Siųsti užklausą</span>
-        <span data-fr style="display:none;">Envoyer la demande</span>
-        <span data-it style="display:none;">Invia richiesta</span>
-        <span data-pt style="display:none;">Enviar pedido</span>
-        <span data-ru style="display:none;">Отправить запрос</span>
-      </button>
-    </form>
-  </div>
+    <button type="submit">
+      <span data-es>Enviar solicitud</span>
+      <span data-de style="display:none;">Anfrage senden</span>
+      <span data-en style="display:none;">Send request</span>
+    </button>
+  </form>
 </div>
 
-<!-- WHY CHOOSE US -->
 <div class="section-title" data-es>Por qué elegirnos</div>
-<div class="section-title" data-en style="display:none;">Why choose us</div>
 <div class="section-title" data-de style="display:none;">Warum uns wählen</div>
-<div class="section-title" data-lt style="display:none;">Kodėl mus pasirinkti</div>
-<div class="section-title" data-fr style="display:none;">Pourquoi nous choisir</div>
-<div class="section-title" data-it style="display:none;">Perché sceglierci</div>
-<div class="section-title" data-pt style="display:none;">Por que escolher-nos</div>
-<div class="section-title" data-ru style="display:none;">Почему выбирают нас</div>
-
-<div class="section-sub" data-es>Hacemos que encontrar piezas usadas sea simple.</div>
-<div class="section-sub" data-en style="display:none;">We make finding used parts simple.</div>
-<div class="section-sub" data-de style="display:none;">Wir machen das Finden gebrauchter Teile einfach.</div>
-<div class="section-sub" data-lt style="display:none;">Supaprastiname naudotų dalių paiešką.</div>
-<div class="section-sub" data-fr style="display:none;">Nous simplifions la recherche de pièces d'occasion.</div>
-<div class="section-sub" data-it style="display:none;">Rendiamo semplice trovare ricambi usati.</div>
-<div class="section-sub" data-pt style="display:none;">Tornamos simples encontrar peças usadas.</div>
-<div class="section-sub" data-ru style="display:none;">Мы делаем поиск б/у деталей простым.</div>
+<div class="section-title" data-en style="display:none;">Why choose us</div>
 
 <div class="cards">
   <div class="card fade">
     <img src="https://img.icons8.com/ios-filled/50/0057B7/search.png">
     <h3 data-es>La encontramos por ti</h3>
-    <h3 data-en style="display:none;">We find it for you</h3>
     <h3 data-de style="display:none;">Wir finden sie für Sie</h3>
-    <h3 data-lt style="display:none;">Mes surandame už jus</h3>
-    <h3 data-fr style="display:none;">Nous la trouvons pour vous</h3>
-    <h3 data-it style="display:none;">La troviamo noi</h3>
-    <h3 data-pt style="display:none;">Nós encontramos por você</h3>
-    <h3 data-ru style="display:none;">Мы найдём деталь за вас</h3>
-
+    <h3 data-en style="display:none;">We find it for you</h3>
     <p data-es>No encuentras la pieza? La buscamos.</p>
-    <p data-en style="display:none;">Can't find the part? We search it.</p>
     <p data-de style="display:none;">Sie finden das Teil nicht? Wir suchen es.</p>
-    <p data-lt style="display:none;">Nerandate dalies? Mes ją surasime.</p>
-    <p data-fr style="display:none;">Vous ne trouvez pas la pièce ? Nous la cherchons.</p>
-    <p data-it style="display:none;">Non trovi il pezzo? Lo cerchiamo noi.</p>
-    <p data-pt style="display:none;">Não encontra a peça? Nós procuramos.</p>
-    <p data-ru style="display:none;">Не можете найти деталь? Мы найдём.</p>
+    <p data-en style="display:none;">Can't find the part? We'll find it.</p>
   </div>
 
   <div class="card fade">
     <img src="https://img.icons8.com/ios-filled/50/0057B7/clock.png">
     <h3 data-es>Respuesta rápida</h3>
-    <h3 data-en style="display:none;">Fast response</h3>
     <h3 data-de style="display:none;">Schnelle Antwort</h3>
-    <h3 data-lt style="display:none;">Greitas atsakymas</h3>
-    <h3 data-fr style="display:none;">Réponse rapide</h3>
-    <h3 data-it style="display:none;">Risposta rapida</h3>
-    <h3 data-pt style="display:none;">Resposta rápida</h3>
-    <h3 data-ru style="display:none;">Быстрый ответ</h3>
-
-    <p data-es>Precio y disponibilidad en menos de 24h.</p>
-    <p data-en style="display:none;">Price and availability under 24h.</p>
-    <p data-de style="display:none;">Preis & Verfügbarkeit in 24h.</p>
-    <p data-lt style="display:none;">Kaina ir galimybės per 24h.</p>
-    <p data-fr style="display:none;">Prix et disponibilité en 24h.</p>
-    <p data-it style="display:none;">Prezzo & disponibilità in 24h.</p>
-    <p data-pt style="display:none;">Preço e disponibilidade em 24h.</p>
-    <p data-ru style="display:none;">Цена и наличие за 24 часа.</p>
+    <h3 data-en style="display:none;">Fast response</h3>
+    <p data-es>Precio y disponibilidad en <24h.</p>
+    <p data-de style="display:none;">Preis & Verfügbarkeit in <24h.</p>
+    <p data-en style="display:none;">Price & availability in <24h.</p>
   </div>
 
   <div class="card fade">
     <img src="https://img.icons8.com/ios-filled/50/0057B7/money.png">
     <h3 data-es>Precios competitivos</h3>
-    <h3 data-en style="display:none;">Competitive prices</h3>
     <h3 data-de style="display:none;">Gute Preise</h3>
-    <h3 data-lt style="display:none;">Geros kainos</h3>
-    <h3 data-fr style="display:none;">Prix compétitifs</h3>
-    <h3 data-it style="display:none;">Prezzi competitivi</h3>
-    <h3 data-pt style="display:none;">Preços competitivos</h3>
-    <h3 data-ru style="display:none;">Хорошие цены</h3>
-
+    <h3 data-en style="display:none;">Competitive prices</h3>
     <p data-es>Piezas usadas a precios ajustados.</p>
-    <p data-en style="display:none;">Used parts at fair prices.</p>
     <p data-de style="display:none;">Gebrauchte Teile zu fairen Preisen.</p>
-    <p data-lt style="display:none;">Naudotos dalys už gerą kainą.</p>
-    <p data-fr style="display:none;">Pièces d'occasion à bon prix.</p>
-    <p data-it style="display:none;">Ricambi usati a buon prezzo.</p>
-    <p data-pt style="display:none;">Peças usadas com bom preço.</p>
-    <p data-ru style="display:none;">Б/у детали по честной цене.</p>
+    <p data-en style="display:none;">Used parts at fair prices.</p>
   </div>
 
   <div class="card fade">
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery.png">
+    <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery--v1.png">
     <h3 data-es>Entrega directa</h3>
-    <h3 data-en style="display:none;">Direct delivery</h3>
     <h3 data-de style="display:none;">Direkte Lieferung</h3>
-    <h3 data-lt style="display:none;">Tiesioginis pristatymas</h3>
-    <h3 data-fr style="display:none;">Livraison directe</h3>
-    <h3 data-it style="display:none;">Consegna diretta</h3>
-    <h3 data-pt style="display:none;">Entrega direta</h3>
-    <h3 data-ru style="display:none;">Прямая доставка</h3>
-
+    <h3 data-en style="display:none;">Direct delivery</h3>
     <p data-es>A tu taller. Sin complicaciones.</p>
-    <p data-en style="display:none;">To your workshop. No hassle.</p>
     <p data-de style="display:none;">Direkt in die Werkstatt.</p>
-    <p data-lt style="display:none;">Tiesiai į servisą.</p>
-    <p data-fr style="display:none;">Directement à votre atelier.</p>
-    <p data-it style="display:none;">Direttamente in officina.</p>
-    <p data-pt style="display:none;">Direto à sua oficina.</p>
-    <p data-ru style="display:none;">Прямо в ваш сервис.</p>
+    <p data-en style="display:none;">Straight to your workshop.</p>
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
 <div class="section-title" data-es>Cómo funciona</div>
-<div class="section-title" data-en style="display:none;">How it works</div>
 <div class="section-title" data-de style="display:none;">So funktioniert es</div>
-<div class="section-title" data-lt style="display:none;">Kaip tai veikia</div>
-<div class="section-title" data-fr style="display:none;">Comment ça marche</div>
-<div class="section-title" data-it style="display:none;">Come funziona</div>
-<div class="section-title" data-pt style="display:none;">Como funciona</div>
-<div class="section-title" data-ru style="display:none;">Как это работает</div>
+<div class="section-title" data-en style="display:none;">How it works</div>
 
 <div class="cards">
   <div class="step fade">
     <div class="step-number">1</div>
     <img src="https://img.icons8.com/ios-filled/50/0057B7/document.png">
-    <h3 data-es>Envía tu solicitud</h3>
-    <h3 data-en style="display:none;">Send your request</h3>
+    <h3 data-es>Envíanos tu solicitud</h3>
     <h3 data-de style="display:none;">Anfrage senden</h3>
-    <h3 data-lt style="display:none;">Siųskite užklausą</h3>
-    <h3 data-fr style="display:none;">Envoyez la demande</h3>
-    <h3 data-it style="display:none;">Invia la richiesta</h3>
-    <h3 data-pt style="display:none;">Envie seu pedido</h3>
-    <h3 data-ru style="display:none;">Отправьте запрос</h3>
-
-    <p data-es>Indica la pieza y datos del vehículo.</p>
-    <p data-en style="display:none;">Specify part and vehicle details.</p>
-    <p data-de style="display:none;">Geben Sie Teil und Fahrzeugdaten an.</p>
-    <p data-lt style="display:none;">Nurodykite dalį ir automobilio duomenis.</p>
-    <p data-fr style="display:none;">Indiquez la pièce et les données du véhicule.</p>
-    <p data-it style="display:none;">Indica il pezzo e i dati del veicolo.</p>
-    <p data-pt style="display:none;">Informe a peça e dados do veículo.</p>
-    <p data-ru style="display:none;">Укажите деталь и данные авто.</p>
+    <h3 data-en style="display:none;">Send your request</h3>
+    <p data-es>Indica la pieza y los datos.</p>
+    <p data-de style="display:none;">Teil & Fahrzeugdaten angeben.</p>
+    <p data-en style="display:none;">Specify part & vehicle data.</p>
   </div>
 
   <div class="step fade">
     <div class="step-number">2</div>
     <img src="https://img.icons8.com/ios-filled/50/0057B7/search--v1.png">
     <h3 data-es>Buscamos por ti</h3>
-    <h3 data-en style="display:none;">We search for you</h3>
     <h3 data-de style="display:none;">Wir suchen für Sie</h3>
-    <h3 data-lt style="display:none;">Mes ieškome už jus</h3>
-    <h3 data-fr style="display:none;">Nous cherchons pour vous</h3>
-    <h3 data-it style="display:none;">Cerchiamo noi</h3>
-    <h3 data-pt style="display:none;">Nós procuramos</h3>
-    <h3 data-ru style="display:none;">Мы ищем за вас</h3>
-
+    <h3 data-en style="display:none;">We search for you</h3>
     <p data-es>Revisamos miles de piezas.</p>
-    <p data-en style="display:none;">We check thousands of parts.</p>
     <p data-de style="display:none;">Wir prüfen tausende Teile.</p>
-    <p data-lt style="display:none;">Tikriname tūkstančius dalių.</p>
-    <p data-fr style="display:none;">Nous vérifions des milliers de pièces.</p>
-    <p data-it style="display:none;">Verifichiamo migliaia di pezzi.</p>
-    <p data-pt style="display:none;">Verificamos milhares de peças.</p>
-    <p data-ru style="display:none;">Мы проверяем тысячи деталей.</p>
+    <p data-en style="display:none;">We check thousands of parts.</p>
   </div>
 
   <div class="step fade">
     <div class="step-number">3</div>
     <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery-truck.png">
     <h3 data-es>Recibe la pieza</h3>
-    <h3 data-en style="display:none;">Receive the part</h3>
     <h3 data-de style="display:none;">Teil erhalten</h3>
-    <h3 data-lt style="display:none;">Gaukite dalį</h3>
-    <h3 data-fr style="display:none;">Recevez la pièce</h3>
-    <h3 data-it style="display:none;">Ricevi il pezzo</h3>
-    <h3 data-pt style="display:none;">Receba a peça</h3>
-    <h3 data-ru style="display:none;">Получите деталь</h3>
-
-    <p data-es>Te contactamos vía WhatsApp.</p>
-    <p data-en style="display:none;">We contact you via WhatsApp.</p>
+    <h3 data-en style="display:none;">Receive the part</h3>
+    <p data-es>Te contactamos por WhatsApp.</p>
     <p data-de style="display:none;">Wir kontaktieren Sie via WhatsApp.</p>
-    <p data-lt style="display:none;">Susisieksime per WhatsApp.</p>
-    <p data-fr style="display:none;">Nous vous contactons via WhatsApp.</p>
-    <p data-it style="display:none;">Ti contattiamo su WhatsApp.</p>
-    <p data-pt style="display:none;">Entramos em contato via WhatsApp.</p>
-    <p data-ru style="display:none;">Мы напишем вам в WhatsApp.</p>
+    <p data-en style="display:none;">We contact you via WhatsApp.</p>
   </div>
 </div>
 
 <footer>
-  © 2025 · Sonver UAB · Headquarters: Kariu Kapų g. 19, Vilnius  
+  © 2025 — Sonver — Sonver International — Sonver Baltics  Headquarters: Kariu Kapų g. 19, Vilnius
 </footer>
 
 <script>
-/* LANGUAGE SWITCH */
 function setLang(lang){
-  document.querySelectorAll("[data-es],[data-en],[data-de],[data-lt],[data-fr],[data-it],[data-pt],[data-ru]").forEach(el=>{
-    el.style.display = el.hasAttribute("data-"+lang) ? "" : "none";
+  const langs = ["es","en","de"];
+  langs.forEach(code=>{
+    document.querySelectorAll("[data-"+code+"]").forEach(el=>{
+      el.style.display = (code===lang) ? "" : "none";
+    });
   });
-
   document.querySelectorAll(".lang-switch button").forEach(b=>b.classList.remove("active"));
   document.getElementById("b-"+lang).classList.add("active");
 }
 
-/* AUTO DETECT */
-const browserLang = navigator.language.substring(0,2);
-const supported = ["es","en","de","lt","fr","it","pt","ru"];
-setLang(supported.includes(browserLang) ? browserLang : "es");
+setLang("es");
 
-/* WHATSAPP */
 function sendWA(e){
   e.preventDefault();
-  const values = [...document.querySelectorAll("form input, form textarea")].map(el=>el.value.trim());
-  const msg = encodeURIComponent(values.join("\n"));
-  window.open("https://wa.me/37065959123?text=" + msg, "_blank");
+  const values = [...document.querySelectorAll("form input, form textarea")]
+    .map(el=>el.value.trim()).join("%0A");
+  window.open("https://wa.me/37065959123?text=" + values, "_blank");
 }
 </script>
 
