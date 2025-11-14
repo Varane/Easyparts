@@ -644,15 +644,18 @@
 
 <!-- JS: ЯЗЫКИ, FIREBASE, ОТПРАВКА В WHATSAPP С IP + TIMESTAMP -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-  import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
+  // ---------------------------
+  // FIREBASE INIT
+  // ---------------------------
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getStorage, ref, uploadBytes, getDownloadURL }
+    from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
-  // Firebase config (как ты дал)
   const firebaseConfig = {
     apiKey: "AIzaSyDtrRHOqo4QgvOc5Bh5e91FgJVajoXdayY",
     authDomain: "sonver-4af18.firebaseapp.com",
     projectId: "sonver-4af18",
-    storageBucket: "sonver-4af18.firebasestorage.app",
+    storageBucket: "sonver-4af18.appspot.com",
     messagingSenderId: "1027118040828",
     appId: "1:1027118040828:web:e223f8cca51df72e6af979"
   };
@@ -660,115 +663,100 @@
   const app = initializeApp(firebaseConfig);
   const storage = getStorage(app);
 
+  // ---------------------------
+  // LANGUAGE SWITCH
+  // ---------------------------
   let currentLang = "es";
 
   function setLang(lang) {
     currentLang = lang;
 
-    // HTML lang
-    document.documentElement.lang = lang;
-
-    // показать/скрыть все тексты
     document.querySelectorAll("[data-lang]").forEach(el => {
       el.style.display = (el.getAttribute("data-lang") === lang) ? "" : "none";
     });
 
-    // активность кнопок
-    document.querySelectorAll(".lang-switch button").forEach(btn => {
-      const btnLang = btn.id.replace("b-", "");
-      btn.classList.toggle("active", btnLang === lang);
+    document.querySelectorAll("[data-lang-btn]").forEach(btn => {
+      btn.classList.toggle("active", btn.getAttribute("data-lang-btn") === lang);
     });
   }
 
-  // автоопределение + клики
-  (function initLang() {
-    const navLang = (navigator.language || "es").slice(0,2).toLowerCase();
-    const supported = ["es","en","de","lt","fr","it","pt","ru"];
-    const initial = supported.includes(navLang) ? navLang : "es";
-    setLang(initial);
+  window.setLang = setLang;
 
-    document.querySelectorAll(".lang-switch button").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const lang = btn.id.replace("b-", "");
-        setLang(lang);
-      });
-    });
-  })();
+  // ---------------------------
+  // FORM SUBMIT HANDLING
+  // ---------------------------
+  const form = document.querySelector("form");
 
-
-  async function uploadDocIfAny() {
-    const input = document.getElementById("docUpload");
-    if (!input || !input.files || input.files.length === 0) return null;
-
-    const file = input.files[0];
-    const ts = new Date().toISOString().replace(/[^0-9]/g, "");
-    const safeName = file.name.replace(/[^\w.\-]/g, "_");
-    const storageRef = ref(storage, `uploads/${ts}_${safeName}`);
-
-    try {
-      await uploadBytes(storageRef, file);
-      const url = await getDownloadURL(storageRef);
-      return { name: file.name, url };
-    } catch (e) {
-      console.error("Upload error:", e);
-      return { name: file.name, url: "(upload failed)" };
-    }
-  }
-
-  async function getClientIp() {
-    try {
-      const res = await fetch("https://api.ipify.org?format=json");
-      const data = await res.json();
-      return data.ip || "unknown";
-    } catch (e) {
-      console.warn("IP fetch error", e);
-      return "unknown";
-    }
-  }
-
-  async function sendWA(event) {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const company  = (document.getElementById("f-company")?.value || "").trim();
-    const address  = (document.getElementById("f-address")?.value || "").trim();
-    const vin      = (document.getElementById("f-vin")?.value || "").trim();
-    const make     = (document.getElementById("f-make")?.value || "").trim();
-    const part     = (document.getElementById("f-part")?.value || "").trim();
-    const contact  = (document.getElementById("f-contact")?.value || "").trim();
-
-    const ts = new Date().toISOString();
-    const ip = await getClientIp();
-    const docInfo = await uploadDocIfAny();
-
-    const header = (currentLang === "es")
-      ? "Nueva solicitud Sonver"
-      : (currentLang === "en")
-        ? "New Sonver request"
-        : "New Sonver request";
-
-    let msg = header + "\n\n" +
-      `Empresa/Taller: ${company || "-" }\n` +
-      `Dirección: ${address || "-" }\n` +
-      `VIN: ${vin || "-" }\n` +
-      `Marca/Modelo: ${make || "-" }\n` +
-      `Pieza: ${part || "-" }\n` +
-      `Contacto: ${contact || "-" }\n`;
-
-    if (docInfo) {
-      msg += `\nDocumento: ${docInfo.name}\nURL: ${docInfo.url}\n`;
+    function getValue(field) {
+      const el = document.querySelector(`[data-field="${field}"][data-lang="${currentLang}"]`);
+      return el ? el.value.trim() : "";
     }
 
-    msg += `\nTimestamp: ${ts}\nIP: ${ip}`;
+    const company = getValue("company");
+    const island  = getValue("island");
+    const model   = getValue("model");
+    const part    = getValue("part");
+    const contact = getValue("contact");
 
-    const encoded = encodeURIComponent(msg);
-    // твой номер
-    const waUrl = "https://wa.me/37065959123?text=" + encoded;
-    window.open(waUrl, "_blank");
-  }
+    // ---------------------------
+    // UPLOAD FILE (if exists)
+    // ---------------------------
+    let fileUrl = "No file";
 
-  // привязка к форме (чтобы onsubmit из HTML работал)
-  window.sendWA = sendWA;
+    const fileInput = document.querySelector('[data-field="file"]');
+    if (fileInput && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const fileRef = ref(storage, "uploads/" + Date.now() + "_" + file.name);
+      await uploadBytes(fileRef, file);
+      fileUrl = await getDownloadURL(fileRef);
+    }
+
+    // ---------------------------
+    // META INFO
+    // ---------------------------
+    const timestamp = new Date().toISOString();
+    const pageUrl = window.location.href;
+
+    const message =
+      `Nueva solicitud SONVER\n\n` +
+      `Empresa/Taller: ${company}\n` +
+      `Isla: ${island}\n` +
+      `Modelo: ${model}\n` +
+      `Pieza: ${part}\n` +
+      `Contacto: ${contact}\n\n` +
+      `Archivo: ${fileUrl}\n\n` +
+      `Idioma: ${currentLang}\n` +
+      `URL: ${pageUrl}\n` +
+      `Timestamp: ${timestamp}`;
+
+    const encoded = encodeURIComponent(message);
+
+    // ---------------------------
+    // OPEN WHATSAPP
+    // ---------------------------
+    window.open("https://wa.me/37065959123?text=" + encoded, "_blank");
+
+    // ---------------------------
+    // THANK YOU UI
+    // ---------------------------
+    form.style.display = "none";
+
+    const thx = document.createElement("div");
+    thx.className = "thankyou";
+    thx.innerHTML = `
+      <h2 data-lang="es">¡Gracias! Te contactaremos en breve.</h2>
+      <h2 data-lang="en" style="display:none;">Thank you! We will contact you shortly.</h2>
+      <h2 data-lang="de" style="display:none;">Danke! Wir melden uns in Kürze.</h2>
+      <h2 data-lang="lt" style="display:none;">Ačiū! Netrukus susisieksime.</h2>
+      <h2 data-lang="fr" style="display:none;">Merci ! Nous vous contacterons bientôt.</h2>
+      <h2 data-lang="it" style="display:none;">Grazie! Ti contatteremo a breve.</h2>
+      <h2 data-lang="pt" style="display:none;">Obrigado! Entraremos em contacto em breve.</h2>
+    `;
+
+    form.parentElement.appendChild(thx);
+    setLang(currentLang);
+  });
 </script>
-
-</body>
-</html>
