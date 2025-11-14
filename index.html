@@ -283,108 +283,94 @@
     </div>
   </div>
 
-  <div class="form-box">
-    <form onsubmit="sendWA(event)">
-      <!-- FIELD 1 -->
-      <input data-lang="es" placeholder="Tu dirección">
-      <input data-lang="en" style="display:none;" placeholder="Your address">
-      <input data-lang="de" style="display:none;" placeholder="Ihre Adresse">
-      <input data-lang="lt" style="display:none;" placeholder="Jūsų adresas">
-      <input data-lang="fr" style="display:none;" placeholder="Votre adresse">
-      <input data-lang="it" style="display:none;" placeholder="Il tuo indirizzo">
-      <input data-lang="pt" style="display:none;" placeholder="Seu endereço">
-      <input data-lang="ru" style="display:none;" placeholder="Ваш адрес">
+<form id="sonver-form">
+  
+  <!-- WORKSHOP / COMPANY -->
+  <input data-lang="es" placeholder="Taller o empresa">
+  <input data-lang="en" style="display:none;" placeholder="Workshop or company">
+  <input data-lang="de" style="display:none;" placeholder="Werkstatt oder Firma">
+  <input data-lang="lt" style="display:none;" placeholder="Servisas arba įmonė">
+  <input data-lang="fr" style="display:none;" placeholder="Atelier ou entreprise">
+  <input data-lang="it" style="display:none;" placeholder="Officina o azienda">
+  <input data-lang="pt" style="display:none;" placeholder="Oficina ou empresa">
+  <input data-lang="ru" style="display:none;" placeholder="Сервис или компания">
 
-      <input data-lang="es" placeholder="Número VIN">
-      <input data-lang="en" style="display:none;" placeholder="VIN number">
-      <input data-lang="de" style="display:none;" placeholder="VIN Nummer">
-      <input data-lang="lt" style="display:none;" placeholder="VIN numeris">
-      <input data-lang="fr" style="display:none;" placeholder="Numéro VIN">
-      <input data-lang="it" style="display:none;" placeholder="Numero VIN">
-      <input data-lang="pt" style="display:none;" placeholder="Número VIN">
-      <input data-lang="ru" style="display:none;" placeholder="VIN номер">
+  <!-- ADDRESS -->
+  <input data-lang="es" placeholder="Dirección completa">
+  <input data-lang="en" style="display:none;" placeholder="Full address">
+  <input data-lang="de" style="display:none;" placeholder="Vollständige Adresse">
+  <input data-lang="lt" style="display:none;" placeholder="Pilnas adresas">
+  <input data-lang="fr" style="display:none;" placeholder="Adresse complète">
+  <input data-lang="it" style="display:none;" placeholder="Indirizzo completo">
+  <input data-lang="pt" style="display:none;" placeholder="Endereço completo">
+  <input data-lang="ru" style="display:none;" placeholder="Полный адрес">
 
-      <input 
-  type="file"
-  accept="image/*,application/pdf"
-  data-lang="es">
-      <input 
-  type="file"
-  accept="image/*,application/pdf"
-  data-lang="en"
-  style="display:none;">
-      <input 
-  type="file"
-  accept="image/*,application/pdf"
-  data-lang="de"
-  style="display:none;">
-      <input 
-  type="file"
-  accept="image/*,application/pdf"
-  data-lang="lt"
-  style="display:none;">
-      <input 
-  type="file"
-  accept="image/*,application/pdf"
-  data-lang="fr"
-  style="display:none;">
-      <input 
-  type="file"
-  accept="image/*,application/pdf"
-  data-lang="it"
-  style="display:none;">
-      <input 
-  type="file"
-  accept="image/*,application/pdf"
-  data-lang="pt"
-  style="display:none;">
-      <input 
-  type="file"
-  accept="image/*,application/pdf"
-  data-lang="ru"
-  style="display:none;">
+  <!-- VIN -->
+  <input data-lang="es" placeholder="VIN">
+  <input data-lang="en" style="display:none;" placeholder="VIN">
+  <input data-lang="de" style="display:none;" placeholder="VIN">
+  <input data-lang="lt" style="display:none;" placeholder="VIN">
+  <input data-lang="fr" style="display:none;" placeholder="VIN">
+  <input data-lang="it" style="display:none;" placeholder="VIN">
+  <input data-lang="pt" style="display:none;" placeholder="VIN">
+  <input data-lang="ru" style="display:none;" placeholder="VIN">
 
-      <!-- FIELD 3 -->
-      <input data-lang="es" placeholder="Marca y modelo">
-      <input data-lang="en" style="display:none;" placeholder="Make and model">
-      <input data-lang="de" style="display:none;" placeholder="Marke und Modell">
-      <input data-lang="lt" style="display:none;" placeholder="Markė ir modelis">
-      <input data-lang="fr" style="display:none;" placeholder="Marque et modèle">
-      <input data-lang="it" style="display:none;" placeholder="Marca e modello">
-      <input data-lang="pt" style="display:none;" placeholder="Marca e modelo">
-      <input data-lang="ru" style="display:none;" placeholder="Марка и модель">
+  <!-- FILE UPLOAD -->
+  <label class="file-upload">
+    <span data-lang="es">Subir documento (foto/PDF)</span>
+    <span data-lang="en" style="display:none;">Upload document (photo/PDF)</span>
+    <span data-lang="de" style="display:none;">Dokument hochladen (Foto/PDF)</span>
+    <span data-lang="lt" style="display:none;">Įkelti dokumentą (nuotrauka/PDF)</span>
+    <span data-lang="fr" style="display:none;">Télécharger document (photo/PDF)</span>
+    <span data-lang="it" style="display:none;">Carica documento (foto/PDF)</span>
+    <span data-lang="pt" style="display:none;">Carregar documento (foto/PDF)</span>
+    <span data-lang="ru" style="display:none;">Загрузить документ (фото/PDF)</span>
+    <input id="fileInput" type="file" accept="image/*,application/pdf" multiple>
+  </label>
 
-      <!-- FIELD 4 -->
-      <textarea data-lang="es" placeholder="Pieza que necesitas"></textarea>
-      <textarea data-lang="en" style="display:none;" placeholder="Part you need"></textarea>
-      <textarea data-lang="de" style="display:none;" placeholder="Benötigtes Teil"></textarea>
-      <textarea data-lang="lt" style="display:none;" placeholder="Reikalinga dalis"></textarea>
-      <textarea data-lang="fr" style="display:none;" placeholder="Pièce dont vous avez besoin"></textarea>
-      <textarea data-lang="it" style="display:none;" placeholder="Ricambio che ti serve"></textarea>
-      <textarea data-lang="pt" style="display:none;" placeholder="Peça que precisa"></textarea>
-      <textarea data-lang="ru" style="display:none;" placeholder="Какая запчасть нужна"></textarea>
+  <!-- MAKE / MODEL -->
+  <input data-lang="es" placeholder="Marca y modelo">
+  <input data-lang="en" style="display:none;" placeholder="Make and model">
+  <input data-lang="de" style="display:none;" placeholder="Marke und Modell">
+  <input data-lang="lt" style="display:none;" placeholder="Markė ir modelis">
+  <input data-lang="fr" style="display:none;" placeholder="Marque et modèle">
+  <input data-lang="it" style="display:none;" placeholder="Marca e modello">
+  <input data-lang="pt" style="display:none;" placeholder="Marca e modelo">
+  <input data-lang="ru" style="display:none;" placeholder="Марка и модель">
 
-      <!-- FIELD 5 -->
-      <input data-lang="es" placeholder="WhatsApp o teléfono">
-      <input data-lang="en" style="display:none;" placeholder="WhatsApp or phone">
-      <input data-lang="de" style="display:none;" placeholder="WhatsApp oder Telefon">
-      <input data-lang="lt" style="display:none;" placeholder="WhatsApp arba telefonas">
-      <input data-lang="fr" style="display:none;" placeholder="WhatsApp ou téléphone">
-      <input data-lang="it" style="display:none;" placeholder="WhatsApp o telefono">
-      <input data-lang="pt" style="display:none;" placeholder="WhatsApp ou telefone">
-      <input data-lang="ru" style="display:none;" placeholder="WhatsApp или телефон">
+  <!-- PART NEEDED -->
+  <textarea data-lang="es" placeholder="Pieza que necesitas"></textarea>
+  <textarea data-lang="en" style="display:none;" placeholder="Part you need"></textarea>
+  <textarea data-lang="de" style="display:none;" placeholder="Benötigtes Teil"></textarea>
+  <textarea data-lang="lt" style="display:none;" placeholder="Reikalinga dalis"></textarea>
+  <textarea data-lang="fr" style="display:none;" placeholder="Pièce souhaitée"></textarea>
+  <textarea data-lang="it" style="display:none;" placeholder="Ricambio necessario"></textarea>
+  <textarea data-lang="pt" style="display:none;" placeholder="Peça necessária"></textarea>
+  <textarea data-lang="ru" style="display:none;" placeholder="Какая запчасть нужна"></textarea>
 
-      <button type="submit">
-        <span data-lang="es">Enviar solicitud</span>
-        <span data-lang="en" style="display:none;">Send request</span>
-        <span data-lang="de" style="display:none;">Anfrage senden</span>
-        <span data-lang="lt" style="display:none;">Siųsti užklausą</span>
-        <span data-lang="fr" style="display:none;">Envoyer la demande</span>
-        <span data-lang="it" style="display:none;">Invia richiesta</span>
-        <span data-lang="pt" style="display:none;">Enviar pedido</span>
-        <span data-lang="ru" style="display:none;">Отправить запрос</span>
-      </button>
-    </form>
+  <!-- CONTACT -->
+  <input data-lang="es" placeholder="WhatsApp o email">
+  <input data-lang="en" style="display:none;" placeholder="WhatsApp or email">
+  <input data-lang="de" style="display:none;" placeholder="WhatsApp oder E-Mail">
+  <input data-lang="lt" style="display:none;" placeholder="WhatsApp arba el. paštas">
+  <input data-lang="fr" style="display:none;" placeholder="WhatsApp ou e-mail">
+  <input data-lang="it" style="display:none;" placeholder="WhatsApp o email">
+  <input data-lang="pt" style="display:none;" placeholder="WhatsApp ou e-mail">
+  <input data-lang="ru" style="display:none;" placeholder="WhatsApp или email">
+
+  <button type="submit">
+    <span data-lang="es">Enviar solicitud</span>
+    <span data-lang="en" style="display:none;">Send request</span>
+    <span data-lang="de" style="display:none;">Anfrage senden</span>
+    <span data-lang="lt" style="display:none;">Siųsti užklausą</span>
+    <span data-lang="fr" style="display:none;">Envoyer</span>
+    <span data-lang="it" style="display:none;">Invia</span>
+    <span data-lang="pt" style="display:none;">Enviar</span>
+    <span data-lang="ru" style="display:none;">Отправить</span>
+  </button>
+
+</form>
+
   </div>
 </div>
 
