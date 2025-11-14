@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Easyparts · Repuestos Usados</title>
+<title>Sonver · Repuestos Usados</title>
+
+<!-- Favicon + Manifest -->
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjcyIiBoZWlnaHQ9IjcyIiByeD0iMTQiIGZpbGw9IiMwMDU3QjciLz4KPHBhdGggZD0iTTIwIDM2SDUyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4=" />
+<link rel="manifest" href="manifest.json">
 
 <style>
   body {
@@ -14,21 +18,53 @@
     color: #1B1F23;
   }
 
-  /* Main frame for hero */
+  /* Fade-in animation */
+  .fade {
+    opacity: 0;
+    animation: fadein 0.9s ease forwards;
+  }
+  @keyframes fadein {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lang-switch {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+  }
+
+  .lang-switch button {
+    border: 1px solid #D9E1E8;
+    background: white;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.2s;
+  }
+
+  .lang-switch button:hover {
+    background: #0057B7;
+    color: white;
+  }
+
   .hero {
     width: 950px;
     background: #FFFFFF;
     border: 3px solid #D9E1E8;
     border-radius: 10px;
     padding: 30px;
-    margin: 40px auto;
+    margin: 60px auto 40px auto;
     box-shadow: 0 14px 34px rgba(0,0,0,0.10);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 26px;
   }
 
-  /* Left column */
   .left {
     padding-right: 20px;
     border-right: 2px solid #D9E1E8;
@@ -51,7 +87,6 @@
     border-radius: 20px;
     border: 1px solid #D9E1E8;
     font-size: 12px;
-    color: #1B1F23;
   }
 
   .dot {
@@ -76,7 +111,6 @@
     max-width: 350px;
   }
 
-  /* Form */
   .form-box {
     padding-left: 20px;
   }
@@ -95,10 +129,12 @@
     border-radius: 6px;
     outline: none;
     color: #1B1F23;
+    transition: 0.2s;
   }
 
   input:focus, textarea:focus {
     border-color: #0072CE;
+    box-shadow: 0 0 6px rgba(0,114,206,0.25);
   }
 
   textarea {
@@ -120,95 +156,7 @@
 
   button:hover {
     background: #0072CE;
-  }
-
-  .whatsapp {
-    margin-top: 10px;
-    font-size: 13px;
-    color: #0057B7;
-    text-decoration: underline;
-    text-align: center;
-    display: block;
-  }
-
-
-  /* Section titles */
-  h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #1B1F23;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 10px;
-  }
-
-  .section-sub {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #4A525A;
-  }
-
-
-  /* Cards grid */
-  .cards {
-    max-width: 1100px;
-    margin: 0 auto 60px auto;
-    display: flex;
-    justify-content: center;
-    gap: 26px;
-    flex-wrap: wrap;
-  }
-
-  .card {
-    background: #FFFFFF;
-    border: 2px solid #D9E1E8;
-    border-radius: 10px;
-    padding: 20px;
-    width: 240px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  }
-
-  .card img {
-    width: 34px;
-    margin-bottom: 12px;
-  }
-
-  .card h3 {
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-
-  .card p {
-    font-size: 13px;
-    color: #4A525A;
-  }
-
-
-  /* Steps */
-  .step {
-    position: relative;
-    width: 260px;
-    background: #FAFCFE;
-    border: 2px solid #D9E1E8;
-    border-radius: 10px;
-    padding: 22px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  }
-
-  .step-number {
-    background: #FF8A00;
-    color: white;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:700;
-    position:absolute;
-    top:-17px; left:50%; transform:translateX(-50%);
+    transform: translateY(-1px);
   }
 
   footer {
@@ -219,117 +167,93 @@
     margin-top: 60px;
   }
 </style>
-</head>
 
+</head>
 <body>
 
-<!-- HERO SECTION -->
-<div class="hero">
+<!-- LANGUAGE SWITCH -->
+<div class="lang-switch fade">
+  <button onclick="setLang('es')">ES</button>
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('de')">DE</button>
+  <button onclick="setLang('lt')">LT</button>
+</div>
+
+<!-- HERO -->
+<div class="hero fade">
   <div class="left">
-    <div class="logo">EASYPARTS</div>
+    <div class="logo">SONVER</div>
 
     <div class="live">
       <div class="dot"></div>
-      Disponible · Respuesta rápida
+      <span data-lang="es">Disponible · Respuesta rápida</span>
+      <span data-lang="en" style="display:none;">Available · Fast response</span>
+      <span data-lang="de" style="display:none;">Verfügbar · Schnelle Antwort</span>
+      <span data-lang="lt" style="display:none;">Pasiekiami · Greitas atsakymas</span>
     </div>
 
     <div class="headline">
-      Repuestos originales usados <br>
-      con entrega directa al taller.
+      <span data-lang="es">Piezas que llegan. Problemas que se van.</span>
+      <span data-lang="en" style="display:none;">Parts arrive. Problems disappear.</span>
+      <span data-lang="de" style="display:none;">Teile kommen. Probleme gehen.</span>
+      <span data-lang="lt" style="display:none;">Dalys atvyksta. Problemų nelieka.</span>
     </div>
 
     <div class="sub">
-      Somos un negocio joven en Canarias.  
-      Encontramos la pieza adecuada y la enviamos directamente a tu taller.
+      <span data-lang="es">Repuestos originales usados con entrega directa al taller.</span>
+      <span data-lang="en" style="display:none;">Original used parts delivered directly to the workshop.</span>
+      <span data-lang="de" style="display:none;">Original gebrauchte Teile direkt an die Werkstatt geliefert.</span>
+      <span data-lang="lt" style="display:none;">Naudotos originalios dalys pristatomos tiesiai į servisą.</span>
     </div>
   </div>
 
   <div class="form-box">
     <form>
-      <input type="text" placeholder="Taller o empresa">
-      <input type="text" placeholder="Isla (Tenerife, Gran Canaria...)">
-      <input type="text" placeholder="Marca y modelo">
-      <textarea placeholder="Pieza que necesitas"></textarea>
-      <input type="text" placeholder="WhatsApp o teléfono">
+      <input data-lang="es" placeholder="Taller o empresa">
+      <input data-lang="en" style="display:none;" placeholder="Workshop or company">
+      <input data-lang="de" style="display:none;" placeholder="Werkstatt oder Firma">
+      <input data-lang="lt" style="display:none;" placeholder="Servisas arba įmonė">
 
-      <button type="submit">Enviar solicitud</button>
+      <input data-lang="es" placeholder="Isla (Tenerife...)">
+      <input data-lang="en" style="display:none;" placeholder="Island (Tenerife...)">
+      <input data-lang="de" style="display:none;" placeholder="Insel (Teneriffa...)">
+      <input data-lang="lt" style="display:none;" placeholder="Sala (Tenerifė...)">
+
+      <input data-lang="es" placeholder="Marca y modelo">
+      <input data-lang="en" style="display:none;" placeholder="Make and model">
+      <input data-lang="de" style="display:none;" placeholder="Marke und Modell">
+      <input data-lang="lt" style="display:none;" placeholder="Markė ir modelis">
+
+      <textarea data-lang="es" placeholder="Pieza que necesitas"></textarea>
+      <textarea data-lang="en" style="display:none;" placeholder="Part you need"></textarea>
+      <textarea data-lang="de" style="display:none;" placeholder="Benötigtes Teil"></textarea>
+      <textarea data-lang="lt" style="display:none;" placeholder="Reikalinga dalis"></textarea>
+
+      <input data-lang="es" placeholder="WhatsApp o teléfono">
+      <input data-lang="en" style="display:none;" placeholder="WhatsApp or phone">
+      <input data-lang="de" style="display:none;" placeholder="WhatsApp oder Telefon">
+      <input data-lang="lt" style="display:none;" placeholder="WhatsApp arba telefonas">
+
+      <button type="submit">
+        <span data-lang="es">Enviar solicitud</span>
+        <span data-lang="en" style="display:none;">Send request</span>
+        <span data-lang="de" style="display:none;">Anfrage senden</span>
+        <span data-lang="lt" style="display:none;">Siųsti užklausą</span>
+      </button>
     </form>
-
-    <a class="whatsapp" href="https://wa.me/000000000" target="_blank">
-      También disponible por WhatsApp
-    </a>
   </div>
 </div>
 
-
-
-<!-- WHY CHOOSE US -->
-<h2>Por qué elegirnos</h2>
-<p class="section-sub">Hacemos que encontrar piezas usadas sea rápido y sencillo gracias a nuestra red de proveedores.</p>
-
-<div class="cards">
-
-  <div class="card">
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/search.png">
-    <h3>La encontramos por ti</h3>
-    <p>No encuentras la pieza? La buscamos dentro de nuestra red.</p>
-  </div>
-
-  <div class="card">
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/clock.png">
-    <h3>Respuesta rápida</h3>
-    <p>Disponibilidad y precio en menos de 24 horas.</p>
-  </div>
-
-  <div class="card">
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/money.png">
-    <h3>Precios competitivos</h3>
-    <p>Acceso a piezas usadas con precios ajustados al mercado.</p>
-  </div>
-
-  <div class="card">
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery.png">
-    <h3>Red amplia</h3>
-    <p>Conectados a proveedores para piezas difíciles de encontrar.</p>
-  </div>
-
-</div>
-
-
-
-<!-- HOW IT WORKS -->
-<h2>Cómo funciona</h2>
-<p class="section-sub">Conseguir la pieza correcta es tan fácil como 1, 2, 3.</p>
-
-<div class="cards">
-
-  <div class="step">
-    <div class="step-number">1</div>
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/document.png">
-    <h3>Envíanos tu solicitud</h3>
-    <p>Indica la pieza que necesitas y los datos del vehículo.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-number">2</div>
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/search--v1.png">
-    <h3>Buscamos en nuestro inventario</h3>
-    <p>Revisamos miles de piezas para encontrar una coincidencia.</p>
-  </div>
-
-  <div class="step">
-    <div class="step-number">3</div>
-    <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery-truck.png">
-    <h3>Recibe la pieza</h3>
-    <p>Te contactamos por WhatsApp con precio y disponibilidad.</p>
-  </div>
-
-</div>
-
-
+<script>
+function setLang(lang) {
+  document.querySelectorAll("[data-lang]").forEach(el => {
+    el.style.display = (el.getAttribute("data-lang") === lang) ? "" : "none";
+  });
+}
+</script>
 
 <footer>
-  © Easyparts · Canarias · 2025  
+  © SONVER · Canarias · 2025
 </footer>
 
 </body>
