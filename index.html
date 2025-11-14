@@ -641,6 +641,61 @@
     window.open("https://wa.me/37065959123?text=" + text, "_blank");
   }
 </script>
+<script>
+async function sendWA(e) {
+  e.preventDefault();
+
+  const fields = Array.from(document.querySelectorAll("#sonver-form input, #sonver-form textarea"))
+    .filter(el => el.style.display !== "none" && el.type !== "file");
+
+  const values = fields.map(el => `${el.placeholder}: ${el.value.trim()}`).join("\n");
+
+  // === GET USER IP ===
+  let ip = "unknown";
+  try {
+    const req = await fetch("https://api.ipify.org?format=json");
+    const data = await req.json();
+    ip = data.ip;
+  } catch(e){}
+
+  // === TIMESTAMP ===
+  const timestamp = new Date().toLocaleString("en-GB", { timeZone: "Europe/Vilnius" });
+
+  // === FILE HANDLING ===
+  const fileInput = document.getElementById("fileInput");
+  let fileLinks = "";
+
+  if (fileInput.files.length > 0) {
+    for (let file of fileInput.files) {
+      const blob = URL.createObjectURL(file);
+      fileLinks += `• ${file.name}: ${blob}\n`;
+    }
+  } else {
+    fileLinks = "No documents uploaded";
+  }
+
+  const lang = (navigator.language || "es").slice(0,2);
+
+  const finalMessage =
+`📦 *SONVER — NEW REQUEST*
+────────────────────
+📅 *Time:* ${timestamp}
+🌐 *IP:* ${ip}
+🌍 *Lang:* ${lang}
+
+${values}
+
+📂 *Attachments:*
+${fileLinks}
+────────────────────
+We will contact you in 24h.`
+
+  const encoded = encodeURIComponent(finalMessage);
+  window.open("https://wa.me/37065959123?text=" + encoded, "_blank");
+}
+
+document.getElementById("sonver-form").addEventListener("submit", sendWA);
+</script>
 
 </body>
  <!-- ABOUT US -->
