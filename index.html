@@ -17,9 +17,12 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
-      color: #1b1f23;
+      color: #0f172a;
       min-height: 100vh;
       position: relative;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(36, 94, 150, 0.14), transparent 42%),
+        radial-gradient(circle at 78% 28%, rgba(61, 86, 112, 0.12), transparent 44%);
     }
 
     /* BACKGROUND WITH OVERLAY */
@@ -44,7 +47,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.4);
+      background: linear-gradient(180deg, rgba(3, 19, 43, 0.55) 0%, rgba(6, 20, 43, 0.65) 100%);
     }
 
     /* Fade Animation */
@@ -69,17 +72,17 @@
     .lang-switch {
       display: flex;
       gap: 4px;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 6px 8px;
+      background: rgba(247, 249, 252, 0.92);
+      padding: 6px 9px;
       border-radius: 999px;
-      border: 1px solid #d0d7de;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(43, 90, 142, 0.18);
+      box-shadow: 0 10px 22px rgba(21, 56, 98, 0.18);
       backdrop-filter: blur(10px);
     }
 
     .lang-switch button {
       border: none;
-      background: #f6f8fa;
+      background: #ecf2f9;
       border-radius: 999px;
       padding: 4px 10px;
       cursor: pointer;
@@ -90,24 +93,25 @@
     }
 
     .lang-switch button.active {
-      background: #0057b7;
+      background: #1c5d9c;
       color: #ffffff;
       transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(28, 93, 156, 0.28);
     }
 
     .lang-switch button:hover:not(.active) {
-      background: #e1e4e8;
+      background: #e2e8f0;
     }
 
     /* Hero Section */
     .hero {
       max-width: 950px;
-      background: rgba(245, 247, 249, 0.98);
-      border: 3px solid #c6d0da;
+      background: rgba(247, 250, 253, 0.94);
+      border: 2px solid rgba(28, 93, 156, 0.09);
       border-radius: 12px;
-      padding: 35px;
+      padding: 38px;
       margin: 80px auto 40px auto;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 24px 60px rgba(6, 23, 44, 0.35);
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
@@ -116,14 +120,32 @@
 
     .left {
       padding-right: 25px;
-      border-right: 2px solid #c6d0da;
+      border-right: 2px solid rgba(28, 93, 156, 0.12);
     }
 
-    .logo {
-      font-size: 36px;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(33, 84, 132, 0.1);
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(33, 84, 132, 0.14);
+    }
+
+    .logo-img {
+      width: 120px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+    }
+
+    .logo-text {
+      font-size: 32px;
       font-weight: 800;
-      color: #0057b7;
-      letter-spacing: -1px;
+      color: #1c5d9c;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
     }
 
     .live {
@@ -131,20 +153,21 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #e8f5e9;
+      background: #e3edf8;
       padding: 6px 14px;
       border-radius: 20px;
-      border: 1px solid #4caf50;
+      border: 1px solid rgba(28, 93, 156, 0.2);
       font-size: 12px;
-      color: #2e7d32;
+      color: #1c5d9c;
     }
 
     .dot {
       width: 8px;
       height: 8px;
-      background: #4caf50;
+      background: #4ade80;
       border-radius: 50%;
       animation: pulse 2s infinite;
+      box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5);
     }
 
     @keyframes pulse {
@@ -154,17 +177,17 @@
 
     .headline {
       margin-top: 20px;
-      font-size: 24px;
-      font-weight: 700;
+      font-size: 25px;
+      font-weight: 750;
       line-height: 1.3;
-      color: #0d1117;
+      color: #0f172a;
     }
 
     .sub {
       margin-top: 12px;
       font-size: 14px;
-      line-height: 1.5;
-      color: #57606a;
+      line-height: 1.6;
+      color: #4b5563;
     }
 
     .form-box {
@@ -180,8 +203,8 @@
       width: 100%;
       padding: 11px 14px;
       font-size: 14px;
-      border: 2px solid #d9e1e8;
-      background: #fafcfe;
+      border: 2px solid #d3deeb;
+      background: #f4f7fb;
       border-radius: 8px;
       outline: none;
       color: #1b1f23;
@@ -190,8 +213,8 @@
     }
 
     input:focus, textarea:focus {
-      border-color: #0057b7;
-      box-shadow: 0 0 0 3px rgba(0, 87, 183, 0.1);
+      border-color: #1c5d9c;
+      box-shadow: 0 0 0 3px rgba(28, 93, 156, 0.12);
       background: #ffffff;
     }
 
@@ -209,7 +232,7 @@
 
     .hint {
       font-size: 11px;
-      color: #6a737d;
+      color: #5b6675;
       margin-top: -8px;
       margin-bottom: 4px;
     }
@@ -224,31 +247,31 @@
     }
 
     .upload-status.uploading {
-      background: #fff3cd;
-      color: #856404;
-      border: 1px solid #ffc107;
+      background: #fef3c7;
+      color: #854d0e;
+      border: 1px solid #facc15;
     }
 
     .upload-status.success {
-      background: #d4edda;
-      color: #155724;
-      border: 1px solid #28a745;
+      background: #d9f99d;
+      color: #3f6212;
+      border: 1px solid #84cc16;
     }
 
     .upload-status.error {
-      background: #f8d7da;
-      color: #721c24;
-      border: 1px solid #dc3545;
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #ef4444;
     }
 
     button[type="submit"] {
       padding: 13px;
-      background: #0057b7;
+      background: linear-gradient(135deg, #1c5d9c 0%, #2a6fb3 100%);
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 650;
       cursor: pointer;
       transition: all 0.15s;
       position: relative;
@@ -256,9 +279,9 @@
     }
 
     button[type="submit"]:hover:not(:disabled) {
-      background: #0046a3;
+      background: linear-gradient(135deg, #2a6fb3 0%, #1c5d9c 100%);
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0, 87, 183, 0.3);
+      box-shadow: 0 6px 14px rgba(32, 94, 154, 0.32);
     }
 
     button[type="submit"]:disabled {
@@ -269,13 +292,13 @@
     .thankyou {
       padding: 20px;
       border-radius: 12px;
-      border: 2px solid #2ecc71;
-      background: #eafaf1;
+      border: 2px solid #67c587;
+      background: #e7f8ef;
       text-align: center;
     }
 
     .thankyou h3 {
-      color: #27ae60;
+      color: #1f9d67;
       margin-bottom: 8px;
     }
 
@@ -309,13 +332,13 @@
     }
 
     .card, .step {
-      background: rgba(240, 243, 247, 0.95);
-      border: 2px solid #c6d0da;
+      background: rgba(246, 249, 253, 0.92);
+      border: 2px solid rgba(28, 93, 156, 0.08);
       border-radius: 12px;
       padding: 24px 20px;
       width: 250px;
       text-align: center;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 12px 24px rgba(6, 23, 44, 0.18);
       transition: transform 0.2s;
       backdrop-filter: blur(10px);
     }
@@ -329,18 +352,18 @@
       width: 40px;
       height: 40px;
       margin: 0 auto 16px;
-      color: #0057b7;
+      color: #1c5d9c;
     }
 
     .card h3, .step h3 {
       font-size: 17px;
       margin-bottom: 10px;
-      color: #0d1117;
+      color: #0f172a;
     }
 
     .card p, .step p {
       font-size: 13px;
-      color: #57606a;
+      color: #4b5563;
       line-height: 1.5;
     }
 
@@ -350,7 +373,7 @@
     }
 
     .step-number {
-      background: #ff8a00;
+      background: #1c5d9c;
       color: white;
       width: 36px;
       height: 36px;
@@ -363,7 +386,7 @@
       top: -18px;
       left: 50%;
       transform: translateX(-50%);
-      box-shadow: 0 4px 8px rgba(255, 138, 0, 0.3);
+      box-shadow: 0 4px 8px rgba(28, 93, 156, 0.25);
     }
 
     /* About / Privacy */
@@ -374,29 +397,45 @@
     }
 
     .info-card {
-      background: rgba(245, 247, 249, 0.95);
-      border: 2px solid #c6d0da;
+      background: rgba(246, 249, 253, 0.92);
+      border: 2px solid rgba(28, 93, 156, 0.08);
       border-radius: 12px;
       padding: 28px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 30px rgba(6, 23, 44, 0.18);
       backdrop-filter: blur(10px);
     }
 
     .info-card p {
       font-size: 15px;
-      line-height: 1.6;
-      color: #24292f;
+      line-height: 1.65;
+      color: #1f2937;
+    }
+
+    .privacy-block .info-card {
+      background: rgba(237, 242, 248, 0.88);
+      border-color: rgba(28, 93, 156, 0.06);
+    }
+
+    .privacy-block .privacy-text {
+      font-size: 12px;
+      color: #4b5563;
+      opacity: 0.7;
     }
 
     /* Footer */
     footer {
-      background: rgba(0, 87, 183, 0.95);
+      background: rgba(8, 47, 94, 0.94);
       color: white;
       padding: 30px 20px;
       text-align: center;
       margin-top: 60px;
       font-size: 13px;
       backdrop-filter: blur(10px);
+    }
+
+    .invalid-input {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
     }
 
     /* Mobile Responsive */
@@ -428,6 +467,18 @@
       h2.section-title {
         font-size: 24px;
       }
+
+      .brand {
+        gap: 8px;
+      }
+
+      .logo-img {
+        width: 100px;
+      }
+
+      .logo-text {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
@@ -451,7 +502,10 @@
   <!-- Hero Section -->
   <div class="hero fade">
     <div class="left">
-      <div class="logo">SONVER</div>
+      <div class="brand">
+        <img src="logo.png" onerror="this.onerror=null;this.src='logo.svg';" alt="Sonver logo" class="logo-img" />
+        <div class="logo-text">SONVER</div>
+      </div>
 
       <div class="live">
         <div class="dot"></div>
@@ -474,7 +528,7 @@
         <input type="text" id="model" placeholder="Marca y modelo" required>
         <input type="text" id="vin" placeholder="VIN (número de bastidor)" required>
         <textarea id="part" placeholder="Pieza que necesitas (lado, referencia, etc.)" required></textarea>
-        <input type="email" id="contact" placeholder="Correo electrónico o WhatsApp" required>
+        <input type="text" id="contact" placeholder="Correo electrónico o WhatsApp" required autocomplete="on" inputmode="text" spellcheck="false">
         <div class="hint">Déjanos tu email o WhatsApp y te contactamos con precio y disponibilidad.</div>
         <input type="file" id="file" accept="image/*,application/pdf">
         <div class="upload-status" id="uploadStatus"></div>
@@ -578,7 +632,7 @@
   </div>
 
   <!-- Privacy -->
-  <div class="info-section fade">
+  <div class="info-section fade privacy-block">
     <h2 class="section-title">Privacidad & GDPR</h2>
     <div class="info-card">
       <p class="privacy-text">
@@ -611,6 +665,7 @@
         part: "Pieza que necesitas (lado, referencia, etc.)",
         contact: "Correo electrónico o WhatsApp",
         hint: "Déjanos tu email o WhatsApp y te contactamos con precio y disponibilidad.",
+        contactError: "Introduce un correo o teléfono válido (WhatsApp incluido).",
         submit: "Enviar solicitud",
         uploading: "Subiendo archivo...",
         uploadSuccess: "Archivo subido correctamente",
@@ -651,6 +706,7 @@
         part: "Part you need (side, reference, etc.)",
         contact: "Email or WhatsApp",
         hint: "Leave your email or WhatsApp and we'll get back with price and availability.",
+        contactError: "Enter a valid email or phone/WhatsApp number.",
         submit: "Send request",
         uploading: "Uploading file...",
         uploadSuccess: "File uploaded successfully",
@@ -691,6 +747,7 @@
         part: "Benötigtes Teil (Seite, Referenz, etc.)",
         contact: "E-Mail oder WhatsApp",
         hint: "Hinterlassen Sie Ihre E-Mail oder WhatsApp – wir melden uns mit Preis und Verfügbarkeit.",
+        contactError: "Bitte eine gültige E-Mail-Adresse oder Telefon-/WhatsApp-Nummer angeben.",
         submit: "Anfrage senden",
         uploading: "Datei wird hochgeladen...",
         uploadSuccess: "Datei erfolgreich hochgeladen",
@@ -731,6 +788,7 @@
         part: "Reikalinga dalis (pusė, kodas ir pan.)",
         contact: "El. paštas arba WhatsApp",
         hint: "Palikite el. paštą arba WhatsApp – susisieksime dėl kainos ir galimybės.",
+        contactError: "Įveskite galiojantį el. paštą arba telefono/WhatsApp numerį.",
         submit: "Siųsti užklausą",
         uploading: "Įkeliamas failas...",
         uploadSuccess: "Failas sėkmingai įkeltas",
@@ -771,6 +829,7 @@
         part: "Pièce recherchée (côté, référence, etc.)",
         contact: "E-mail ou WhatsApp",
         hint: "Laissez votre e-mail ou WhatsApp et nous reviendrons vers vous avec prix et disponibilité.",
+        contactError: "Saisissez un e-mail ou un numéro de téléphone/WhatsApp valide.",
         submit: "Envoyer la demande",
         uploading: "Téléchargement en cours...",
         uploadSuccess: "Fichier téléchargé avec succès",
@@ -811,6 +870,7 @@
         part: "Ricambio richiesto (lato, riferimento, ecc.)",
         contact: "Email o WhatsApp",
         hint: "Lascia la tua email o WhatsApp – ti ricontattiamo con prezzo e disponibilità.",
+        contactError: "Inserisci un'email o un numero di telefono/WhatsApp valido.",
         submit: "Invia richiesta",
         uploading: "Caricamento file...",
         uploadSuccess: "File caricato con successo",
@@ -851,99 +911,45 @@
         part: "Peça necessária (lado, referência, etc.)",
         contact: "Email ou WhatsApp",
         hint: "Deixe o seu email ou WhatsApp e entraremos em contacto com preço e disponibilidade.",
+        contactError: "Insira um email ou número de telefone/WhatsApp válido.",
         submit: "Enviar pedido",
         uploading: "A carregar ficheiro...",
         uploadSuccess: "Ficheiro carregado com sucesso",
         uploadError: "Falha no carregamento",
         thankYouTitle: "Obrigado!",
         thankYouMsg: "Entraremos em contacto em breve com preço e disponibilidade.",
-        whyTitle: "Por que escolher-nos",
-        whySub: "A nossa rede torna rápida e simples a procura de peças usadas.",
-        find: "Nós encontramos por si",
-        findText: "Não encontra a peça? Procuramos na nossa rede.",
+        whyTitle: "Porquê escolher-nos",
+        whySub: "Graças à nossa rede, encontrar peças usadas torna-se rápido e simples.",
+        find: "Encontramos por si",
+        findText: "Não encontra a peça? Procuramo-la na nossa rede.",
         fast: "Resposta rápida",
-        fastText: "Disponibilidade e preço em menos de 24h.",
+        fastText: "Disponibilidade e preço em menos de 24 horas.",
         price: "Preços competitivos",
-        priceText: "Acesso a peças usadas com preços alinhados ao mercado.",
-        network: "Ampla rede de transportadoras",
-        networkText: "Trabalhamos com uma ampla rede de transportadoras para entregar a oficinas em toda a Europa.",
+        priceText: "Acesso a peças usadas com preços alinhados com o mercado.",
+        network: "Rede de transportadoras ampla",
+        networkText: "Trabalhamos com uma rede ampla de transportadoras para entregar em oficinas por toda a Europa.",
         howTitle: "Como funciona",
-        howSub: "Conseguir a peça certa é tão simples quanto 1, 2, 3.",
+        howSub: "Obter a peça certa é tão fácil como 1, 2, 3.",
         step1: "Envie-nos o seu pedido",
         step1Text: "Indique a peça, o VIN e os dados principais do veículo.",
-        step2: "Pesquisamos na nossa rede",
+        step2: "Procuramos na nossa rede",
         step2Text: "Verificamos milhares de referências em sucateiros e fornecedores.",
         step3: "Receba a peça",
-        step3Text: "Entramos em contacto via WhatsApp com preço, prazo e opções de transporte.",
+        step3Text: "Entramos em contacto pelo WhatsApp com preço, prazo e opções de transporte.",
         aboutTitle: "Sobre nós",
-        aboutText: "A Sonver atua no setor automóvel há mais de 12 anos. Começámos como especialistas em sourcing técnico e hoje ajudamos oficinas em toda a Europa a encontrar peças originais usadas de forma rápida e fiável. Com a nossa ampla rede de fornecedores e transportadoras, a peça certa chega diretamente à sua oficina.",
+        aboutText: "A Sonver atua no setor automóvel há mais de 12 anos. Começámos como especialistas em sourcing técnico e hoje ajudamos oficinas por toda a Europa a encontrar peças usadas originais de forma rápida e fiável. Trabalhamos com uma ampla rede de fornecedores e transportadoras para que a peça certa chegue diretamente à sua oficina.",
         privacyTitle: "Privacidade & RGPD",
-        privacyText: "Cumprimos integralmente o Regulamento Geral de Proteção de Dados (RGPD). Utilizamos os dados fornecidos apenas para responder ao seu pedido e prestar o nosso serviço. Não partilhamos as suas informações com terceiros sem o seu consentimento explícito."
+        privacyText: "Cumprimos integralmente o Regulamento Geral de Proteção de Dados (RGPD). Utilizamos os dados fornecidos apenas para responder ao seu pedido e prestar o nosso serviço. Não partilhamos informações com terceiros sem o seu consentimento explícito."
       }
     };
 
     let currentLang = 'es';
 
-    const uploadStatus = document.getElementById('uploadStatus');
+    function setLanguage(lang) {
+      currentLang = lang;
 
-    async function uploadFileWithProgress(file, t) {
-      // Initialize status UI
-      uploadStatus.textContent = t.uploading;
-      uploadStatus.className = 'upload-status uploading';
-      uploadStatus.style.display = 'block';
+      const t = translations[lang];
 
-      const timeoutMs = 20000;
-
-      return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', UPLOAD_ENDPOINT);
-        xhr.responseType = 'json';
-        xhr.timeout = timeoutMs;
-
-        const timestamp = Date.now();
-        const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_') || 'upload';
-
-        const formData = new FormData();
-        formData.append('file', file, `${timestamp}_${safeName}`);
-
-        xhr.upload.onprogress = (event) => {
-          if (event.lengthComputable) {
-            const percent = Math.round((event.loaded / event.total) * 100);
-            uploadStatus.textContent = `${t.uploading} (${percent}%)`;
-          }
-        };
-
-        xhr.onload = () => {
-          if (xhr.status >= 200 && xhr.status < 300) {
-            const res = xhr.response || {};
-            const url = res?.data?.url || res?.url;
-            if (url) {
-              resolve(url);
-            } else {
-              reject(new Error('missing_upload_url'));
-            }
-          } else {
-            reject(new Error(`status_${xhr.status}`));
-          }
-        };
-
-        xhr.onerror = () => reject(new Error('upload_network_error'));
-        xhr.ontimeout = () => reject(new Error('upload_timeout'));
-
-        xhr.send(formData);
-      });
-    }
-
-    // Detect mobile device
-    function isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
-
-    // Update UI text based on language
-    function updateTexts() {
-      const t = translations[currentLang];
-
-      // Form elements
       document.querySelector('.live-text').textContent = t.live;
       document.querySelector('.headline').textContent = t.headline;
       document.querySelector('.sub').textContent = t.sub;
@@ -954,69 +960,80 @@
       document.getElementById('part').placeholder = t.part;
       document.getElementById('contact').placeholder = t.contact;
       document.querySelector('.hint').textContent = t.hint;
-      document.querySelector('.btn-text').textContent = t.submit;
+      document.querySelector('button[type=\"submit\"] .btn-text').textContent = t.submit;
 
-      // Section titles and content
       document.querySelectorAll('.section-title')[0].textContent = t.whyTitle;
-      document.querySelectorAll('.section-sub')[0].textContent = t.whySub;
-
-      const cards = document.querySelectorAll('.cards')[0].querySelectorAll('.card');
-      cards[0].querySelector('h3').textContent = t.find;
-      cards[0].querySelector('p').textContent = t.findText;
-      cards[1].querySelector('h3').textContent = t.fast;
-      cards[1].querySelector('p').textContent = t.fastText;
-      cards[2].querySelector('h3').textContent = t.price;
-      cards[2].querySelector('p').textContent = t.priceText;
-      cards[3].querySelector('h3').textContent = t.network;
-      cards[3].querySelector('p').textContent = t.networkText;
-
       document.querySelectorAll('.section-title')[1].textContent = t.howTitle;
+      document.querySelectorAll('.section-title')[2].textContent = t.aboutTitle;
+      document.querySelectorAll('.section-title')[3].textContent = t.privacyTitle;
+
+      document.querySelectorAll('.section-sub')[0].textContent = t.whySub;
       document.querySelectorAll('.section-sub')[1].textContent = t.howSub;
 
-      const steps = document.querySelectorAll('.step');
-      steps[0].querySelector('h3').textContent = t.step1;
-      steps[0].querySelector('p').textContent = t.step1Text;
-      steps[1].querySelector('h3').textContent = t.step2;
-      steps[1].querySelector('p').textContent = t.step2Text;
-      steps[2].querySelector('h3').textContent = t.step3;
-      steps[2].querySelector('p').textContent = t.step3Text;
+      const cardHeadings = document.querySelectorAll('.card h3');
+      cardHeadings[0].textContent = t.find;
+      cardHeadings[1].textContent = t.fast;
+      cardHeadings[2].textContent = t.price;
+      cardHeadings[3].textContent = t.network;
 
-      document.querySelectorAll('.section-title')[2].textContent = t.aboutTitle;
+      const cardTexts = document.querySelectorAll('.card p');
+      cardTexts[0].textContent = t.findText;
+      cardTexts[1].textContent = t.fastText;
+      cardTexts[2].textContent = t.priceText;
+      cardTexts[3].textContent = t.networkText;
+
+      const stepHeadings = document.querySelectorAll('.step h3');
+      stepHeadings[0].textContent = t.step1;
+      stepHeadings[1].textContent = t.step2;
+      stepHeadings[2].textContent = t.step3;
+
+      const stepTexts = document.querySelectorAll('.step p');
+      stepTexts[0].textContent = t.step1Text;
+      stepTexts[1].textContent = t.step2Text;
+      stepTexts[2].textContent = t.step3Text;
+
       document.querySelector('.about-text').textContent = t.aboutText;
-
-      document.querySelectorAll('.section-title')[3].textContent = t.privacyTitle;
       document.querySelector('.privacy-text').textContent = t.privacyText;
-    }
+      document.querySelector('.live-text').textContent = t.live;
+      document.querySelector('.headline').textContent = t.headline;
+      document.querySelector('.sub').textContent = t.sub;
+      document.querySelector('.hint').textContent = t.hint;
+      document.querySelector('.btn-text').textContent = t.submit;
 
-    // Set language
-    function setLanguage(lang) {
-      currentLang = lang;
-
-      // Update active button
       document.querySelectorAll('.lang-switch button').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
       });
-
-      updateTexts();
-      document.documentElement.setAttribute('lang', lang);
-      localStorage.setItem('lang', lang);
     }
 
-    // Initialize language
-    function initLanguage() {
-      const saved = localStorage.getItem('lang');
-      const browserLang = navigator.language.slice(0, 2).toLowerCase();
-      const supported = ['es', 'en', 'de', 'lt', 'fr', 'it', 'pt'];
+    // Upload helper with minimal feedback
+    const uploadStatus = document.getElementById('uploadStatus');
 
-      let lang = 'es';
-      if (saved && supported.includes(saved)) {
-        lang = saved;
-      } else if (supported.includes(browserLang)) {
-        lang = browserLang;
+    async function uploadFileWithProgress(file, t) {
+      uploadStatus.style.display = 'inline-block';
+      uploadStatus.textContent = t.uploading;
+      uploadStatus.className = 'upload-status uploading';
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const response = await fetch(UPLOAD_ENDPOINT, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!response.ok) {
+        throw new Error('Upload failed');
       }
 
-      setLanguage(lang);
+      const result = await response.json();
+
+      return result?.data?.url ?? 'upload_unknown';
     }
+
+    // Initialize default language
+    document.addEventListener('DOMContentLoaded', () => {
+      setLanguage(currentLang);
+    });
 
     // Language button handlers
     document.querySelectorAll('.lang-switch button').forEach(btn => {
@@ -1027,11 +1044,17 @@
 
     // Form submission handler
     const form = document.getElementById('sonver-form');
+    const contactInput = document.getElementById('contact');
+
+    contactInput.addEventListener('input', () => {
+      contactInput.classList.remove('invalid-input');
+      contactInput.setCustomValidity('');
+    });
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const submitBtn = form.querySelector('button[type="submit"]');
+      const submitBtn = form.querySelector('button[type=\"submit\"]');
       submitBtn.disabled = true;
 
       const t = translations[currentLang];
@@ -1042,7 +1065,21 @@
       const model = document.getElementById('model').value.trim();
       const vin = document.getElementById('vin').value.trim();
       const part = document.getElementById('part').value.trim();
-      const contact = document.getElementById('contact').value.trim();
+      const contact = contactInput.value.trim();
+
+      const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      const phoneRegex = /^[+]?[(]?[0-9\\s.-]{6,}$/;
+
+      if (!emailRegex.test(contact) && !phoneRegex.test(contact)) {
+        contactInput.classList.add('invalid-input');
+        contactInput.setCustomValidity(t.contactError || '');
+        contactInput.reportValidity();
+        submitBtn.disabled = false;
+        return;
+      }
+
+      contactInput.classList.remove('invalid-input');
+      contactInput.setCustomValidity('');
 
       // Get IP address
       let clientIp = 'unknown';
@@ -1120,11 +1157,8 @@ Client IP: ${clientIp}`;
           <p>${t.thankYouMsg}</p>
         `;
         form.parentElement.appendChild(thankYou);
-      }, 1000);
+      }, 200);
     });
-
-    // Initialize on load
-    initLanguage();
   </script>
 </body>
 </html>
