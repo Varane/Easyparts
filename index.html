@@ -2,221 +2,303 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sonver · Repuestos Usados</title>
 
-  <!-- Favicon + Manifest -->
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjcyIiBoZWlnaHQ9IjcyIiByeD0iMTQiIGZpbGw9IiMwMDU3QjciLz4KPHBhdGggZD0iTTIwIDM2SDUyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4=" />
-  <link rel="manifest" href="manifest.json" />
 
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      padding: 0;
-      font-family: "Inter", Arial, sans-serif;
-      background: #f2f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
       color: #1b1f23;
-      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
     }
 
-    /* Fade-in animation */
+    /* BACKGROUND WITH OVERLAY */
+    .background-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    .background-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Fade Animation */
     .fade {
       opacity: 0;
       animation: fadein 0.8s ease forwards;
     }
+    
     @keyframes fadein {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(10px); }
     }
 
-    /* Language switch */
+    /* Language Switcher */
     .lang-switch-wrapper {
       position: fixed;
       top: 14px;
       right: 14px;
-      z-index: 20;
+      z-index: 100;
     }
+    
     .lang-switch {
       display: flex;
       gap: 4px;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.95);
       padding: 6px 8px;
       border-radius: 999px;
       border: 1px solid #d0d7de;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
     }
+    
     .lang-switch button {
       border: none;
       background: #f6f8fa;
       border-radius: 999px;
-      padding: 4px 8px;
+      padding: 4px 10px;
       cursor: pointer;
       font-size: 11px;
       color: #24292f;
-      transition: 0.15s;
+      transition: all 0.15s;
+      font-weight: 500;
     }
+    
     .lang-switch button.active {
       background: #0057b7;
       color: #ffffff;
+      transform: scale(1.05);
+    }
+    
+    .lang-switch button:hover:not(.active) {
+      background: #e1e4e8;
     }
 
-    /* HERO */
+    /* Hero Section */
     .hero {
       max-width: 950px;
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.98);
       border: 3px solid #d9e1e8;
-      border-radius: 10px;
-      padding: 30px;
+      border-radius: 12px;
+      padding: 35px;
       margin: 80px auto 40px auto;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 26px;
+      gap: 30px;
+      backdrop-filter: blur(10px);
     }
 
     .left {
-      padding-right: 20px;
+      padding-right: 25px;
       border-right: 2px solid #d9e1e8;
     }
 
     .logo {
-      font-size: 34px;
-      font-weight: 700;
+      font-size: 36px;
+      font-weight: 800;
       color: #0057b7;
+      letter-spacing: -1px;
     }
 
     .live {
-      margin-top: 4px;
+      margin-top: 8px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: #e8eef3;
-      padding: 6px 12px;
+      gap: 8px;
+      background: #e8f5e9;
+      padding: 6px 14px;
       border-radius: 20px;
-      border: 1px solid #d9e1e8;
+      border: 1px solid #4caf50;
       font-size: 12px;
+      color: #2e7d32;
     }
 
     .dot {
-      width: 10px;
-      height: 10px;
-      background: #28c542;
+      width: 8px;
+      height: 8px;
+      background: #4caf50;
       border-radius: 50%;
-      box-shadow: 0 0 8px #28c542;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+      50% { box-shadow: 0 0 0 6px rgba(76, 175, 80, 0); }
     }
 
     .headline {
       margin-top: 20px;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 700;
       line-height: 1.3;
+      color: #0d1117;
     }
 
     .sub {
       margin-top: 12px;
       font-size: 14px;
-      max-width: 350px;
-      color: #4a525a;
+      line-height: 1.5;
+      color: #57606a;
     }
 
     .form-box {
-      padding-left: 20px;
+      padding-left: 25px;
     }
 
     form {
       display: grid;
-      gap: 12px;
+      gap: 14px;
     }
 
-    input,
-    textarea {
+    input, textarea {
       width: 100%;
-      padding: 10px 12px;
-      font-size: 13px;
+      padding: 11px 14px;
+      font-size: 14px;
       border: 2px solid #d9e1e8;
       background: #fafcfe;
-      border-radius: 6px;
+      border-radius: 8px;
       outline: none;
       color: #1b1f23;
-      transition: 0.2s;
+      transition: all 0.2s;
+      font-family: inherit;
     }
 
-    input:focus,
-    textarea:focus {
-      border-color: #0072ce;
-      box-shadow: 0 0 6px rgba(0, 114, 206, 0.25);
+    input:focus, textarea:focus {
+      border-color: #0057b7;
+      box-shadow: 0 0 0 3px rgba(0, 87, 183, 0.1);
+      background: #ffffff;
     }
 
     textarea {
-      height: 65px;
-      resize: none;
+      min-height: 70px;
+      resize: vertical;
     }
 
     input[type="file"] {
-      padding: 8px;
+      padding: 10px;
       background: #ffffff;
       cursor: pointer;
+      font-size: 13px;
     }
 
-    .hint-contact {
+    .hint {
       font-size: 11px;
       color: #6a737d;
-      margin-top: -4px;
+      margin-top: -8px;
       margin-bottom: 4px;
     }
 
+    /* Upload Status */
+    .upload-status {
+      display: none;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-top: -8px;
+    }
+    
+    .upload-status.uploading {
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffc107;
+    }
+    
+    .upload-status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #28a745;
+    }
+    
+    .upload-status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #dc3545;
+    }
+
     button[type="submit"] {
-      padding: 12px;
+      padding: 13px;
       background: #0057b7;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      transition: 0.15s ease;
+      transition: all 0.15s;
+      position: relative;
+      overflow: hidden;
     }
 
-    button[type="submit"]:hover {
-      background: #0072ce;
+    button[type="submit"]:hover:not(:disabled) {
+      background: #0046a3;
       transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 87, 183, 0.3);
+    }
+    
+    button[type="submit"]:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .thankyou {
-      margin-top: 10px;
-      padding: 16px;
-      border-radius: 10px;
-      border: 1px solid #2ecc71;
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid #2ecc71;
       background: #eafaf1;
-      text-align: left;
+      text-align: center;
+    }
+    
+    .thankyou h3 {
+      color: #27ae60;
+      margin-bottom: 8px;
     }
 
     /* Sections */
     section {
       margin: 60px auto;
       max-width: 1100px;
+      padding: 0 20px;
     }
 
     h2.section-title {
-      font-size: 28px;
+      font-size: 30px;
       text-align: center;
       margin-bottom: 10px;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .section-sub {
       text-align: center;
-      color: #4a525a;
+      color: #f0f0f0;
       margin-bottom: 40px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
 
     .cards {
@@ -226,556 +308,283 @@
       flex-wrap: wrap;
     }
 
-    .card,
-    .step {
-      background: #ffffff;
+    .card, .step {
+      background: rgba(255, 255, 255, 0.95);
       border: 2px solid #d9e1e8;
-      border-radius: 10px;
-      padding: 20px;
-      width: 240px;
+      border-radius: 12px;
+      padding: 24px 20px;
+      width: 250px;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      animation: fadein 0.8s ease forwards;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s;
+      backdrop-filter: blur(10px);
+    }
+    
+    .card:hover, .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
     }
 
-    .card img,
-    .step img {
-      width: 34px;
-      margin-bottom: 12px;
+    .icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 16px;
+      color: #0057b7;
     }
 
-    .card h3,
-    .step h3 {
-      font-size: 16px;
-      margin-bottom: 8px;
+    .card h3, .step h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+      color: #0d1117;
     }
 
-    .card p,
-    .step p {
+    .card p, .step p {
       font-size: 13px;
-      color: #4a525a;
+      color: #57606a;
+      line-height: 1.5;
     }
 
     .step {
       position: relative;
-      width: 260px;
-      background: #fafcfe;
+      padding-top: 40px;
     }
 
     .step-number {
       background: #ff8a00;
       color: white;
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       position: absolute;
-      top: -17px;
+      top: -18px;
       left: 50%;
       transform: translateX(-50%);
+      box-shadow: 0 4px 8px rgba(255, 138, 0, 0.3);
     }
 
     /* About / Privacy */
-    .about,
-    .privacy {
+    .info-section {
       max-width: 900px;
-      margin: 40px auto 20px auto;
-      padding: 10px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    .about-card,
-    .privacy-card {
-      background: #ffffff;
+    .info-card {
+      background: rgba(255, 255, 255, 0.95);
       border: 2px solid #d9e1e8;
       border-radius: 12px;
-      padding: 22px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(10px);
+    }
+    
+    .info-card p {
       font-size: 15px;
-      line-height: 1.55;
+      line-height: 1.6;
+      color: #24292f;
     }
 
     /* Footer */
     footer {
-      background: #0057b7;
+      background: rgba(0, 87, 183, 0.95);
       color: white;
-      padding: 25px;
+      padding: 30px 20px;
       text-align: center;
-      margin-top: 40px;
+      margin-top: 60px;
       font-size: 13px;
+      backdrop-filter: blur(10px);
     }
 
-    /* MOBILE */
-    @media (max-width: 700px) {
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
       .hero {
         grid-template-columns: 1fr;
-        width: 94%;
-        margin: 80px auto 30px auto;
-        padding: 20px;
+        margin: 70px 10px 30px;
+        padding: 25px;
+        gap: 0;
       }
+      
       .left {
         padding-right: 0;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
         border-right: none;
         border-bottom: 2px solid #d9e1e8;
-        padding-bottom: 18px;
-        margin-bottom: 14px;
       }
+      
       .form-box {
         padding-left: 0;
+      }
+      
+      .card, .step {
+        width: 100%;
+        max-width: 340px;
+      }
+      
+      h2.section-title {
+        font-size: 24px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- LANGUAGE SWITCH -->
+  <!-- Background with overlay -->
+  <div class="background-wrapper"></div>
+
+  <!-- Language Switcher -->
   <div class="lang-switch-wrapper fade">
     <div class="lang-switch">
-      <button data-lang-btn="es" class="active" onclick="setLang('es')">ES</button>
-      <button data-lang-btn="en" onclick="setLang('en')">EN</button>
-      <button data-lang-btn="de" onclick="setLang('de')">DE</button>
-      <button data-lang-btn="lt" onclick="setLang('lt')">LT</button>
-      <button data-lang-btn="fr" onclick="setLang('fr')">FR</button>
-      <button data-lang-btn="it" onclick="setLang('it')">IT</button>
-      <button data-lang-btn="pt" onclick="setLang('pt')">PT</button>
+      <button data-lang="es" class="active">ES</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="lt">LT</button>
+      <button data-lang="fr">FR</button>
+      <button data-lang="it">IT</button>
+      <button data-lang="pt">PT</button>
     </div>
   </div>
 
-  <!-- HERO -->
+  <!-- Hero Section -->
   <div class="hero fade">
     <div class="left">
       <div class="logo">SONVER</div>
-
+      
       <div class="live">
         <div class="dot"></div>
-        <span data-lang="es">Disponible · Respuesta rápida</span>
-        <span data-lang="en" style="display:none;">Available · Fast response</span>
-        <span data-lang="de" style="display:none;">Verfügbar · Schnelle Antwort</span>
-        <span data-lang="lt" style="display:none;">Pasiekiami · Greitas atsakymas</span>
-        <span data-lang="fr" style="display:none;">Disponible · Réponse rapide</span>
-        <span data-lang="it" style="display:none;">Disponibile · Risposta rapida</span>
-        <span data-lang="pt" style="display:none;">Disponível · Resposta rápida</span>
+        <span class="live-text">Disponible · Respuesta rápida</span>
       </div>
 
       <div class="headline">
-        <span data-lang="es">Piezas que llegan. Problemas que se van.</span>
-        <span data-lang="en" style="display:none;">Parts arrive. Problems disappear.</span>
-        <span data-lang="de" style="display:none;">Teile kommen. Probleme gehen.</span>
-        <span data-lang="lt" style="display:none;">Dalys atvyksta. Problemų nelieka.</span>
-        <span data-lang="fr" style="display:none;">Les pièces arrivent. Les problèmes disparaissent.</span>
-        <span data-lang="it" style="display:none;">I ricambi arrivano. I problemi spariscono.</span>
-        <span data-lang="pt" style="display:none;">As peças chegam. Os problemas desaparecem.</span>
+        Piezas que llegan. Problemas que se van.
       </div>
 
       <div class="sub">
-        <span data-lang="es">Repuestos originales usados con entrega directa al taller.</span>
-        <span data-lang="en" style="display:none;">Original used parts delivered directly to the workshop.</span>
-        <span data-lang="de" style="display:none;">Original gebrauchte Teile direkt an die Werkstatt geliefert.</span>
-        <span data-lang="lt" style="display:none;">Naudotos originalios dalys pristatomos tiesiai į servisą.</span>
-        <span data-lang="fr" style="display:none;">Pièces d’origine d’occasion livrées directement à l’atelier.</span>
-        <span data-lang="it" style="display:none;">Ricambi originali usati consegnati direttamente in officina.</span>
-        <span data-lang="pt" style="display:none;">Peças usadas originais entregues diretamente à oficina.</span>
+        Repuestos originales usados con entrega directa al taller.
       </div>
     </div>
 
     <div class="form-box">
       <form id="sonver-form">
-        <!-- Company -->
-        <input data-field="company" data-lang="es" placeholder="Taller o empresa" />
-        <input data-field="company" data-lang="en" style="display:none;" placeholder="Workshop or company" />
-        <input data-field="company" data-lang="de" style="display:none;" placeholder="Werkstatt oder Firma" />
-        <input data-field="company" data-lang="lt" style="display:none;" placeholder="Servisas arba įmonė" />
-        <input data-field="company" data-lang="fr" style="display:none;" placeholder="Atelier ou entreprise" />
-        <input data-field="company" data-lang="it" style="display:none;" placeholder="Officina o azienda" />
-        <input data-field="company" data-lang="pt" style="display:none;" placeholder="Oficina ou empresa" />
-
-        <!-- Address -->
-        <input data-field="address" data-lang="es" placeholder="Dirección del taller (calle, ciudad, isla)" />
-        <input data-field="address" data-lang="en" style="display:none;" placeholder="Workshop address (street, city, island)" />
-        <input data-field="address" data-lang="de" style="display:none;" placeholder="Werkstattadresse (Straße, Stadt, Insel)" />
-        <input data-field="address" data-lang="lt" style="display:none;" placeholder="Serviso adresas (gatvė, miestas, sala)" />
-        <input data-field="address" data-lang="fr" style="display:none;" placeholder="Adresse de l’atelier (rue, ville, île)" />
-        <input data-field="address" data-lang="it" style="display:none;" placeholder="Indirizzo officina (via, città, isola)" />
-        <input data-field="address" data-lang="pt" style="display:none;" placeholder="Morada da oficina (rua, cidade, ilha)" />
-
-        <!-- Make / Model -->
-        <input data-field="model" data-lang="es" placeholder="Marca y modelo" />
-        <input data-field="model" data-lang="en" style="display:none;" placeholder="Make and model" />
-        <input data-field="model" data-lang="de" style="display:none;" placeholder="Marke und Modell" />
-        <input data-field="model" data-lang="lt" style="display:none;" placeholder="Markė ir modelis" />
-        <input data-field="model" data-lang="fr" style="display:none;" placeholder="Marque et modèle" />
-        <input data-field="model" data-lang="it" style="display:none;" placeholder="Marca e modello" />
-        <input data-field="model" data-lang="pt" style="display:none;" placeholder="Marca e modelo" />
-
-        <!-- VIN -->
-        <input data-field="vin" data-lang="es" placeholder="VIN (número de bastidor)" />
-        <input data-field="vin" data-lang="en" style="display:none;" placeholder="VIN (vehicle identification number)" />
-        <input data-field="vin" data-lang="de" style="display:none;" placeholder="FIN / VIN (Fahrzeug-Ident.-Nr.)" />
-        <input data-field="vin" data-lang="lt" style="display:none;" placeholder="VIN (kėbulo numeris)" />
-        <input data-field="vin" data-lang="fr" style="display:none;" placeholder="VIN (numéro de châssis)" />
-        <input data-field="vin" data-lang="it" style="display:none;" placeholder="VIN (numero di telaio)" />
-        <input data-field="vin" data-lang="pt" style="display:none;" placeholder="VIN (número de chassis)" />
-
-        <!-- Needed part -->
-        <textarea data-field="part" data-lang="es" placeholder="Pieza que necesitas (lado, referencia, etc.)"></textarea>
-        <textarea data-field="part" data-lang="en" style="display:none;" placeholder="Part you need (side, reference, etc.)"></textarea>
-        <textarea data-field="part" data-lang="de" style="display:none;" placeholder="Benötigtes Teil (Seite, Referenz, etc.)"></textarea>
-        <textarea data-field="part" data-lang="lt" style="display:none;" placeholder="Reikalinga dalis (pusė, kodas ir pan.)"></textarea>
-        <textarea data-field="part" data-lang="fr" style="display:none;" placeholder="Pièce recherchée (côté, référence, etc.)"></textarea>
-        <textarea data-field="part" data-lang="it" style="display:none;" placeholder="Ricambio richiesto (lato, riferimento, ecc.)"></textarea>
-        <textarea data-field="part" data-lang="pt" style="display:none;" placeholder="Peça necessária (lado, referência, etc.)"></textarea>
-
-        <!-- Contact -->
-        <input data-field="contact" data-lang="es" placeholder="Correo electrónico o WhatsApp" />
-        <input data-field="contact" data-lang="en" style="display:none;" placeholder="Email or WhatsApp" />
-        <input data-field="contact" data-lang="de" style="display:none;" placeholder="E-Mail oder WhatsApp" />
-        <input data-field="contact" data-lang="lt" style="display:none;" placeholder="El. paštas arba WhatsApp" />
-        <input data-field="contact" data-lang="fr" style="display:none;" placeholder="E-mail ou WhatsApp" />
-        <input data-field="contact" data-lang="it" style="display:none;" placeholder="Email o WhatsApp" />
-        <input data-field="contact" data-lang="pt" style="display:none;" placeholder="Email ou WhatsApp" />
-
-        <div class="hint-contact" data-lang="es">
-          Déjanos tu email o WhatsApp y te contactamos con precio y disponibilidad.
-        </div>
-        <div class="hint-contact" data-lang="en" style="display:none;">
-          Leave your email or WhatsApp and we’ll get back with price and availability.
-        </div>
-        <div class="hint-contact" data-lang="de" style="display:none;">
-          Hinterlassen Sie Ihre E-Mail oder WhatsApp – wir melden uns mit Preis und Verfügbarkeit.
-        </div>
-        <div class="hint-contact" data-lang="lt" style="display:none;">
-          Palikite el. paštą arba WhatsApp – susisieksime dėl kainos ir galimybės.
-        </div>
-        <div class="hint-contact" data-lang="fr" style="display:none;">
-          Laissez votre e-mail ou WhatsApp et nous reviendrons vers vous avec prix et disponibilité.
-        </div>
-        <div class="hint-contact" data-lang="it" style="display:none;">
-          Lascia la tua email o WhatsApp – ti ricontattiamo con prezzo e disponibilità.
-        </div>
-        <div class="hint-contact" data-lang="pt" style="display:none;">
-          Deixe o seu email ou WhatsApp e entraremos em contacto com preço e disponibilidade.
-        </div>
-
-        <!-- File upload -->
-        <input type="file" data-field="file" accept="image/*,application/pdf" />
-
+        <input type="text" id="company" placeholder="Taller o empresa" required>
+        <input type="text" id="address" placeholder="Dirección del taller (calle, ciudad, isla)" required>
+        <input type="text" id="model" placeholder="Marca y modelo" required>
+        <input type="text" id="vin" placeholder="VIN (número de bastidor)" required>
+        <textarea id="part" placeholder="Pieza que necesitas (lado, referencia, etc.)" required></textarea>
+        <input type="email" id="contact" placeholder="Correo electrónico o WhatsApp" required>
+        <div class="hint">Déjanos tu email o WhatsApp y te contactamos con precio y disponibilidad.</div>
+        <input type="file" id="file" accept="image/*,application/pdf">
+        <div class="upload-status" id="uploadStatus"></div>
         <button type="submit">
-          <span data-lang="es">Enviar solicitud</span>
-          <span data-lang="en" style="display:none;">Send request</span>
-          <span data-lang="de" style="display:none;">Anfrage senden</span>
-          <span data-lang="lt" style="display:none;">Siųsti užklausą</span>
-          <span data-lang="fr" style="display:none;">Envoyer la demande</span>
-          <span data-lang="it" style="display:none;">Invia richiesta</span>
-          <span data-lang="pt" style="display:none;">Enviar pedido</span>
+          <span class="btn-text">Enviar solicitud</span>
         </button>
       </form>
     </div>
   </div>
 
-  <!-- WHY -->
+  <!-- Why Choose Us -->
   <section class="fade">
-    <h2 class="section-title">
-      <span data-lang="es">Por qué elegirnos</span>
-      <span data-lang="en" style="display:none;">Why choose us</span>
-      <span data-lang="de" style="display:none;">Warum uns wählen</span>
-      <span data-lang="lt" style="display:none;">Kodėl rinktis mus</span>
-      <span data-lang="fr" style="display:none;">Pourquoi nous choisir</span>
-      <span data-lang="it" style="display:none;">Perché sceglierci</span>
-      <span data-lang="pt" style="display:none;">Por que escolher-nos</span>
-    </h2>
-
-    <p class="section-sub">
-      <span data-lang="es">Hacemos que encontrar piezas usadas sea rápido y sencillo gracias a nuestra red.</span>
-      <span data-lang="en" style="display:none;">We make finding used parts fast and simple thanks to our network.</span>
-      <span data-lang="de" style="display:none;">Wir machen die Suche nach Gebrauchtteilen schnell und einfach – dank unseres Netzwerks.</span>
-      <span data-lang="lt" style="display:none;">Dėl mūsų tiekėjų tinklo naudotas dalis surasti tampa greita ir paprasta.</span>
-      <span data-lang="fr" style="display:none;">Grâce à notre réseau, trouver des pièces d’occasion devient rapide et simple.</span>
-      <span data-lang="it" style="display:none;">Grazie alla nostra rete, trovare ricambi usati è rapido e semplice.</span>
-      <span data-lang="pt" style="display:none;">A nossa rede torna rápida e simples a procura de peças usadas.</span>
-    </p>
-
+    <h2 class="section-title">Por qué elegirnos</h2>
+    <p class="section-sub">Hacemos que encontrar piezas usadas sea rápido y sencillo gracias a nuestra red.</p>
+    
     <div class="cards">
       <div class="card">
-        <img src="https://img.icons8.com/ios-filled/50/0057B7/search.png" alt="" />
-        <h3>
-          <span data-lang="es">La encontramos por ti</span>
-          <span data-lang="en" style="display:none;">We find it for you</span>
-          <span data-lang="de" style="display:none;">Wir finden das Teil für Sie</span>
-          <span data-lang="lt" style="display:none;">Dalį surandame už jus</span>
-          <span data-lang="fr" style="display:none;">Nous la trouvons pour vous</span>
-          <span data-lang="it" style="display:none;">La troviamo noi per te</span>
-          <span data-lang="pt" style="display:none;">Nós encontramos por si</span>
-        </h3>
-        <p>
-          <span data-lang="es">No encuentras la pieza? La buscamos dentro de nuestra red.</span>
-          <span data-lang="en" style="display:none;">Can’t find the part? We search it within our network.</span>
-          <span data-lang="de" style="display:none;">Sie finden das Teil nicht? Wir suchen es in unserem Netzwerk.</span>
-          <span data-lang="lt" style="display:none;">Nerandate detalės? Ieškome jos savo tinkle.</span>
-          <span data-lang="fr" style="display:none;">Vous ne trouvez pas la pièce ? Nous la cherchons dans notre réseau.</span>
-          <span data-lang="it" style="display:none;">Non trovi il ricambio? Lo cerchiamo nella nostra rete.</span>
-          <span data-lang="pt" style="display:none;">Não encontra a peça? Procuramos na nossa rede.</span>
-        </p>
+        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+        </svg>
+        <h3>La encontramos por ti</h3>
+        <p>No encuentras la pieza? La buscamos dentro de nuestra red.</p>
       </div>
 
       <div class="card">
-        <img src="https://img.icons8.com/ios-filled/50/0057B7/clock.png" alt="" />
-        <h3>
-          <span data-lang="es">Respuesta rápida</span>
-          <span data-lang="en" style="display:none;">Fast response</span>
-          <span data-lang="de" style="display:none;">Schnelle Antwort</span>
-          <span data-lang="lt" style="display:none;">Greitas atsakymas</span>
-          <span data-lang="fr" style="display:none;">Réponse rapide</span>
-          <span data-lang="it" style="display:none;">Risposta rapida</span>
-          <span data-lang="pt" style="display:none;">Resposta rápida</span>
-        </h3>
-        <p>
-          <span data-lang="es">Disponibilidad y precio en menos de 24 horas.</span>
-          <span data-lang="en" style="display:none;">Availability and price in under 24 hours.</span>
-          <span data-lang="de" style="display:none;">Verfügbarkeit und Preis in weniger als 24 Stunden.</span>
-          <span data-lang="lt" style="display:none;">Kaina ir galimybė – per mažiau nei 24 valandas.</span>
-          <span data-lang="fr" style="display:none;">Disponibilité et prix en moins de 24h.</span>
-          <span data-lang="it" style="display:none;">Disponibilità e prezzo in meno di 24 ore.</span>
-          <span data-lang="pt" style="display:none;">Disponibilidade e preço em menos de 24h.</span>
-        </p>
+        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+        </svg>
+        <h3>Respuesta rápida</h3>
+        <p>Disponibilidad y precio en menos de 24 horas.</p>
       </div>
 
       <div class="card">
-        <img src="https://img.icons8.com/ios-filled/50/0057B7/money.png" alt="" />
-        <h3>
-          <span data-lang="es">Precios competitivos</span>
-          <span data-lang="en" style="display:none;">Competitive prices</span>
-          <span data-lang="de" style="display:none;">Wettbewerbsfähige Preise</span>
-          <span data-lang="lt" style="display:none;">Konkurencingos kainos</span>
-          <span data-lang="fr" style="display:none;">Prix compétitifs</span>
-          <span data-lang="it" style="display:none;">Prezzi competitivi</span>
-          <span data-lang="pt" style="display:none;">Preços competitivos</span>
-        </h3>
-        <p>
-          <span data-lang="es">Acceso a piezas usadas con precios ajustados al mercado.</span>
-          <span data-lang="en" style="display:none;">Access to used parts at market-aligned prices.</span>
-          <span data-lang="de" style="display:none;">Zugang zu Gebrauchtteilen zu marktgerechten Preisen.</span>
-          <span data-lang="lt" style="display:none;">Naudotos dalys už rinkai pritaikytas kainas.</span>
-          <span data-lang="fr" style="display:none;">Accès à des pièces d’occasion à des prix alignés sur le marché.</span>
-          <span data-lang="it" style="display:none;">Accesso a ricambi usati con prezzi in linea col mercato.</span>
-          <span data-lang="pt" style="display:none;">Acesso a peças usadas com preços alinhados ao mercado.</span>
-        </p>
+        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+        </svg>
+        <h3>Precios competitivos</h3>
+        <p>Acceso a piezas usadas con precios ajustados al mercado.</p>
       </div>
 
       <div class="card">
-        <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery.png" alt="" />
-        <h3>
-          <span data-lang="es">Red amplia</span>
-          <span data-lang="en" style="display:none;">Wide carrier network</span>
-          <span data-lang="de" style="display:none;">Weites Speditionsnetz</span>
-          <span data-lang="lt" style="display:none;">Platus vežėjų tinklas</span>
-          <span data-lang="fr" style="display:none;">Large réseau de transporteurs</span>
-          <span data-lang="it" style="display:none;">Ampia rete di trasportatori</span>
-          <span data-lang="pt" style="display:none;">Ampla rede de transportadoras</span>
-        </h3>
-        <p>
-          <span data-lang="es">Trabajamos con una red amplia de transportistas para entregas a talleres en toda Europa.</span>
-          <span data-lang="en" style="display:none;">We work with a wide carrier network to deliver to workshops across Europe.</span>
-          <span data-lang="de" style="display:none;">Wir arbeiten mit einem breiten Netz von Speditionen und beliefern Werkstätten in ganz Europa.</span>
-          <span data-lang="lt" style="display:none;">Dirbame su plačiu vežėjų tinklu ir pristatome į servisus visoje Europoje.</span>
-          <span data-lang="fr" style="display:none;">Nous travaillons avec un large réseau de transporteurs pour livrer des ateliers dans toute l’Europe.</span>
-          <span data-lang="it" style="display:none;">Lavoriamo con una rete ampia di trasportatori per consegnare alle officine in tutta Europa.</span>
-          <span data-lang="pt" style="display:none;">Trabalhamos com uma ampla rede de transportadoras para entregar a oficinas em toda a Europa.</span>
-        </p>
+        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+          <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
+        </svg>
+        <h3>Red amplia</h3>
+        <p>Trabajamos con una red amplia de transportistas para entregas a talleres en toda Europa.</p>
       </div>
     </div>
   </section>
 
-  <!-- HOW -->
+  <!-- How it Works -->
   <section class="fade">
-    <h2 class="section-title">
-      <span data-lang="es">Cómo funciona</span>
-      <span data-lang="en" style="display:none;">How it works</span>
-      <span data-lang="de" style="display:none;">Wie es funktioniert</span>
-      <span data-lang="lt" style="display:none;">Kaip tai veikia</span>
-      <span data-lang="fr" style="display:none;">Comment ça marche</span>
-      <span data-lang="it" style="display:none;">Come funziona</span>
-      <span data-lang="pt" style="display:none;">Como funciona</span>
-    </h2>
-
-    <p class="section-sub">
-      <span data-lang="es">Conseguir la pieza correcta es tan fácil como 1, 2, 3.</span>
-      <span data-lang="en" style="display:none;">Getting the right part is as easy as 1, 2, 3.</span>
-      <span data-lang="de" style="display:none;">Das richtige Teil zu bekommen ist so einfach wie 1, 2, 3.</span>
-      <span data-lang="lt" style="display:none;">Tinkamą dalį gauti taip paprasta kaip 1, 2, 3.</span>
-      <span data-lang="fr" style="display:none;">Obtenir la bonne pièce est aussi simple que 1, 2, 3.</span>
-      <span data-lang="it" style="display:none;">Ottenere il ricambio giusto è facile come 1, 2, 3.</span>
-      <span data-lang="pt" style="display:none;">Conseguir a peça certa é tão simples quanto 1, 2, 3.</span>
-    </p>
-
+    <h2 class="section-title">Cómo funciona</h2>
+    <p class="section-sub">Conseguir la pieza correcta es tan fácil como 1, 2, 3.</p>
+    
     <div class="cards">
       <div class="step">
         <div class="step-number">1</div>
-        <img src="https://img.icons8.com/ios-filled/50/0057B7/document.png" alt="" />
-        <h3>
-          <span data-lang="es">Envíanos tu solicitud</span>
-          <span data-lang="en" style="display:none;">Send us your request</span>
-          <span data-lang="de" style="display:none;">Senden Sie uns Ihre Anfrage</span>
-          <span data-lang="lt" style="display:none;">Atsiųskite užklausą</span>
-          <span data-lang="fr" style="display:none;">Envoyez-nous votre demande</span>
-          <span data-lang="it" style="display:none;">Inviaci la tua richiesta</span>
-          <span data-lang="pt" style="display:none;">Envie-nos o seu pedido</span>
-        </h3>
-        <p>
-          <span data-lang="es">Indica la pieza, el VIN y los datos básicos del vehículo.</span>
-          <span data-lang="en" style="display:none;">Tell us the part, VIN and basic vehicle details.</span>
-          <span data-lang="de" style="display:none;">Nennen Sie Teil, FIN/VIN und die wichtigsten Fahrzeugdaten.</span>
-          <span data-lang="lt" style="display:none;">Parašykite dalį, VIN ir pagrindinius automobilio duomenis.</span>
-          <span data-lang="fr" style="display:none;">Indiquez la pièce, le VIN et les données principales du véhicule.</span>
-          <span data-lang="it" style="display:none;">Indica il ricambio, il VIN e i dati principali del veicolo.</span>
-          <span data-lang="pt" style="display:none;">Indique a peça, o VIN e os dados principais do veículo.</span>
-        </p>
+        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"/>
+        </svg>
+        <h3>Envíanos tu solicitud</h3>
+        <p>Indica la pieza, el VIN y los datos básicos del vehículo.</p>
       </div>
 
       <div class="step">
         <div class="step-number">2</div>
-        <img src="https://img.icons8.com/ios-filled/50/0057B7/search--v1.png" alt="" />
-        <h3>
-          <span data-lang="es">Buscamos en nuestra red</span>
-          <span data-lang="en" style="display:none;">We search our network</span>
-          <span data-lang="de" style="display:none;">Wir suchen in unserem Netzwerk</span>
-          <span data-lang="lt" style="display:none;">Ieškome savo tinkle</span>
-          <span data-lang="fr" style="display:none;">Nous cherchons dans notre réseau</span>
-          <span data-lang="it" style="display:none;">Cerchiamo nella nostra rete</span>
-          <span data-lang="pt" style="display:none;">Pesquisamos na nossa rede</span>
-        </h3>
-        <p>
-          <span data-lang="es">Revisamos miles de referencias en desguaces y proveedores.</span>
-          <span data-lang="en" style="display:none;">We check thousands of references across dismantlers and suppliers.</span>
-          <span data-lang="de" style="display:none;">Wir prüfen tausende Referenzen bei Verwertern und Lieferanten.</span>
-          <span data-lang="lt" style="display:none;">Tikriname tūkstančius pozicijų pas utilizavimo aikšteles ir tiekėjus.</span>
-          <span data-lang="fr" style="display:none;">Nous vérifions des milliers de références chez démolisseurs et fournisseurs.</span>
-          <span data-lang="it" style="display:none;">Controlliamo migliaia di riferimenti presso demolitori e fornitori.</span>
-          <span data-lang="pt" style="display:none;">Verificamos milhares de referências em sucateiros e fornecedores.</span>
-        </p>
+        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z"/>
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z" clip-rule="evenodd"/>
+        </svg>
+        <h3>Buscamos en nuestra red</h3>
+        <p>Revisamos miles de referencias en desguaces y proveedores.</p>
       </div>
 
       <div class="step">
         <div class="step-number">3</div>
-        <img src="https://img.icons8.com/ios-filled/50/0057B7/delivery-truck.png" alt="" />
-        <h3>
-          <span data-lang="es">Recibe la pieza</span>
-          <span data-lang="en" style="display:none;">Receive the part</span>
-          <span data-lang="de" style="display:none;">Teil erhalten</span>
-          <span data-lang="lt" style="display:none;">Gaukite dalį</span>
-          <span data-lang="fr" style="display:none;">Recevez la pièce</span>
-          <span data-lang="it" style="display:none;">Ricevi il ricambio</span>
-          <span data-lang="pt" style="display:none;">Receba a peça</span>
-        </h3>
-        <p>
-          <span data-lang="es">Te contactamos por WhatsApp con precio, plazo y opciones de transporte.</span>
-          <span data-lang="en" style="display:none;">We contact you via WhatsApp with price, lead time and shipping options.</span>
-          <span data-lang="de" style="display:none;">Wir melden uns per WhatsApp mit Preis, Lieferzeit und Transportoptionen.</span>
-          <span data-lang="lt" style="display:none;">Susisiekiame per WhatsApp su kaina, terminu ir transporto variantais.</span>
-          <span data-lang="fr" style="display:none;">Nous vous contactons sur WhatsApp avec prix, délais et options de transport.</span>
-          <span data-lang="it" style="display:none;">Ti contattiamo su WhatsApp con prezzo, tempi e opzioni di trasporto.</span>
-          <span data-lang="pt" style="display:none;">Entramos em contacto via WhatsApp com preço, prazo e opções de transporte.</span>
-        </p>
+        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+          <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7h1a1 1 0 011 1v6.05A2.5 2.5 0 0013.05 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
+        </svg>
+        <h3>Recibe la pieza</h3>
+        <p>Te contactamos por WhatsApp con precio, plazo y opciones de transporte.</p>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT US -->
-  <div class="about fade">
-    <h2 class="section-title" data-lang="es">Sobre nosotros</h2>
-    <h2 class="section-title" data-lang="en" style="display:none;">About us</h2>
-    <h2 class="section-title" data-lang="de" style="display:none;">Über uns</h2>
-    <h2 class="section-title" data-lang="lt" style="display:none;">Apie mus</h2>
-    <h2 class="section-title" data-lang="fr" style="display:none;">À propos</h2>
-    <h2 class="section-title" data-lang="it" style="display:none;">Chi siamo</h2>
-    <h2 class="section-title" data-lang="pt" style="display:none;">Sobre nós</h2>
-
-    <div class="about-card">
-      <p data-lang="es">
+  <!-- About Us -->
+  <div class="info-section fade">
+    <h2 class="section-title">Sobre nosotros</h2>
+    <div class="info-card">
+      <p class="about-text">
         Sonver lleva más de 12 años operando en el sector de automoción. Empezamos como especialistas en
         abastecimiento técnico y hoy ayudamos a talleres en toda Europa a encontrar repuestos originales usados de forma
         rápida y fiable. Trabajamos con una red amplia de proveedores y transportistas para que la pieza correcta llegue
         directamente a tu taller.
       </p>
-      <p data-lang="en" style="display:none;">
-        Sonver has been active in the automotive sector for more than 12 years. We started as technical sourcing experts
-        and today we help workshops all over Europe find original used parts quickly and reliably. We work with a wide
-        network of suppliers and carriers so that the right part arrives directly at your workshop.
-      </p>
-      <p data-lang="de" style="display:none;">
-        Sonver ist seit über 12 Jahren in der Automobilbranche tätig. Wir begannen als Experten für technischen
-        Einkauf und unterstützen heute Werkstätten in ganz Europa dabei, originale Gebrauchtteile schnell und
-        zuverlässig zu finden. Dank unseres breiten Netzwerks aus Lieferanten und Speditionen kommt das richtige Teil
-        direkt in Ihre Werkstatt.
-      </p>
-      <p data-lang="lt" style="display:none;">
-        „Sonver“ daugiau nei 12 metų dirba automobilių sektoriuje. Pradėjome kaip techninio tiekimo specialistai, o
-        šiandien padedame servisams visoje Europoje greitai ir patikimai rasti originalias naudotas dalis. Dirbame su
-        plačiu tiekėjų ir vežėjų tinklu, kad tinkama dalis atvyktų tiesiai į jūsų servisą.
-      </p>
-      <p data-lang="fr" style="display:none;">
-        Sonver opère dans le secteur automobile depuis plus de 12 ans. Nous avons commencé comme spécialistes du
-        sourcing technique et nous aidons aujourd’hui des ateliers dans toute l’Europe à trouver des pièces d’origine
-        d’occasion rapidement et de manière fiable. Grâce à un vaste réseau de fournisseurs et de transporteurs, la
-        bonne pièce arrive directement dans votre atelier.
-      </p>
-      <p data-lang="it" style="display:none;">
-        Sonver opera nel settore automotive da oltre 12 anni. Siamo nati come specialisti nel sourcing tecnico e oggi
-        aiutiamo officine in tutta Europa a trovare ricambi originali usati in modo rapido e affidabile. Grazie alla
-        nostra ampia rete di fornitori e trasportatori, il ricambio giusto arriva direttamente in officina.
-      </p>
-      <p data-lang="pt" style="display:none;">
-        A Sonver atua no setor automóvel há mais de 12 anos. Começámos como especialistas em sourcing técnico e hoje
-        ajudamos oficinas em toda a Europa a encontrar peças originais usadas de forma rápida e fiável. Com a nossa
-        ampla rede de fornecedores e transportadoras, a peça certa chega diretamente à sua oficina.
-      </p>
     </div>
   </div>
 
-  <!-- PRIVACY -->
-  <div class="privacy fade">
-    <h2 class="section-title" data-lang="es">Privacidad & GDPR</h2>
-    <h2 class="section-title" data-lang="en" style="display:none;">Privacy & GDPR</h2>
-    <h2 class="section-title" data-lang="de" style="display:none;">Datenschutz & GDPR</h2>
-    <h2 class="section-title" data-lang="lt" style="display:none;">Privatumas & GDPR</h2>
-    <h2 class="section-title" data-lang="fr" style="display:none;">Confidentialité & RGPD</h2>
-    <h2 class="section-title" data-lang="it" style="display:none;">Privacy & GDPR</h2>
-    <h2 class="section-title" data-lang="pt" style="display:none;">Privacidade & RGPD</h2>
-
-    <div class="privacy-card">
-      <p data-lang="es">
+  <!-- Privacy -->
+  <div class="info-section fade">
+    <h2 class="section-title">Privacidad & GDPR</h2>
+    <div class="info-card">
+      <p class="privacy-text">
         Cumplimos plenamente con el Reglamento General de Protección de Datos (GDPR). Solo utilizamos la información
         proporcionada para responder a tu solicitud y ofrecerte un servicio eficiente. No compartimos datos con terceros
         sin tu consentimiento explícito.
-      </p>
-      <p data-lang="en" style="display:none;">
-        We fully comply with the General Data Protection Regulation (GDPR). We only use the information you provide to
-        respond to your request and deliver our service. We do not share your data with third parties without your
-        explicit consent.
-      </p>
-      <p data-lang="de" style="display:none;">
-        Wir halten die Datenschutz-Grundverordnung (DSGVO) vollständig ein. Wir verwenden deine Daten ausschließlich zur
-        Bearbeitung deiner Anfrage und zur Erbringung unserer Dienstleistung. Eine Weitergabe an Dritte erfolgt nicht
-        ohne deine ausdrückliche Zustimmung.
-      </p>
-      <p data-lang="lt" style="display:none;">
-        Visiškai laikomės Bendrojo duomenų apsaugos reglamento (GDPR). Jūsų pateikti duomenys naudojami tik atsakant į
-        užklausą ir teikiant paslaugą. Duomenų tretiesiems asmenims neperduodame be aiškaus jūsų sutikimo.
-      </p>
-      <p data-lang="fr" style="display:none;">
-        Nous respectons pleinement le Règlement Général sur la Protection des Données (RGPD). Les informations que vous
-        fournissez ne sont utilisées que pour traiter votre demande et fournir notre service. Aucune donnée n’est
-        partagée avec des tiers sans votre consentement explicite.
-      </p>
-      <p data-lang="it" style="display:none;">
-        Rispettiamo pienamente il Regolamento Generale sulla Protezione dei Dati (GDPR). Utilizziamo i dati forniti
-        esclusivamente per rispondere alla tua richiesta e fornire il nostro servizio. Non condividiamo le informazioni
-        con terzi senza il tuo consenso esplicito.
-      </p>
-      <p data-lang="pt" style="display:none;">
-        Cumprimos integralmente o Regulamento Geral de Proteção de Dados (RGPD). Utilizamos os dados fornecidos apenas
-        para responder ao seu pedido e prestar o nosso serviço. Não partilhamos as suas informações com terceiros sem o
-        seu consentimento explícito.
       </p>
     </div>
   </div>
@@ -784,19 +593,12 @@
     © 2025 — Sonver UAB · Sonver International · Sonver Baltics — Headquarters: Kariu Kapų g. 19, Vilnius
   </footer>
 
-  <!-- SCRIPT: LANG + FIREBASE + WHATSAPP -->
+  <!-- Firebase & Form Handler -->
   <script type="module">
-    // ---------------------------
-    // FIREBASE INIT
-    // ---------------------------
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import {
-      getStorage,
-      ref,
-      uploadBytes,
-      getDownloadURL
-    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+    import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
+    // Firebase config
     const firebaseConfig = {
       apiKey: "AIzaSyDtrRHOqo4QgvOc5Bh5e91FgJVajoXdayY",
       authDomain: "sonver-4af18.firebaseapp.com",
@@ -809,110 +611,493 @@
     const app = initializeApp(firebaseConfig);
     const storage = getStorage(app);
 
-    let currentLang = "es";
+    // Translation system
+    const translations = {
+      es: {
+        live: "Disponible · Respuesta rápida",
+        headline: "Piezas que llegan. Problemas que se van.",
+        sub: "Repuestos originales usados con entrega directa al taller.",
+        company: "Taller o empresa",
+        address: "Dirección del taller (calle, ciudad, isla)",
+        model: "Marca y modelo",
+        vin: "VIN (número de bastidor)",
+        part: "Pieza que necesitas (lado, referencia, etc.)",
+        contact: "Correo electrónico o WhatsApp",
+        hint: "Déjanos tu email o WhatsApp y te contactamos con precio y disponibilidad.",
+        submit: "Enviar solicitud",
+        uploading: "Subiendo archivo...",
+        uploadSuccess: "Archivo subido correctamente",
+        uploadError: "Error al subir archivo",
+        thankYouTitle: "¡Gracias!",
+        thankYouMsg: "Te contactaremos en breve con precio y disponibilidad.",
+        whyTitle: "Por qué elegirnos",
+        whySub: "Hacemos que encontrar piezas usadas sea rápido y sencillo gracias a nuestra red.",
+        find: "La encontramos por ti",
+        findText: "No encuentras la pieza? La buscamos dentro de nuestra red.",
+        fast: "Respuesta rápida",
+        fastText: "Disponibilidad y precio en menos de 24 horas.",
+        price: "Precios competitivos",
+        priceText: "Acceso a piezas usadas con precios ajustados al mercado.",
+        network: "Red amplia",
+        networkText: "Trabajamos con una red amplia de transportistas para entregas a talleres en toda Europa.",
+        howTitle: "Cómo funciona",
+        howSub: "Conseguir la pieza correcta es tan fácil como 1, 2, 3.",
+        step1: "Envíanos tu solicitud",
+        step1Text: "Indica la pieza, el VIN y los datos básicos del vehículo.",
+        step2: "Buscamos en nuestra red",
+        step2Text: "Revisamos miles de referencias en desguaces y proveedores.",
+        step3: "Recibe la pieza",
+        step3Text: "Te contactamos por WhatsApp con precio, plazo y opciones de transporte.",
+        aboutTitle: "Sobre nosotros",
+        aboutText: "Sonver lleva más de 12 años operando en el sector de automoción. Empezamos como especialistas en abastecimiento técnico y hoy ayudamos a talleres en toda Europa a encontrar repuestos originales usados de forma rápida y fiable. Trabajamos con una red amplia de proveedores y transportistas para que la pieza correcta llegue directamente a tu taller.",
+        privacyTitle: "Privacidad & GDPR",
+        privacyText: "Cumplimos plenamente con el Reglamento General de Protección de Datos (GDPR). Solo utilizamos la información proporcionada para responder a tu solicitud y ofrecerte un servicio eficiente. No compartimos datos con terceros sin tu consentimiento explícito."
+      },
+      en: {
+        live: "Available · Fast response",
+        headline: "Parts arrive. Problems disappear.",
+        sub: "Original used parts delivered directly to the workshop.",
+        company: "Workshop or company",
+        address: "Workshop address (street, city, island)",
+        model: "Make and model",
+        vin: "VIN (vehicle identification number)",
+        part: "Part you need (side, reference, etc.)",
+        contact: "Email or WhatsApp",
+        hint: "Leave your email or WhatsApp and we'll get back with price and availability.",
+        submit: "Send request",
+        uploading: "Uploading file...",
+        uploadSuccess: "File uploaded successfully",
+        uploadError: "Upload failed",
+        thankYouTitle: "Thank you!",
+        thankYouMsg: "We will contact you shortly with price and availability.",
+        whyTitle: "Why choose us",
+        whySub: "We make finding used parts fast and simple thanks to our network.",
+        find: "We find it for you",
+        findText: "Can't find the part? We search it within our network.",
+        fast: "Fast response",
+        fastText: "Availability and price in under 24 hours.",
+        price: "Competitive prices",
+        priceText: "Access to used parts at market-aligned prices.",
+        network: "Wide carrier network",
+        networkText: "We work with a wide carrier network to deliver to workshops across Europe.",
+        howTitle: "How it works",
+        howSub: "Getting the right part is as easy as 1, 2, 3.",
+        step1: "Send us your request",
+        step1Text: "Tell us the part, VIN and basic vehicle details.",
+        step2: "We search our network",
+        step2Text: "We check thousands of references across dismantlers and suppliers.",
+        step3: "Receive the part",
+        step3Text: "We contact you via WhatsApp with price, lead time and shipping options.",
+        aboutTitle: "About us",
+        aboutText: "Sonver has been active in the automotive sector for more than 12 years. We started as technical sourcing experts and today we help workshops all over Europe find original used parts quickly and reliably. We work with a wide network of suppliers and carriers so that the right part arrives directly at your workshop.",
+        privacyTitle: "Privacy & GDPR",
+        privacyText: "We fully comply with the General Data Protection Regulation (GDPR). We only use the information you provide to respond to your request and deliver our service. We do not share your data with third parties without your explicit consent."
+      },
+      de: {
+        live: "Verfügbar · Schnelle Antwort",
+        headline: "Teile kommen. Probleme gehen.",
+        sub: "Original gebrauchte Teile direkt an die Werkstatt geliefert.",
+        company: "Werkstatt oder Firma",
+        address: "Werkstattadresse (Straße, Stadt, Insel)",
+        model: "Marke und Modell",
+        vin: "FIN / VIN (Fahrzeug-Ident.-Nr.)",
+        part: "Benötigtes Teil (Seite, Referenz, etc.)",
+        contact: "E-Mail oder WhatsApp",
+        hint: "Hinterlassen Sie Ihre E-Mail oder WhatsApp – wir melden uns mit Preis und Verfügbarkeit.",
+        submit: "Anfrage senden",
+        uploading: "Datei wird hochgeladen...",
+        uploadSuccess: "Datei erfolgreich hochgeladen",
+        uploadError: "Upload fehlgeschlagen",
+        thankYouTitle: "Vielen Dank!",
+        thankYouMsg: "Wir melden uns in Kürze mit Preis und Verfügbarkeit.",
+        whyTitle: "Warum uns wählen",
+        whySub: "Wir machen die Suche nach Gebrauchtteilen schnell und einfach – dank unseres Netzwerks.",
+        find: "Wir finden das Teil für Sie",
+        findText: "Sie finden das Teil nicht? Wir suchen es in unserem Netzwerk.",
+        fast: "Schnelle Antwort",
+        fastText: "Verfügbarkeit und Preis in weniger als 24 Stunden.",
+        price: "Wettbewerbsfähige Preise",
+        priceText: "Zugang zu Gebrauchtteilen zu marktgerechten Preisen.",
+        network: "Weites Speditionsnetz",
+        networkText: "Wir arbeiten mit einem breiten Netz von Speditionen und beliefern Werkstätten in ganz Europa.",
+        howTitle: "Wie es funktioniert",
+        howSub: "Das richtige Teil zu bekommen ist so einfach wie 1, 2, 3.",
+        step1: "Senden Sie uns Ihre Anfrage",
+        step1Text: "Nennen Sie Teil, FIN/VIN und die wichtigsten Fahrzeugdaten.",
+        step2: "Wir suchen in unserem Netzwerk",
+        step2Text: "Wir prüfen tausende Referenzen bei Verwertern und Lieferanten.",
+        step3: "Teil erhalten",
+        step3Text: "Wir melden uns per WhatsApp mit Preis, Lieferzeit und Transportoptionen.",
+        aboutTitle: "Über uns",
+        aboutText: "Sonver ist seit über 12 Jahren in der Automobilbranche tätig. Wir begannen als Experten für technischen Einkauf und unterstützen heute Werkstätten in ganz Europa dabei, originale Gebrauchtteile schnell und zuverlässig zu finden. Dank unseres breiten Netzwerks aus Lieferanten und Speditionen kommt das richtige Teil direkt in Ihre Werkstatt.",
+        privacyTitle: "Datenschutz & DSGVO",
+        privacyText: "Wir halten die Datenschutz-Grundverordnung (DSGVO) vollständig ein. Wir verwenden deine Daten ausschließlich zur Bearbeitung deiner Anfrage und zur Erbringung unserer Dienstleistung. Eine Weitergabe an Dritte erfolgt nicht ohne deine ausdrückliche Zustimmung."
+      },
+      lt: {
+        live: "Pasiekiami · Greitas atsakymas",
+        headline: "Dalys atvyksta. Problemų nelieka.",
+        sub: "Naudotos originalios dalys pristatomos tiesiai į servisą.",
+        company: "Servisas arba įmonė",
+        address: "Serviso adresas (gatvė, miestas, sala)",
+        model: "Markė ir modelis",
+        vin: "VIN (kėbulo numeris)",
+        part: "Reikalinga dalis (pusė, kodas ir pan.)",
+        contact: "El. paštas arba WhatsApp",
+        hint: "Palikite el. paštą arba WhatsApp – susisieksime dėl kainos ir galimybės.",
+        submit: "Siųsti užklausą",
+        uploading: "Įkeliamas failas...",
+        uploadSuccess: "Failas sėkmingai įkeltas",
+        uploadError: "Įkelti nepavyko",
+        thankYouTitle: "Ačiū!",
+        thankYouMsg: "Netrukus susisieksime su kaina ir galimybe.",
+        whyTitle: "Kodėl rinktis mus",
+        whySub: "Dėl mūsų tiekėjų tinklo naudotas dalis surasti tampa greita ir paprasta.",
+        find: "Dalį surandame už jus",
+        findText: "Nerandate detalės? Ieškome jos savo tinkle.",
+        fast: "Greitas atsakymas",
+        fastText: "Kaina ir galimybė – per mažiau nei 24 valandas.",
+        price: "Konkurencingos kainos",
+        priceText: "Naudotos dalys už rinkai pritaikytas kainas.",
+        network: "Platus vežėjų tinklas",
+        networkText: "Dirbame su plačiu vežėjų tinklu ir pristatome į servisus visoje Europoje.",
+        howTitle: "Kaip tai veikia",
+        howSub: "Tinkamą dalį gauti taip paprasta kaip 1, 2, 3.",
+        step1: "Atsiųskite užklausą",
+        step1Text: "Parašykite dalį, VIN ir pagrindinius automobilio duomenis.",
+        step2: "Ieškome savo tinkle",
+        step2Text: "Tikriname tūkstančius pozicijų pas utilizavimo aikšteles ir tiekėjus.",
+        step3: "Gaukite dalį",
+        step3Text: "Susisiekiame per WhatsApp su kaina, terminu ir transporto variantais.",
+        aboutTitle: "Apie mus",
+        aboutText: "„Sonver" daugiau nei 12 metų dirba automobilių sektoriuje. Pradėjome kaip techninio tiekimo specialistai, o šiandien padedame servisams visoje Europoje greitai ir patikimai rasti originalias naudotas dalis. Dirbame su plačiu tiekėjų ir vežėjų tinklu, kad tinkama dalis atvyktų tiesiai į jūsų servisą.",
+        privacyTitle: "Privatumas & GDPR",
+        privacyText: "Visiškai laikomės Bendrojo duomenų apsaugos reglamento (GDPR). Jūsų pateikti duomenys naudojami tik atsakant į užklausą ir teikiant paslaugą. Duomenų tretiesiems asmenims neperduodame be aiškaus jūsų sutikimo."
+      },
+      fr: {
+        live: "Disponible · Réponse rapide",
+        headline: "Les pièces arrivent. Les problèmes disparaissent.",
+        sub: "Pièces d'origine d'occasion livrées directement à l'atelier.",
+        company: "Atelier ou entreprise",
+        address: "Adresse de l'atelier (rue, ville, île)",
+        model: "Marque et modèle",
+        vin: "VIN (numéro de châssis)",
+        part: "Pièce recherchée (côté, référence, etc.)",
+        contact: "E-mail ou WhatsApp",
+        hint: "Laissez votre e-mail ou WhatsApp et nous reviendrons vers vous avec prix et disponibilité.",
+        submit: "Envoyer la demande",
+        uploading: "Téléchargement en cours...",
+        uploadSuccess: "Fichier téléchargé avec succès",
+        uploadError: "Échec du téléchargement",
+        thankYouTitle: "Merci !",
+        thankYouMsg: "Nous vous contacterons bientôt avec le prix et la disponibilité.",
+        whyTitle: "Pourquoi nous choisir",
+        whySub: "Grâce à notre réseau, trouver des pièces d'occasion devient rapide et simple.",
+        find: "Nous la trouvons pour vous",
+        findText: "Vous ne trouvez pas la pièce ? Nous la cherchons dans notre réseau.",
+        fast: "Réponse rapide",
+        fastText: "Disponibilité et prix en moins de 24h.",
+        price: "Prix compétitifs",
+        priceText: "Accès à des pièces d'occasion à des prix alignés sur le marché.",
+        network: "Large réseau de transporteurs",
+        networkText: "Nous travaillons avec un large réseau de transporteurs pour livrer des ateliers dans toute l'Europe.",
+        howTitle: "Comment ça marche",
+        howSub: "Obtenir la bonne pièce est aussi simple que 1, 2, 3.",
+        step1: "Envoyez-nous votre demande",
+        step1Text: "Indiquez la pièce, le VIN et les données principales du véhicule.",
+        step2: "Nous cherchons dans notre réseau",
+        step2Text: "Nous vérifions des milliers de références chez démolisseurs et fournisseurs.",
+        step3: "Recevez la pièce",
+        step3Text: "Nous vous contactons sur WhatsApp avec prix, délais et options de transport.",
+        aboutTitle: "À propos",
+        aboutText: "Sonver opère dans le secteur automobile depuis plus de 12 ans. Nous avons commencé comme spécialistes du sourcing technique et nous aidons aujourd'hui des ateliers dans toute l'Europe à trouver des pièces d'origine d'occasion rapidement et de manière fiable. Grâce à un vaste réseau de fournisseurs et de transporteurs, la bonne pièce arrive directement dans votre atelier.",
+        privacyTitle: "Confidentialité & RGPD",
+        privacyText: "Nous respectons pleinement le Règlement Général sur la Protection des Données (RGPD). Les informations que vous fournissez ne sont utilisées que pour traiter votre demande et fournir notre service. Aucune donnée n'est partagée avec des tiers sans votre consentement explicite."
+      },
+      it: {
+        live: "Disponibile · Risposta rapida",
+        headline: "I ricambi arrivano. I problemi spariscono.",
+        sub: "Ricambi originali usati consegnati direttamente in officina.",
+        company: "Officina o azienda",
+        address: "Indirizzo officina (via, città, isola)",
+        model: "Marca e modello",
+        vin: "VIN (numero di telaio)",
+        part: "Ricambio richiesto (lato, riferimento, ecc.)",
+        contact: "Email o WhatsApp",
+        hint: "Lascia la tua email o WhatsApp – ti ricontattiamo con prezzo e disponibilità.",
+        submit: "Invia richiesta",
+        uploading: "Caricamento file...",
+        uploadSuccess: "File caricato con successo",
+        uploadError: "Caricamento fallito",
+        thankYouTitle: "Grazie!",
+        thankYouMsg: "Ti contatteremo a breve con prezzo e disponibilità.",
+        whyTitle: "Perché sceglierci",
+        whySub: "Grazie alla nostra rete, trovare ricambi usati è rapido e semplice.",
+        find: "La troviamo noi per te",
+        findText: "Non trovi il ricambio? Lo cerchiamo nella nostra rete.",
+        fast: "Risposta rapida",
+        fastText: "Disponibilità e prezzo in meno di 24 ore.",
+        price: "Prezzi competitivi",
+        priceText: "Accesso a ricambi usati con prezzi in linea col mercato.",
+        network: "Ampia rete di trasportatori",
+        networkText: "Lavoriamo con una rete ampia di trasportatori per consegnare alle officine in tutta Europa.",
+        howTitle: "Come funziona",
+        howSub: "Ottenere il ricambio giusto è facile come 1, 2, 3.",
+        step1: "Inviaci la tua richiesta",
+        step1Text: "Indica il ricambio, il VIN e i dati principali del veicolo.",
+        step2: "Cerchiamo nella nostra rete",
+        step2Text: "Controlliamo migliaia di riferimenti presso demolitori e fornitori.",
+        step3: "Ricevi il ricambio",
+        step3Text: "Ti contattiamo su WhatsApp con prezzo, tempi e opzioni di trasporto.",
+        aboutTitle: "Chi siamo",
+        aboutText: "Sonver opera nel settore automotive da oltre 12 anni. Siamo nati come specialisti nel sourcing tecnico e oggi aiutiamo officine in tutta Europa a trovare ricambi originali usati in modo rapido e affidabile. Grazie alla nostra ampia rete di fornitori e trasportatori, il ricambio giusto arriva direttamente in officina.",
+        privacyTitle: "Privacy & GDPR",
+        privacyText: "Rispettiamo pienamente il Regolamento Generale sulla Protezione dei Dati (GDPR). Utilizziamo i dati forniti esclusivamente per rispondere alla tua richiesta e fornire il nostro servizio. Non condividiamo le informazioni con terzi senza il tuo consenso esplicito."
+      },
+      pt: {
+        live: "Disponível · Resposta rápida",
+        headline: "As peças chegam. Os problemas desaparecem.",
+        sub: "Peças usadas originais entregues diretamente à oficina.",
+        company: "Oficina ou empresa",
+        address: "Morada da oficina (rua, cidade, ilha)",
+        model: "Marca e modelo",
+        vin: "VIN (número de chassis)",
+        part: "Peça necessária (lado, referência, etc.)",
+        contact: "Email ou WhatsApp",
+        hint: "Deixe o seu email ou WhatsApp e entraremos em contacto com preço e disponibilidade.",
+        submit: "Enviar pedido",
+        uploading: "A carregar ficheiro...",
+        uploadSuccess: "Ficheiro carregado com sucesso",
+        uploadError: "Falha no carregamento",
+        thankYouTitle: "Obrigado!",
+        thankYouMsg: "Entraremos em contacto em breve com preço e disponibilidade.",
+        whyTitle: "Por que escolher-nos",
+        whySub: "A nossa rede torna rápida e simples a procura de peças usadas.",
+        find: "Nós encontramos por si",
+        findText: "Não encontra a peça? Procuramos na nossa rede.",
+        fast: "Resposta rápida",
+        fastText: "Disponibilidade e preço em menos de 24h.",
+        price: "Preços competitivos",
+        priceText: "Acesso a peças usadas com preços alinhados ao mercado.",
+        network: "Ampla rede de transportadoras",
+        networkText: "Trabalhamos com uma ampla rede de transportadoras para entregar a oficinas em toda a Europa.",
+        howTitle: "Como funciona",
+        howSub: "Conseguir a peça certa é tão simples quanto 1, 2, 3.",
+        step1: "Envie-nos o seu pedido",
+        step1Text: "Indique a peça, o VIN e os dados principais do veículo.",
+        step2: "Pesquisamos na nossa rede",
+        step2Text: "Verificamos milhares de referências em sucateiros e fornecedores.",
+        step3: "Receba a peça",
+        step3Text: "Entramos em contacto via WhatsApp com preço, prazo e opções de transporte.",
+        aboutTitle: "Sobre nós",
+        aboutText: "A Sonver atua no setor automóvel há mais de 12 anos. Começámos como especialistas em sourcing técnico e hoje ajudamos oficinas em toda a Europa a encontrar peças originais usadas de forma rápida e fiável. Com a nossa ampla rede de fornecedores e transportadoras, a peça certa chega diretamente à sua oficina.",
+        privacyTitle: "Privacidade & RGPD",
+        privacyText: "Cumprimos integralmente o Regulamento Geral de Proteção de Dados (RGPD). Utilizamos os dados fornecidos apenas para responder ao seu pedido e prestar o nosso serviço. Não partilhamos as suas informações com terceiros sem o seu consentimento explícito."
+      }
+    };
 
-    function setLang(lang) {
-      currentLang = lang;
+    let currentLang = 'es';
 
-      document.querySelectorAll("[data-lang]").forEach((el) => {
-        el.style.display = el.getAttribute("data-lang") === lang ? "" : "none";
-      });
-
-      document.querySelectorAll("[data-lang-btn]").forEach((btn) => {
-        btn.classList.toggle("active", btn.getAttribute("data-lang-btn") === lang);
-      });
+    // Detect mobile device
+    function isMobile() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 
-    // делаем функцию доступной из HTML
-    window.setLang = setLang;
+    // Update UI text based on language
+    function updateTexts() {
+      const t = translations[currentLang];
+      
+      // Form elements
+      document.querySelector('.live-text').textContent = t.live;
+      document.querySelector('.headline').textContent = t.headline;
+      document.querySelector('.sub').textContent = t.sub;
+      document.getElementById('company').placeholder = t.company;
+      document.getElementById('address').placeholder = t.address;
+      document.getElementById('model').placeholder = t.model;
+      document.getElementById('vin').placeholder = t.vin;
+      document.getElementById('part').placeholder = t.part;
+      document.getElementById('contact').placeholder = t.contact;
+      document.querySelector('.hint').textContent = t.hint;
+      document.querySelector('.btn-text').textContent = t.submit;
 
-    // автоопределение языка
-    (function initLang() {
-      const nav = (navigator.language || "es").slice(0, 2).toLowerCase();
-      const supported = ["es", "en", "de", "lt", "fr", "it", "pt"];
-      const initial = supported.includes(nav) ? nav : "es";
-      setLang(initial);
-    })();
+      // Section titles and content
+      document.querySelectorAll('.section-title')[0].textContent = t.whyTitle;
+      document.querySelectorAll('.section-sub')[0].textContent = t.whySub;
+      
+      const cards = document.querySelectorAll('.cards')[0].querySelectorAll('.card');
+      cards[0].querySelector('h3').textContent = t.find;
+      cards[0].querySelector('p').textContent = t.findText;
+      cards[1].querySelector('h3').textContent = t.fast;
+      cards[1].querySelector('p').textContent = t.fastText;
+      cards[2].querySelector('h3').textContent = t.price;
+      cards[2].querySelector('p').textContent = t.priceText;
+      cards[3].querySelector('h3').textContent = t.network;
+      cards[3].querySelector('p').textContent = t.networkText;
 
-    const form = document.getElementById("sonver-form");
+      document.querySelectorAll('.section-title')[1].textContent = t.howTitle;
+      document.querySelectorAll('.section-sub')[1].textContent = t.howSub;
+      
+      const steps = document.querySelectorAll('.step');
+      steps[0].querySelector('h3').textContent = t.step1;
+      steps[0].querySelector('p').textContent = t.step1Text;
+      steps[1].querySelector('h3').textContent = t.step2;
+      steps[1].querySelector('p').textContent = t.step2Text;
+      steps[2].querySelector('h3').textContent = t.step3;
+      steps[2].querySelector('p').textContent = t.step3Text;
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
+      document.querySelectorAll('.section-title')[2].textContent = t.aboutTitle;
+      document.querySelector('.about-text').textContent = t.aboutText;
+      
+      document.querySelectorAll('.section-title')[3].textContent = t.privacyTitle;
+      document.querySelector('.privacy-text').textContent = t.privacyText;
+    }
 
-      function getValue(field) {
-        const el = document.querySelector(
-          `[data-field="${field}"][data-lang="${currentLang}"]`
-        );
-        return el ? el.value.trim() : "";
+    // Set language
+    function setLanguage(lang) {
+      currentLang = lang;
+      
+      // Update active button
+      document.querySelectorAll('.lang-switch button').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+      
+      updateTexts();
+      localStorage.setItem('lang', lang);
+    }
+
+    // Initialize language
+    function initLanguage() {
+      const saved = localStorage.getItem('lang');
+      const browserLang = navigator.language.slice(0, 2).toLowerCase();
+      const supported = ['es', 'en', 'de', 'lt', 'fr', 'it', 'pt'];
+      
+      let lang = 'es';
+      if (saved && supported.includes(saved)) {
+        lang = saved;
+      } else if (supported.includes(browserLang)) {
+        lang = browserLang;
       }
+      
+      setLanguage(lang);
+    }
 
-      const company = getValue("company");
-      const address = getValue("address");
-      const model = getValue("model");
-      const vin = getValue("vin");
-      const part = getValue("part");
-      const contact = getValue("contact");
+    // Language button handlers
+    document.querySelectorAll('.lang-switch button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setLanguage(btn.getAttribute('data-lang'));
+      });
+    });
 
-      // --- IP address ---
-      let clientIp = "unknown";
+    // Form submission handler
+    const form = document.getElementById('sonver-form');
+    const uploadStatus = document.getElementById('uploadStatus');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      
+      const t = translations[currentLang];
+      
+      // Get form values
+      const company = document.getElementById('company').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const model = document.getElementById('model').value.trim();
+      const vin = document.getElementById('vin').value.trim();
+      const part = document.getElementById('part').value.trim();
+      const contact = document.getElementById('contact').value.trim();
+      
+      // Get IP address
+      let clientIp = 'unknown';
       try {
-        const res = await fetch("https://api.ipify.org?format=json");
-        const data = await res.json();
-        if (data && data.ip) clientIp = data.ip;
-      } catch (e) {
-        clientIp = "unavailable";
+        const ipResponse = await fetch('https://api.ipify.org?format=json', { timeout: 3000 });
+        const ipData = await ipResponse.json();
+        clientIp = ipData.ip || 'unavailable';
+      } catch (error) {
+        console.log('IP fetch failed:', error);
+        clientIp = 'unavailable';
       }
-
-      // --- FILE UPLOAD ---
-      let fileUrl = "no_file";
-      const fileInput = document.querySelector('[data-field="file"]');
-      if (fileInput && fileInput.files.length > 0) {
+      
+      // Handle file upload
+      let fileUrl = 'no_file';
+      const fileInput = document.getElementById('file');
+      
+      if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        
         try {
-          const file = fileInput.files[0];
-          const fileRef = ref(storage, "uploads/" + Date.now() + "_" + file.name);
-          await uploadBytes(fileRef, file);
-          fileUrl = await getDownloadURL(fileRef);
-        } catch (e) {
-          fileUrl = "upload_failed";
+          // Show upload status
+          uploadStatus.textContent = t.uploading;
+          uploadStatus.className = 'upload-status uploading';
+          uploadStatus.style.display = 'block';
+          
+          // Create unique filename
+          const timestamp = Date.now();
+          const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+          const fileName = `uploads/${timestamp}_${safeName}`;
+          
+          // Upload to Firebase
+          const storageRef = ref(storage, fileName);
+          const snapshot = await uploadBytes(storageRef, file);
+          fileUrl = await getDownloadURL(snapshot.ref);
+          
+          // Show success
+          uploadStatus.textContent = t.uploadSuccess;
+          uploadStatus.className = 'upload-status success';
+          
+        } catch (error) {
+          console.error('Upload error:', error);
+          uploadStatus.textContent = t.uploadError;
+          uploadStatus.className = 'upload-status error';
+          fileUrl = 'upload_failed';
         }
       }
-
+      
+      // Build WhatsApp message
       const timestamp = new Date().toISOString();
       const pageUrl = window.location.href;
+      
+      const message = `New incoming request for Sonver:
 
-      const message =
-        "New incoming request for Sonver:\n\n" +
-        "Company / Workshop: " + company + "\n" +
-        "Address: " + address + "\n" +
-        "Make & Model: " + model + "\n" +
-        "VIN: " + vin + "\n" +
-        "Requested part: " + part + "\n" +
-        "Contact (email / WhatsApp): " + contact + "\n\n" +
-        "File: " + fileUrl + "\n" +
-        "Language: " + currentLang + "\n" +
-        "Page: " + pageUrl + "\n" +
-        "Timestamp: " + timestamp + "\n" +
-        "Client IP: " + clientIp + "\n";
+Company / Workshop: ${company}
+Address: ${address}
+Make & Model: ${model}
+VIN: ${vin}
+Requested part: ${part}
+Contact (email / WhatsApp): ${contact}
 
-      const encoded = encodeURIComponent(message);
-      window.open("https://wa.me/37065959123?text=" + encoded, "_blank");
-
-      // Thank-you UI
-      form.style.display = "none";
-      const thx = document.createElement("div");
-      thx.className = "thankyou";
-      thx.innerHTML = `
-        <h2 data-lang="es">¡Gracias! Te contactaremos en breve.</h2>
-        <h2 data-lang="en" style="display:none;">Thank you! We will contact you shortly.</h2>
-        <h2 data-lang="de" style="display:none;">Danke! Wir melden uns in Kürze.</h2>
-        <h2 data-lang="lt" style="display:none;">Ačiū! Netrukus susisieksime.</h2>
-        <h2 data-lang="fr" style="display:none;">Merci ! Nous vous contacterons bientôt.</h2>
-        <h2 data-lang="it" style="display:none;">Grazie! Ti contatteremo a breve.</h2>
-        <h2 data-lang="pt" style="display:none;">Obrigado! Entraremos em contacto em breve.</h2>
-      `;
-      form.parentElement.appendChild(thx);
-      setLang(currentLang);
+File: ${fileUrl}
+Language: ${currentLang.toUpperCase()}
+Page: ${pageUrl}
+Timestamp: ${timestamp}
+Client IP: ${clientIp}`;
+      
+      // Send to WhatsApp
+      const whatsappNumber = '37065959123';
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      
+      // Open WhatsApp (mobile-friendly)
+      if (isMobile()) {
+        window.location.href = whatsappUrl;
+      } else {
+        window.open(whatsappUrl, '_blank');
+      }
+      
+      // Show thank you message
+      setTimeout(() => {
+        form.style.display = 'none';
+        const thankYou = document.createElement('div');
+        thankYou.className = 'thankyou fade';
+        thankYou.innerHTML = `
+          <h3>${t.thankYouTitle}</h3>
+          <p>${t.thankYouMsg}</p>
+        `;
+        form.parentElement.appendChild(thankYou);
+      }, 1000);
     });
+
+    // Initialize on load
+    initLanguage();
   </script>
 </body>
 </html>
