@@ -21,8 +21,9 @@
       min-height: 100vh;
       position: relative;
       background:
-        radial-gradient(circle at 18% 18%, rgba(36, 94, 150, 0.14), transparent 42%),
-        radial-gradient(circle at 78% 28%, rgba(61, 86, 112, 0.12), transparent 44%);
+        radial-gradient(circle at 20% 18%, rgba(22, 81, 137, 0.18), transparent 42%),
+        radial-gradient(circle at 76% 26%, rgba(17, 46, 80, 0.16), transparent 44%),
+        linear-gradient(180deg, rgba(5, 22, 45, 0.78) 0%, rgba(9, 36, 67, 0.92) 100%);
     }
 
     /* BACKGROUND WITH OVERLAY */
@@ -47,7 +48,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, rgba(3, 19, 43, 0.55) 0%, rgba(6, 20, 43, 0.65) 100%);
+      background: linear-gradient(185deg, rgba(7, 23, 46, 0.62) 0%, rgba(9, 35, 68, 0.68) 60%, rgba(6, 26, 53, 0.78) 100%);
     }
 
     /* Fade Animation */
@@ -72,17 +73,17 @@
     .lang-switch {
       display: flex;
       gap: 4px;
-      background: rgba(247, 249, 252, 0.92);
+      background: rgba(246, 250, 253, 0.92);
       padding: 6px 9px;
       border-radius: 999px;
-      border: 1px solid rgba(43, 90, 142, 0.18);
-      box-shadow: 0 10px 22px rgba(21, 56, 98, 0.18);
+      border: 1px solid rgba(30, 84, 136, 0.2);
+      box-shadow: 0 10px 22px rgba(16, 50, 92, 0.2);
       backdrop-filter: blur(10px);
     }
 
     .lang-switch button {
       border: none;
-      background: #ecf2f9;
+      background: #e8f0f8;
       border-radius: 999px;
       padding: 4px 10px;
       cursor: pointer;
@@ -93,21 +94,21 @@
     }
 
     .lang-switch button.active {
-      background: #1c5d9c;
+      background: #1e6fb6;
       color: #ffffff;
       transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(28, 93, 156, 0.28);
+      box-shadow: 0 4px 12px rgba(30, 111, 182, 0.28);
     }
 
     .lang-switch button:hover:not(.active) {
-      background: #e2e8f0;
+      background: #e1e8f0;
     }
 
     /* Hero Section */
     .hero {
       max-width: 950px;
-      background: rgba(247, 250, 253, 0.94);
-      border: 2px solid rgba(28, 93, 156, 0.09);
+      background: rgba(245, 249, 253, 0.95);
+      border: 2px solid rgba(32, 92, 150, 0.14);
       border-radius: 12px;
       padding: 38px;
       margin: 80px auto 40px auto;
@@ -120,30 +121,30 @@
 
     .left {
       padding-right: 25px;
-      border-right: 2px solid rgba(28, 93, 156, 0.12);
+      border-right: 2px solid rgba(32, 92, 150, 0.16);
     }
 
     .brand {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: rgba(33, 84, 132, 0.1);
+      background: rgba(28, 88, 144, 0.12);
       padding: 10px 14px;
       border-radius: 14px;
-      border: 1px solid rgba(33, 84, 132, 0.14);
+      border: 1px solid rgba(23, 72, 122, 0.16);
     }
 
     .logo-img {
-      width: 120px;
+      width: 124px;
       height: auto;
       display: block;
-      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+      filter: drop-shadow(0 8px 14px rgba(2, 15, 34, 0.22));
     }
 
     .logo-text {
       font-size: 32px;
       font-weight: 800;
-      color: #1c5d9c;
+      color: #0f2f55;
       letter-spacing: -0.5px;
       text-transform: uppercase;
     }
@@ -153,12 +154,12 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #e3edf8;
+      background: #e6eff8;
       padding: 6px 14px;
       border-radius: 20px;
-      border: 1px solid rgba(28, 93, 156, 0.2);
+      border: 1px solid rgba(31, 90, 147, 0.26);
       font-size: 12px;
-      color: #1c5d9c;
+      color: #185083;
     }
 
     .dot {
@@ -177,17 +178,17 @@
 
     .headline {
       margin-top: 20px;
-      font-size: 25px;
-      font-weight: 750;
-      line-height: 1.3;
-      color: #0f172a;
+      font-size: 26px;
+      font-weight: 760;
+      line-height: 1.32;
+      color: #0b1f3d;
     }
 
     .sub {
       margin-top: 12px;
       font-size: 14px;
       line-height: 1.6;
-      color: #4b5563;
+      color: #3f4a5a;
     }
 
     .form-box {
@@ -203,8 +204,8 @@
       width: 100%;
       padding: 11px 14px;
       font-size: 14px;
-      border: 2px solid #d3deeb;
-      background: #f4f7fb;
+      border: 2px solid #cdd9e8;
+      background: #f5f7fb;
       border-radius: 8px;
       outline: none;
       color: #1b1f23;
@@ -213,8 +214,8 @@
     }
 
     input:focus, textarea:focus {
-      border-color: #1c5d9c;
-      box-shadow: 0 0 0 3px rgba(28, 93, 156, 0.12);
+      border-color: #1e6fb6;
+      box-shadow: 0 0 0 3px rgba(30, 111, 182, 0.16);
       background: #ffffff;
     }
 
@@ -232,7 +233,7 @@
 
     .hint {
       font-size: 11px;
-      color: #5b6675;
+      color: #4d5867;
       margin-top: -8px;
       margin-bottom: 4px;
     }
@@ -266,7 +267,7 @@
 
     button[type="submit"] {
       padding: 13px;
-      background: linear-gradient(135deg, #1c5d9c 0%, #2a6fb3 100%);
+      background: linear-gradient(135deg, #1e6fb6 0%, #184b85 100%);
       color: white;
       border: none;
       border-radius: 10px;
@@ -279,9 +280,9 @@
     }
 
     button[type="submit"]:hover:not(:disabled) {
-      background: linear-gradient(135deg, #2a6fb3 0%, #1c5d9c 100%);
+      background: linear-gradient(135deg, #1f7bc8 0%, #17406c 100%);
       transform: translateY(-1px);
-      box-shadow: 0 6px 14px rgba(32, 94, 154, 0.32);
+      box-shadow: 0 8px 18px rgba(22, 79, 135, 0.32);
     }
 
     button[type="submit"]:disabled {
@@ -332,38 +333,38 @@
     }
 
     .card, .step {
-      background: rgba(246, 249, 253, 0.92);
-      border: 2px solid rgba(28, 93, 156, 0.08);
-      border-radius: 12px;
+      background: rgba(246, 250, 253, 0.95);
+      border: 1px solid rgba(23, 64, 104, 0.1);
+      border-radius: 14px;
       padding: 24px 20px;
       width: 250px;
       text-align: center;
-      box-shadow: 0 12px 24px rgba(6, 23, 44, 0.18);
-      transition: transform 0.2s;
+      box-shadow: 0 14px 28px rgba(4, 20, 42, 0.18);
+      transition: transform 0.2s, box-shadow 0.2s;
       backdrop-filter: blur(10px);
     }
 
     .card:hover, .step:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
     }
 
     .icon {
       width: 40px;
       height: 40px;
       margin: 0 auto 16px;
-      color: #1c5d9c;
+      color: #1e6fb6;
     }
 
     .card h3, .step h3 {
       font-size: 17px;
       margin-bottom: 10px;
-      color: #0f172a;
+      color: #0b1f3d;
     }
 
     .card p, .step p {
       font-size: 13px;
-      color: #4b5563;
+      color: #3f4a5a;
       line-height: 1.5;
     }
 
@@ -373,7 +374,7 @@
     }
 
     .step-number {
-      background: #1c5d9c;
+      background: #1e6fb6;
       color: white;
       width: 36px;
       height: 36px;
@@ -386,7 +387,7 @@
       top: -18px;
       left: 50%;
       transform: translateX(-50%);
-      box-shadow: 0 4px 8px rgba(28, 93, 156, 0.25);
+      box-shadow: 0 4px 10px rgba(18, 71, 118, 0.3);
     }
 
     /* About / Privacy */
@@ -397,8 +398,8 @@
     }
 
     .info-card {
-      background: rgba(246, 249, 253, 0.92);
-      border: 2px solid rgba(28, 93, 156, 0.08);
+      background: rgba(246, 250, 253, 0.95);
+      border: 1px solid rgba(23, 64, 104, 0.1);
       border-radius: 12px;
       padding: 28px;
       box-shadow: 0 10px 30px rgba(6, 23, 44, 0.18);
@@ -412,19 +413,19 @@
     }
 
     .privacy-block .info-card {
-      background: rgba(237, 242, 248, 0.88);
-      border-color: rgba(28, 93, 156, 0.06);
+      background: rgba(232, 240, 248, 0.88);
+      border-color: rgba(23, 64, 104, 0.08);
     }
 
     .privacy-block .privacy-text {
       font-size: 12px;
-      color: #4b5563;
+      color: #3f4a5a;
       opacity: 0.7;
     }
 
     /* Footer */
     footer {
-      background: rgba(8, 47, 94, 0.94);
+      background: rgba(7, 33, 62, 0.94);
       color: white;
       padding: 30px 20px;
       text-align: center;
@@ -503,7 +504,7 @@
   <div class="hero fade">
     <div class="left">
       <div class="brand">
-        <img src="logo.png" onerror="this.onerror=null;this.src='logo.svg';" alt="Sonver logo" class="logo-img" />
+        <img src="logo.png" alt="Sonver logo" class="logo-img" />
         <div class="logo-text">SONVER</div>
       </div>
 
@@ -546,34 +547,37 @@
 
     <div class="cards">
       <div class="card">
-        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.5c-3.59 0-6.5 2.86-6.5 6.4 0 4.8 6.5 11 6.5 11s6.5-6.2 6.5-11c0-3.54-2.91-6.4-6.5-6.4Zm0 9a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z"/>
+          <path d="M19.5 19.5 17 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
         </svg>
         <h3>La encontramos por ti</h3>
         <p>No encuentras la pieza? La buscamos dentro de nuestra red.</p>
       </div>
 
       <div class="card">
-        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 3.5c-4.7 0-8.5 3.76-8.5 8.4 0 4.65 3.8 8.4 8.5 8.4 1.18 0 2.3-.23 3.32-.65l2.08.75a1 1 0 0 0 1.3-1.08l-.26-1.56a8.17 8.17 0 0 0 2.06-5.86c0-4.64-3.8-8.4-8.5-8.4Zm-.75 3.1a1 1 0 0 1 1.5.86v3.7l1.82-1.1a1 1 0 1 1 1.02 1.72l-3.2 1.93a1 1 0 0 1-1.54-.85Z"/>
         </svg>
         <h3>Respuesta rápida</h3>
         <p>Disponibilidad y precio en menos de 24 horas.</p>
       </div>
 
       <div class="card">
-        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd"/>
+        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M13.4 4.4a2 2 0 0 0-1.4-.6H6.6A2.6 2.6 0 0 0 4 6.4v5.4c0 .53.21 1.04.59 1.41l6.6 6.54a2 2 0 0 0 2.82-.03l3.99-4a2 2 0 0 0 0-2.83Zm-4.9 5.85a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Z"/>
+          <path d="M19.5 11.5 13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         <h3>Precios competitivos</h3>
         <p>Acceso a piezas usadas con precios ajustados al mercado.</p>
       </div>
 
       <div class="card">
-        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
-          <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
+        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M15 6.5H4.8A1.8 1.8 0 0 0 3 8.3v6.4c0 .99.81 1.8 1.8 1.8h1.04a2.7 2.7 0 0 1 5.32 0H12a2 2 0 0 0 2-2V8.3c0-.99-.8-1.8-1.8-1.8Z"/>
+          <path d="M14 10.2h4.07a1.6 1.6 0 0 1 1.3.67l1.36 1.9a1.6 1.6 0 0 1 .27.88v3.05a1.6 1.6 0 0 1-1.6 1.6h-.83a2.4 2.4 0 1 1-4.8 0H11.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M8.7 17.3a2.4 2.4 0 1 1-4.8 0 2.4 2.4 0 0 1 4.8 0Z"/>
+          <path d="M20.6 17.3a2.4 2.4 0 1 1-4.8 0 2.4 2.4 0 0 1 4.8 0Z"/>
         </svg>
         <h3>Red amplia</h3>
         <p>Trabajamos con una red amplia de transportistas para entregas a talleres en toda Europa.</p>
@@ -589,8 +593,10 @@
     <div class="cards">
       <div class="step">
         <div class="step-number">1</div>
-        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clip-rule="evenodd"/>
+        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M9.5 4.5h5a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2Z"/>
+          <path d="M10 8h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M9 12.5 11 14l4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <h3>Envíanos tu solicitud</h3>
         <p>Indica la pieza, el VIN y los datos básicos del vehículo.</p>
@@ -598,9 +604,10 @@
 
       <div class="step">
         <div class="step-number">2</div>
-        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z"/>
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z" clip-rule="evenodd"/>
+        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="12" cy="12" r="1.6"/>
+          <path d="M12 5v2.5M12 16.5V19M5 12h2.5M16.5 12H19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
         </svg>
         <h3>Buscamos en nuestra red</h3>
         <p>Revisamos miles de referencias en desguaces y proveedores.</p>
@@ -608,9 +615,10 @@
 
       <div class="step">
         <div class="step-number">3</div>
-        <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
-          <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7h1a1 1 0 011 1v6.05A2.5 2.5 0 0013.05 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
+        <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M5.8 8.5 12 5l6.2 3.5v6.8L12 18.8 5.8 15.3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M9.5 12.25 11.4 14l3.4-3.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 9v6.5c0 1 .8 1.8 1.8 1.8h12.4c1 0 1.8-.8 1.8-1.8V9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         </svg>
         <h3>Recibe la pieza</h3>
         <p>Te contactamos por WhatsApp con precio, plazo y opciones de transporte.</p>
@@ -960,7 +968,7 @@
       document.getElementById('part').placeholder = t.part;
       document.getElementById('contact').placeholder = t.contact;
       document.querySelector('.hint').textContent = t.hint;
-      document.querySelector('button[type=\"submit\"] .btn-text').textContent = t.submit;
+      document.querySelector('button[type="submit"] .btn-text').textContent = t.submit;
 
       document.querySelectorAll('.section-title')[0].textContent = t.whyTitle;
       document.querySelectorAll('.section-title')[1].textContent = t.howTitle;
@@ -1054,7 +1062,7 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const submitBtn = form.querySelector('button[type=\"submit\"]');
+      const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
 
       const t = translations[currentLang];
@@ -1067,8 +1075,8 @@
       const part = document.getElementById('part').value.trim();
       const contact = contactInput.value.trim();
 
-      const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-      const phoneRegex = /^[+]?[(]?[0-9\\s.-]{6,}$/;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^[+]?[(]?[0-9\s.-]{6,}$/;
 
       if (!emailRegex.test(contact) && !phoneRegex.test(contact)) {
         contactInput.classList.add('invalid-input');
@@ -1141,7 +1149,7 @@ Timestamp: ${timestamp}
 Client IP: ${clientIp}`;
 
       // Send to WhatsApp
-      const whatsappNumber = '37065959123';
+      const whatsappNumber = '34631577821';
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
       // Open WhatsApp (works on both mobile and desktop without pop-up blockers)
@@ -1157,8 +1165,11 @@ Client IP: ${clientIp}`;
           <p>${t.thankYouMsg}</p>
         `;
         form.parentElement.appendChild(thankYou);
-      }, 200);
+      }, 1000);
     });
+
+    // Initialize on load
+    initLanguage();
   </script>
 </body>
 </html>
