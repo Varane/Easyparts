@@ -52,7 +52,7 @@
       opacity: 0;
       animation: fadein 0.8s ease forwards;
     }
-    
+
     @keyframes fadein {
       to { opacity: 1; transform: translateY(0); }
       from { opacity: 0; transform: translateY(10px); }
@@ -65,7 +65,7 @@
       right: 14px;
       z-index: 100;
     }
-    
+
     .lang-switch {
       display: flex;
       gap: 4px;
@@ -76,7 +76,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       backdrop-filter: blur(10px);
     }
-    
+
     .lang-switch button {
       border: none;
       background: #f6f8fa;
@@ -88,13 +88,13 @@
       transition: all 0.15s;
       font-weight: 500;
     }
-    
+
     .lang-switch button.active {
       background: #0057b7;
       color: #ffffff;
       transform: scale(1.05);
     }
-    
+
     .lang-switch button:hover:not(.active) {
       background: #e1e4e8;
     }
@@ -102,8 +102,8 @@
     /* Hero Section */
     .hero {
       max-width: 950px;
-      background: rgba(255, 255, 255, 0.98);
-      border: 3px solid #d9e1e8;
+      background: rgba(245, 247, 249, 0.98);
+      border: 3px solid #c6d0da;
       border-radius: 12px;
       padding: 35px;
       margin: 80px auto 40px auto;
@@ -116,7 +116,7 @@
 
     .left {
       padding-right: 25px;
-      border-right: 2px solid #d9e1e8;
+      border-right: 2px solid #c6d0da;
     }
 
     .logo {
@@ -146,7 +146,7 @@
       border-radius: 50%;
       animation: pulse 2s infinite;
     }
-    
+
     @keyframes pulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
       50% { box-shadow: 0 0 0 6px rgba(76, 175, 80, 0); }
@@ -222,19 +222,19 @@
       border-radius: 4px;
       margin-top: -8px;
     }
-    
+
     .upload-status.uploading {
       background: #fff3cd;
       color: #856404;
       border: 1px solid #ffc107;
     }
-    
+
     .upload-status.success {
       background: #d4edda;
       color: #155724;
       border: 1px solid #28a745;
     }
-    
+
     .upload-status.error {
       background: #f8d7da;
       color: #721c24;
@@ -260,7 +260,7 @@
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(0, 87, 183, 0.3);
     }
-    
+
     button[type="submit"]:disabled {
       opacity: 0.6;
       cursor: not-allowed;
@@ -273,7 +273,7 @@
       background: #eafaf1;
       text-align: center;
     }
-    
+
     .thankyou h3 {
       color: #27ae60;
       margin-bottom: 8px;
@@ -309,8 +309,8 @@
     }
 
     .card, .step {
-      background: rgba(255, 255, 255, 0.95);
-      border: 2px solid #d9e1e8;
+      background: rgba(240, 243, 247, 0.95);
+      border: 2px solid #c6d0da;
       border-radius: 12px;
       padding: 24px 20px;
       width: 250px;
@@ -319,7 +319,7 @@
       transition: transform 0.2s;
       backdrop-filter: blur(10px);
     }
-    
+
     .card:hover, .step:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
@@ -374,14 +374,14 @@
     }
 
     .info-card {
-      background: rgba(255, 255, 255, 0.95);
-      border: 2px solid #d9e1e8;
+      background: rgba(245, 247, 249, 0.95);
+      border: 2px solid #c6d0da;
       border-radius: 12px;
       padding: 28px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
       backdrop-filter: blur(10px);
     }
-    
+
     .info-card p {
       font-size: 15px;
       line-height: 1.6;
@@ -407,24 +407,24 @@
         padding: 25px;
         gap: 0;
       }
-      
+
       .left {
         padding-right: 0;
         padding-bottom: 20px;
         margin-bottom: 20px;
         border-right: none;
-        border-bottom: 2px solid #d9e1e8;
+        border-bottom: 2px solid #c6d0da;
       }
-      
+
       .form-box {
         padding-left: 0;
       }
-      
+
       .card, .step {
         width: 100%;
         max-width: 340px;
       }
-      
+
       h2.section-title {
         font-size: 24px;
       }
@@ -452,7 +452,7 @@
   <div class="hero fade">
     <div class="left">
       <div class="logo">SONVER</div>
-      
+
       <div class="live">
         <div class="dot"></div>
         <span class="live-text">Disponible · Respuesta rápida</span>
@@ -489,7 +489,7 @@
   <section class="fade">
     <h2 class="section-title">Por qué elegirnos</h2>
     <p class="section-sub">Hacemos que encontrar piezas usadas sea rápido y sencillo gracias a nuestra red.</p>
-    
+
     <div class="cards">
       <div class="card">
         <svg class="icon" fill="currentColor" viewBox="0 0 20 20">
@@ -531,7 +531,7 @@
   <section class="fade">
     <h2 class="section-title">Cómo funciona</h2>
     <p class="section-sub">Conseguir la pieza correcta es tan fácil como 1, 2, 3.</p>
-    
+
     <div class="cards">
       <div class="step">
         <div class="step-number">1</div>
@@ -769,7 +769,7 @@
         step3: "Gaukite dalį",
         step3Text: "Susisiekiame per WhatsApp su kaina, terminu ir transporto variantais.",
         aboutTitle: "Apie mus",
-        aboutText: "„Sonver" daugiau nei 12 metų dirba automobilių sektoriuje. Pradėjome kaip techninio tiekimo specialistai, o šiandien padedame servisams visoje Europoje greitai ir patikimai rasti originalias naudotas dalis. Dirbame su plačiu tiekėjų ir vežėjų tinklu, kad tinkama dalis atvyktų tiesiai į jūsų servisą.",
+        aboutText: "„Sonver” daugiau nei 12 metų dirba automobilių sektoriuje. Pradėjome kaip techninio tiekimo specialistai, o šiandien padedame servisams visoje Europoje greitai ir patikimai rasti originalias naudotas dalis. Dirbame su plačiu tiekėjų ir vežėjų tinklu, kad tinkama dalis atvyktų tiesiai į jūsų servisą.",
         privacyTitle: "Privatumas & GDPR",
         privacyText: "Visiškai laikomės Bendrojo duomenų apsaugos reglamento (GDPR). Jūsų pateikti duomenys naudojami tik atsakant į užklausą ir teikiant paslaugą. Duomenų tretiesiems asmenims neperduodame be aiškaus jūsų sutikimo."
       },
@@ -905,7 +905,7 @@
     // Update UI text based on language
     function updateTexts() {
       const t = translations[currentLang];
-      
+
       // Form elements
       document.querySelector('.live-text').textContent = t.live;
       document.querySelector('.headline').textContent = t.headline;
@@ -922,7 +922,7 @@
       // Section titles and content
       document.querySelectorAll('.section-title')[0].textContent = t.whyTitle;
       document.querySelectorAll('.section-sub')[0].textContent = t.whySub;
-      
+
       const cards = document.querySelectorAll('.cards')[0].querySelectorAll('.card');
       cards[0].querySelector('h3').textContent = t.find;
       cards[0].querySelector('p').textContent = t.findText;
@@ -935,7 +935,7 @@
 
       document.querySelectorAll('.section-title')[1].textContent = t.howTitle;
       document.querySelectorAll('.section-sub')[1].textContent = t.howSub;
-      
+
       const steps = document.querySelectorAll('.step');
       steps[0].querySelector('h3').textContent = t.step1;
       steps[0].querySelector('p').textContent = t.step1Text;
@@ -946,7 +946,7 @@
 
       document.querySelectorAll('.section-title')[2].textContent = t.aboutTitle;
       document.querySelector('.about-text').textContent = t.aboutText;
-      
+
       document.querySelectorAll('.section-title')[3].textContent = t.privacyTitle;
       document.querySelector('.privacy-text').textContent = t.privacyText;
     }
@@ -954,13 +954,14 @@
     // Set language
     function setLanguage(lang) {
       currentLang = lang;
-      
+
       // Update active button
       document.querySelectorAll('.lang-switch button').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
       });
-      
+
       updateTexts();
+      document.documentElement.setAttribute('lang', lang);
       localStorage.setItem('lang', lang);
     }
 
@@ -969,14 +970,14 @@
       const saved = localStorage.getItem('lang');
       const browserLang = navigator.language.slice(0, 2).toLowerCase();
       const supported = ['es', 'en', 'de', 'lt', 'fr', 'it', 'pt'];
-      
+
       let lang = 'es';
       if (saved && supported.includes(saved)) {
         lang = saved;
       } else if (supported.includes(browserLang)) {
         lang = browserLang;
       }
-      
+
       setLanguage(lang);
     }
 
@@ -993,12 +994,12 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.disabled = true;
-      
+
       const t = translations[currentLang];
-      
+
       // Get form values
       const company = document.getElementById('company').value.trim();
       const address = document.getElementById('address').value.trim();
@@ -1006,7 +1007,7 @@
       const vin = document.getElementById('vin').value.trim();
       const part = document.getElementById('part').value.trim();
       const contact = document.getElementById('contact').value.trim();
-      
+
       // Get IP address
       let clientIp = 'unknown';
       try {
@@ -1017,34 +1018,34 @@
         console.log('IP fetch failed:', error);
         clientIp = 'unavailable';
       }
-      
+
       // Handle file upload
       let fileUrl = 'no_file';
       const fileInput = document.getElementById('file');
-      
+
       if (fileInput.files.length > 0) {
         const file = fileInput.files[0];
-        
+
         try {
           // Show upload status
           uploadStatus.textContent = t.uploading;
           uploadStatus.className = 'upload-status uploading';
           uploadStatus.style.display = 'block';
-          
+
           // Create unique filename
           const timestamp = Date.now();
           const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
           const fileName = `uploads/${timestamp}_${safeName}`;
-          
+
           // Upload to Firebase
           const storageRef = ref(storage, fileName);
           const snapshot = await uploadBytes(storageRef, file);
           fileUrl = await getDownloadURL(snapshot.ref);
-          
+
           // Show success
           uploadStatus.textContent = t.uploadSuccess;
           uploadStatus.className = 'upload-status success';
-          
+
         } catch (error) {
           console.error('Upload error:', error);
           uploadStatus.textContent = t.uploadError;
@@ -1052,11 +1053,11 @@
           fileUrl = 'upload_failed';
         }
       }
-      
+
       // Build WhatsApp message
       const timestamp = new Date().toISOString();
       const pageUrl = window.location.href;
-      
+
       const message = `New incoming request for Sonver:
 
 Company / Workshop: ${company}
@@ -1071,18 +1072,14 @@ Language: ${currentLang.toUpperCase()}
 Page: ${pageUrl}
 Timestamp: ${timestamp}
 Client IP: ${clientIp}`;
-      
+
       // Send to WhatsApp
       const whatsappNumber = '37065959123';
       const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-      
-      // Open WhatsApp (mobile-friendly)
-      if (isMobile()) {
-        window.location.href = whatsappUrl;
-      } else {
-        window.open(whatsappUrl, '_blank');
-      }
-      
+
+      // Open WhatsApp (works on both mobile and desktop without pop-up blockers)
+      window.location.href = whatsappUrl;
+
       // Show thank you message
       setTimeout(() => {
         form.style.display = 'none';
