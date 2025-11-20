@@ -6,7 +6,7 @@
   <title>Sonver · Repuestos Usados</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjcyIiBoZWlnaHQ9IjcyIiByeD0iMTQiIGZpbGw9IiMwMDU3QjciLz4KPHBhdGggZD0iTTIwIDM2SDUyIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4=" />
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJub25lIj4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxMiIgZmlsbD0iIzBGMkY1NSIvPgogIDxyZWN0IHg9IjQiIHk9IjQiIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgcng9IjEwIiBmaWxsPSIjMTU1QTlDIi8+CiAgPHRleHQgeD0iMzIiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iSW50ZXIsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjRkZGRkZGIj5TPC90ZXh0Pgo8L3N2Zz4=" />
 
   <style>
     * {
@@ -529,8 +529,8 @@
         <input type="text" id="model" placeholder="Marca y modelo" required>
         <input type="text" id="vin" placeholder="VIN (número de bastidor)" required>
         <textarea id="part" placeholder="Pieza que necesitas (lado, referencia, etc.)" required></textarea>
-        <input type="text" id="contact" placeholder="Correo electrónico o WhatsApp" required autocomplete="on" inputmode="text" spellcheck="false">
-        <div class="hint">Déjanos tu email o WhatsApp y te contactamos con precio y disponibilidad.</div>
+        <input type="text" id="contact" placeholder="Tu contacto (email, teléfono o nota)" required autocomplete="on" inputmode="text" spellcheck="false">
+        <div class="hint">Deja cualquier dato de contacto y te respondemos con precio y disponibilidad.</div>
         <input type="file" id="file" accept="image/*,application/pdf">
         <div class="upload-status" id="uploadStatus"></div>
         <button type="submit">
@@ -671,8 +671,8 @@
         model: "Marca y modelo",
         vin: "VIN (número de bastidor)",
         part: "Pieza que necesitas (lado, referencia, etc.)",
-        contact: "Correo electrónico o WhatsApp",
-        hint: "Déjanos tu email o WhatsApp y te contactamos con precio y disponibilidad.",
+        contact: "Tu contacto (email, teléfono o nota)",
+        hint: "Deja cualquier dato de contacto y te respondemos con precio y disponibilidad.",
         contactError: "Introduce un correo o teléfono válido (WhatsApp incluido).",
         submit: "Enviar solicitud",
         uploading: "Subiendo archivo...",
@@ -712,8 +712,8 @@
         model: "Make and model",
         vin: "VIN (vehicle identification number)",
         part: "Part you need (side, reference, etc.)",
-        contact: "Email or WhatsApp",
-        hint: "Leave your email or WhatsApp and we'll get back with price and availability.",
+        contact: "Your contact (email, phone or note)",
+        hint: "Leave any contact detail and we'll reply with price and availability.",
         contactError: "Enter a valid email or phone/WhatsApp number.",
         submit: "Send request",
         uploading: "Uploading file...",
@@ -753,8 +753,8 @@
         model: "Marke und Modell",
         vin: "FIN / VIN (Fahrzeug-Ident.-Nr.)",
         part: "Benötigtes Teil (Seite, Referenz, etc.)",
-        contact: "E-Mail oder WhatsApp",
-        hint: "Hinterlassen Sie Ihre E-Mail oder WhatsApp – wir melden uns mit Preis und Verfügbarkeit.",
+        contact: "Ihr Kontakt (E-Mail, Telefon oder Notiz)",
+        hint: "Hinterlassen Sie einen beliebigen Kontakt – wir melden uns mit Preis und Verfügbarkeit.",
         contactError: "Bitte eine gültige E-Mail-Adresse oder Telefon-/WhatsApp-Nummer angeben.",
         submit: "Anfrage senden",
         uploading: "Datei wird hochgeladen...",
@@ -794,8 +794,8 @@
         model: "Markė ir modelis",
         vin: "VIN (kėbulo numeris)",
         part: "Reikalinga dalis (pusė, kodas ir pan.)",
-        contact: "El. paštas arba WhatsApp",
-        hint: "Palikite el. paštą arba WhatsApp – susisieksime dėl kainos ir galimybės.",
+        contact: "Jūsų kontaktas (el. paštas, telefonas ar žinutė)",
+        hint: "Palikite bet kokį kontaktą – atsiųsime kainą ir pasiūlymą.",
         contactError: "Įveskite galiojantį el. paštą arba telefono/WhatsApp numerį.",
         submit: "Siųsti užklausą",
         uploading: "Įkeliamas failas...",
@@ -835,8 +835,8 @@
         model: "Marque et modèle",
         vin: "VIN (numéro de châssis)",
         part: "Pièce recherchée (côté, référence, etc.)",
-        contact: "E-mail ou WhatsApp",
-        hint: "Laissez votre e-mail ou WhatsApp et nous reviendrons vers vous avec prix et disponibilité.",
+        contact: "Votre contact (e-mail, téléphone ou note)",
+        hint: "Laissez n'importe quel moyen de contact – nous revenons vers vous avec prix et dispo.",
         contactError: "Saisissez un e-mail ou un numéro de téléphone/WhatsApp valide.",
         submit: "Envoyer la demande",
         uploading: "Téléchargement en cours...",
@@ -876,8 +876,8 @@
         model: "Marca e modello",
         vin: "VIN (numero di telaio)",
         part: "Ricambio richiesto (lato, riferimento, ecc.)",
-        contact: "Email o WhatsApp",
-        hint: "Lascia la tua email o WhatsApp – ti ricontattiamo con prezzo e disponibilità.",
+        contact: "Il tuo contatto (email, telefono o nota)",
+        hint: "Lascia qualsiasi contatto – ti rispondiamo con prezzo e disponibilità.",
         contactError: "Inserisci un'email o un numero di telefono/WhatsApp valido.",
         submit: "Invia richiesta",
         uploading: "Caricamento file...",
@@ -917,8 +917,8 @@
         model: "Marca e modelo",
         vin: "VIN (número de chassis)",
         part: "Peça necessária (lado, referência, etc.)",
-        contact: "Email ou WhatsApp",
-        hint: "Deixe o seu email ou WhatsApp e entraremos em contacto com preço e disponibilidade.",
+        contact: "Seu contato (email, telefone ou nota)",
+        hint: "Deixe qualquer forma de contato e retornamos com preço e disponibilidade.",
         contactError: "Insira um email ou número de telefone/WhatsApp válido.",
         submit: "Enviar pedido",
         uploading: "A carregar ficheiro...",
@@ -953,11 +953,52 @@
 
     let currentLang = 'es';
 
-    function setLanguage(lang) {
-      currentLang = lang;
+    // Upload helper with minimal feedback
+    const uploadStatus = document.getElementById('uploadStatus');
 
-      const t = translations[lang];
+    function uploadFileWithProgress(file, t) {
+      return new Promise((resolve, reject) => {
+        uploadStatus.style.display = 'inline-block';
+        uploadStatus.textContent = t.uploading;
+        uploadStatus.className = 'upload-status uploading';
 
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', UPLOAD_ENDPOINT, true);
+        xhr.timeout = 10000;
+
+        xhr.onload = () => {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            try {
+              const response = JSON.parse(xhr.responseText);
+              resolve(response?.data?.url ?? 'upload_unknown');
+            } catch (error) {
+              reject(new Error('invalid_response'));
+            }
+          } else {
+            reject(new Error('upload_failed'));
+          }
+        };
+
+        xhr.onerror = () => reject(new Error('network_error'));
+        xhr.ontimeout = () => reject(new Error('upload_timeout'));
+
+        xhr.send(formData);
+      });
+    }
+
+    // Detect mobile device
+    function isMobile() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // Update UI text based on language
+    function updateTexts() {
+      const t = translations[currentLang];
+
+      // Form elements
       document.querySelector('.live-text').textContent = t.live;
       document.querySelector('.headline').textContent = t.headline;
       document.querySelector('.sub').textContent = t.sub;
@@ -968,80 +1009,69 @@
       document.getElementById('part').placeholder = t.part;
       document.getElementById('contact').placeholder = t.contact;
       document.querySelector('.hint').textContent = t.hint;
-      document.querySelector('button[type="submit"] .btn-text').textContent = t.submit;
-
-      document.querySelectorAll('.section-title')[0].textContent = t.whyTitle;
-      document.querySelectorAll('.section-title')[1].textContent = t.howTitle;
-      document.querySelectorAll('.section-title')[2].textContent = t.aboutTitle;
-      document.querySelectorAll('.section-title')[3].textContent = t.privacyTitle;
-
-      document.querySelectorAll('.section-sub')[0].textContent = t.whySub;
-      document.querySelectorAll('.section-sub')[1].textContent = t.howSub;
-
-      const cardHeadings = document.querySelectorAll('.card h3');
-      cardHeadings[0].textContent = t.find;
-      cardHeadings[1].textContent = t.fast;
-      cardHeadings[2].textContent = t.price;
-      cardHeadings[3].textContent = t.network;
-
-      const cardTexts = document.querySelectorAll('.card p');
-      cardTexts[0].textContent = t.findText;
-      cardTexts[1].textContent = t.fastText;
-      cardTexts[2].textContent = t.priceText;
-      cardTexts[3].textContent = t.networkText;
-
-      const stepHeadings = document.querySelectorAll('.step h3');
-      stepHeadings[0].textContent = t.step1;
-      stepHeadings[1].textContent = t.step2;
-      stepHeadings[2].textContent = t.step3;
-
-      const stepTexts = document.querySelectorAll('.step p');
-      stepTexts[0].textContent = t.step1Text;
-      stepTexts[1].textContent = t.step2Text;
-      stepTexts[2].textContent = t.step3Text;
-
-      document.querySelector('.about-text').textContent = t.aboutText;
-      document.querySelector('.privacy-text').textContent = t.privacyText;
-      document.querySelector('.live-text').textContent = t.live;
-      document.querySelector('.headline').textContent = t.headline;
-      document.querySelector('.sub').textContent = t.sub;
-      document.querySelector('.hint').textContent = t.hint;
       document.querySelector('.btn-text').textContent = t.submit;
 
+      // Section titles and content
+      document.querySelectorAll('.section-title')[0].textContent = t.whyTitle;
+      document.querySelectorAll('.section-sub')[0].textContent = t.whySub;
+
+      const cards = document.querySelectorAll('.cards')[0].querySelectorAll('.card');
+      cards[0].querySelector('h3').textContent = t.find;
+      cards[0].querySelector('p').textContent = t.findText;
+      cards[1].querySelector('h3').textContent = t.fast;
+      cards[1].querySelector('p').textContent = t.fastText;
+      cards[2].querySelector('h3').textContent = t.price;
+      cards[2].querySelector('p').textContent = t.priceText;
+      cards[3].querySelector('h3').textContent = t.network;
+      cards[3].querySelector('p').textContent = t.networkText;
+
+      document.querySelectorAll('.section-title')[1].textContent = t.howTitle;
+      document.querySelectorAll('.section-sub')[1].textContent = t.howSub;
+
+      const steps = document.querySelectorAll('.step');
+      steps[0].querySelector('h3').textContent = t.step1;
+      steps[0].querySelector('p').textContent = t.step1Text;
+      steps[1].querySelector('h3').textContent = t.step2;
+      steps[1].querySelector('p').textContent = t.step2Text;
+      steps[2].querySelector('h3').textContent = t.step3;
+      steps[2].querySelector('p').textContent = t.step3Text;
+
+      document.querySelectorAll('.section-title')[2].textContent = t.aboutTitle;
+      document.querySelector('.about-text').textContent = t.aboutText;
+
+      document.querySelectorAll('.section-title')[3].textContent = t.privacyTitle;
+      document.querySelector('.privacy-text').textContent = t.privacyText;
+    }
+
+    // Set language
+    function setLanguage(lang) {
+      currentLang = lang;
+
+      // Update active button
       document.querySelectorAll('.lang-switch button').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
       });
+
+      updateTexts();
+      document.documentElement.setAttribute('lang', lang);
+      localStorage.setItem('lang', lang);
     }
 
-    // Upload helper with minimal feedback
-    const uploadStatus = document.getElementById('uploadStatus');
+    // Initialize language
+    function initLanguage() {
+      const saved = localStorage.getItem('lang');
+      const browserLang = navigator.language.slice(0, 2).toLowerCase();
+      const supported = ['es', 'en', 'de', 'lt', 'fr', 'it', 'pt'];
 
-    async function uploadFileWithProgress(file, t) {
-      uploadStatus.style.display = 'inline-block';
-      uploadStatus.textContent = t.uploading;
-      uploadStatus.className = 'upload-status uploading';
-
-      const formData = new FormData();
-      formData.append('file', file);
-
-      const response = await fetch(UPLOAD_ENDPOINT, {
-        method: 'POST',
-        body: formData
-      });
-
-      if (!response.ok) {
-        throw new Error('Upload failed');
+      let lang = 'es';
+      if (saved && supported.includes(saved)) {
+        lang = saved;
+      } else if (supported.includes(browserLang)) {
+        lang = browserLang;
       }
 
-      const result = await response.json();
-
-      return result?.data?.url ?? 'upload_unknown';
+      setLanguage(lang);
     }
-
-    // Initialize default language
-    document.addEventListener('DOMContentLoaded', () => {
-      setLanguage(currentLang);
-    });
 
     // Language button handlers
     document.querySelectorAll('.lang-switch button').forEach(btn => {
@@ -1074,17 +1104,6 @@
       const vin = document.getElementById('vin').value.trim();
       const part = document.getElementById('part').value.trim();
       const contact = contactInput.value.trim();
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const phoneRegex = /^[+]?[(]?[0-9\s.-]{6,}$/;
-
-      if (!emailRegex.test(contact) && !phoneRegex.test(contact)) {
-        contactInput.classList.add('invalid-input');
-        contactInput.setCustomValidity(t.contactError || '');
-        contactInput.reportValidity();
-        submitBtn.disabled = false;
-        return;
-      }
 
       contactInput.classList.remove('invalid-input');
       contactInput.setCustomValidity('');
